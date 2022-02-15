@@ -24,8 +24,13 @@ header{
 .header-inner{
   align-items: center;
   display: flex;
+  justify-content: space-around;
   height: 50px;
   background-color: #fff;
+}
+
+.header-left{
+  display: flex;
 }
 
 /* 「::」擬似要素とは、要素の一部に
@@ -40,7 +45,7 @@ header{
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 20px;
-  color: orange;
+  color: #00fbff;
   text-align: center;
 }
 
@@ -49,6 +54,7 @@ header{
   position: relative;
   height: 30px;
   width: 200px;
+  margin-left: 20px;
 }
 
 /* 「:」は擬似クラス=>指定の要素が特定の状態で */
@@ -86,6 +92,53 @@ header{
   border-width: 0.5px;
   border-radius: 3px;
   background-color: #fafafa;
+}
+
+.header-right{
+  display: flex;
+}
+
+.question-button:hover {
+  background-color: rgb(5, 228, 231);
+}
+
+.question-button {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 13px;
+  background-color: #00fbff;
+  color: #fff !important;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+}
+
+.login-register-button:hover {
+  background-color: #fff;
+  color: rgb(5, 228, 231) !important;
+  border: 1px solid rgb(5, 228, 231);
+}
+
+.login-register-button {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 13px;
+  background-color: #fff;
+  color: #00fbff !important;
+  text-decoration: none;
+  border: 1px solid #00fbff;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 
