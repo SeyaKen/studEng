@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fafafa;
+}
+
+header{
+  
+}
+
+.logo {
+  font-family: 'Parisienne', cursive;
+  font-weight: 900;
+  font-size: 50px;
+  color: #fafafa;
+  text-align: center;
+}
+
+
+
+
