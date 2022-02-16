@@ -20,7 +20,7 @@
   <header>
     <div class="header-inner">
       <div class="header-left">
-        <p class="logo">StudEng</p>
+        <h1 class="logo">StudEng</h1>
         <div class="search-area">
           <button type="submit" class="search-button">
             <i class="fas fa-search"></i>
@@ -41,9 +41,30 @@
       <img src="images/StudEngLogo.png" alt="StudEng" width="100%">
       <p>Let's ask questions!</p>
     </div>
-    <div class="main-left">
-      <img src="images/StudEngLogo.png" alt="StudEng">
-      <p>さあ、質問しみよう！</p>
+    <div class="main-right">
+      <div class="main-right-top">
+        <p>Log in</p>
+        <form autocomplete="off" class="main-right-from" id="login-form">
+          <label for="">Email</label>
+          <input type="email" id="login-email" class="form-control" required><br>
+          <label for="">Password</label><br>
+          <input type="password" id="login-password" class="form-control" required><br>
+          <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+          <br>
+          <div class="container error" id="loginError"></div>
+        </form>
+      </div>
+      <div class="main-right-middle">
+        <p>まだアカウントをお持ちでない方はこちら</p>
+      </div>
+      <div class="main-right-bottom">
+        <a aria-label="Download on the App Store" class="z1VUo" href="" tabindex="0">
+          <img alt="Download on the App Store" " src="images/app-store.png" width="38%">
+        </a>
+        <a aria-label="Get it on Google Play" class="z1VUo" href="" tabindex="0">
+          <img alt="Get it on Google Play" src="images/googleplay.png" width="38%">
+        </a>
+      </div>
     </div>
   </main>
 
