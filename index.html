@@ -38,24 +38,30 @@
 
   <main class="main">
     <div class="main-left">
-      <img src="images/StudEngLogo.png" alt="StudEng" width="100%">
+      <p>Stud</p>
+      <p>Eng</p>
       <p>Let's ask questions!</p>
     </div>
     <div class="main-right">
       <div class="main-right-top">
-        <p>Log in</p>
-        <form autocomplete="off" class="main-right-from" id="login-form">
-          <label for="">Email</label>
-          <input type="email" id="login-email" class="form-control" required><br>
-          <label for="">Password</label><br>
-          <input type="password" id="login-password" class="form-control" required><br>
-          <button type="submit" class="btn btn-success btn-block">LOGIN</button>
-          <br>
-          <div class="container error" id="loginError"></div>
-        </form>
+        <div class="main-right-top-container">
+          <p>Log in</p>
+          <form autocomplete="off" class="main-right-from" id="login-form">
+            <div class="for-center">
+              <input type="email" id="login-email" class="form-control" required placeholder="メールアドレス"><br>
+              <input type="password" id="login-password" class="form-control" required placeholder="パスワード"><br>
+              <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+              <br>
+              <div class="container error" id="loginError"></div>
+            </div>
+          </form>
+        </div>
       </div>
       <div class="main-right-middle">
-        <p>まだアカウントをお持ちでない方はこちら</p>
+        <p>まだアカウントをお持ちでない方は<a href="">こちら</a></p>
+      </div>
+      <div class="get-the-app">
+        <p>Get the app.</p>
       </div>
       <div class="main-right-bottom">
         <a aria-label="Download on the App Store" class="z1VUo" href="" tabindex="0">
