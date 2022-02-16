@@ -50,7 +50,7 @@ header{
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 20px;
-  color: #08ffc8;
+  color: #0071e3;
   text-align: center;
 }
 
@@ -104,7 +104,7 @@ header{
 }
 
 .question-button:hover {
-  background-color: #04dfaf;
+  background-color: #5aaaf9;
 }
 
 .question-button {
@@ -115,7 +115,7 @@ header{
   padding-right: 8px;
   padding-left: 8px;
   font-size: 13px;
-  background-color: #08ffc8;
+  background-color: #0071e3;
   color: #fff !important;
   text-decoration: none;
   border: none;
@@ -126,8 +126,8 @@ header{
 
 .login-register-button:hover {
   background-color: #fff;
-  color: #04dfaf !important;
-  border: 1px solid #08ffc8;
+  color: #5aaaf9 !important;
+  border: 1px solid #5aaaf9;
 }
 
 .login-register-button {
@@ -139,9 +139,9 @@ header{
   padding-left: 8px;
   font-size: 13px;
   background-color: #fff;
-  color: #08ffc8 !important;
+  color: #0071e3 !important;
   text-decoration: none;
-  border: 1px solid #08ffc8;
+  border: 1px solid #0071e3;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -165,7 +165,7 @@ header{
 
 .main-left p:nth-of-type(1) {
   margin-top: 30px;
-  color: #08ffc8;
+  color: #0071e3;
   font-size: 130px;
   font-weight: bold;
   margin-bottom: 0 !important;
@@ -175,7 +175,7 @@ header{
 }
 
 .main-left p:nth-of-type(2) {
-  color: #08ffc8;
+  color: #0071e3;
   font-size: 130px;
   font-weight: bold;
   margin-bottom: 0 !important;
@@ -237,7 +237,7 @@ header{
 
 .main-right-top button {
   width: 80%;
-  background-color: #7cffe3;
+  background-color: #5aaaf9;
   border-color: transparent;
 }
 
@@ -253,6 +253,14 @@ header{
 .main-right-middle p {
   margin: 0 !important;
   padding: 20px 0 20px 0;
+}
+
+.main-right-middle a {
+  color: #0071e3;
+}
+
+.main-right-middle a:hover {
+  color: #5aaaf9;
 }
 
 .get-the-app {
