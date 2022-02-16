@@ -141,6 +141,36 @@ header{
   border-radius: 4px;
 }
 
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-left{
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  width: 400px;
+  height: 600px;
+  border: 1px solid #fff;
+  position: relative;
+}
+
+.main-left img {
+  display: block;
+}
+
+.main-left p {
+  margin: 0;
+  /* font-family: 'Parisienne', cursive; */
+  font-weight: bold;
+  font-size: 35px;
+  color: #000;
+  text-align: center;
+  width: 100%;
+}
+
 
 
 
