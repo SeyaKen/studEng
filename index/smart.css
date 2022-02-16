@@ -21,26 +21,22 @@ body {
 
 /* HEADER */
 header{
-  height: 100px;
+  height: 50px;
   display: flex;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 70px;
 }
 
 .header-inner{
   align-items: center;
   display: flex;
-  justify-content: center;
-  height: 100px;
+  justify-content: space-around;
+  height: 50px;
   background-color: #fafafa;
 }
 
 .header-left{
-  height: 100;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 85%;
 }
 
 /* 「::」擬似要素とは、要素の一部に
@@ -51,10 +47,10 @@ header{
 } */
 
 .logo {
-  margin-bottom: 20px;
+  margin: 0;
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   color: #0071e3;
   text-align: center;
 }
@@ -62,12 +58,9 @@ header{
 .search-area {
   display: flex;
   position: relative;
-  height: 40px;
-  width: 100%;
-}
-
-.search-input {
-  width: 100% !important;
+  height: 30px;
+  width: 200px;
+  margin-left: 20px;
 }
 
 /* 「:」は擬似クラス=>指定の要素が特定の状態で */
@@ -108,7 +101,7 @@ header{
 }
 
 .header-right{
-  display: flex;
+  display: none;
 }
 
 .question-button:hover {
@@ -116,11 +109,42 @@ header{
 }
 
 .question-button {
-  display: none;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 13px;
+  background-color: #0071e3;
+  color: #fff !important;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+}
+
+.login-register-button:hover {
+  background-color: #fff;
+  color: #5aaaf9 !important;
+  border: 1px solid #5aaaf9;
 }
 
 .login-register-button {
-  display: none;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 13px;
+  background-color: #fff;
+  color: #0071e3 !important;
+  text-decoration: none;
+  border: 1px solid #0071e3;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 /* BODY */
@@ -166,7 +190,7 @@ header{
 }
 
 .main-right {
-  width: 100%;
+  width: 400px;
   height: 590px;
   display: flex;
   flex-direction: column;
@@ -186,9 +210,8 @@ header{
 }
 
 .main-right-top {
-  border: #dbdbdb solid 1px;
   margin-top: 10px;
-  background-color: #fff;
+  background-color: #fafafa;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -214,8 +237,7 @@ header{
 }
 
 .main-right-middle {
-  border: 1px solid #dbdbdb;
-  background-color: #fff;
+  background-color: #fafafa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,15 +274,11 @@ header{
 
 /* main-right-bottomの中の1番目のimgにCSSを適用させる */
 .main-right-bottom img:nth-of-type(1){
-  margin-right: 5px;
-  width: 150px;
+  margin-right: 1.5px;
+  width: 136.8px;
 }
 
 .main-right-bottom img:nth-of-type(2){
-  margin-left: 5px;
-  width: 150px;
+  margin-left: 1.5px;
+  width: 136.8px;
 }
-
-
-
-
