@@ -97,7 +97,8 @@ body {
 }
 
 .main-right-middle a {
-  color: #0071e3;
+  color: #0071e3 !important;
+  cursor: pointer;
 }
 
 .main-right-middle a:hover {

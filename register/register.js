@@ -3,19 +3,7 @@ function loadbody() {
 }
 
 // 新規登録画面へ
-function moveRegister(){
+function moveLogin(){
   console.log('発火');
-  location = '../register/register.html';
+  location = '../login/login.html';
 };
-
-
-
-
-
-
-
-
-
-
-
-

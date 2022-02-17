@@ -18,7 +18,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
 </head>
-<body>
+<body onload="loadbody()">
   <header>
     <div class="header-inner">
       <div class="header-left">
@@ -55,19 +55,19 @@
         </div>
       </div>
       <div class="main-right-middle">
-        <p>まだアカウントをお持ちでない方は<a href="">こちら</a></p>
+        <p>まだアカウントをお持ちでない方は<a onclick="moveRegister()">こちら</a></p>
       </div>
       <div class="main-right-middle">
-        <p>ログインせずに<a href="">質問する</a></p>
+        <p>ログインせずに<a>質問する</a></p>
       </div>
       <div class="get-the-app">
         <p>Get the app.</p>
       </div>
       <div class="main-right-bottom">
-        <a aria-label="Download on the App Store" class="z1VUo" href="" tabindex="0">
+        <a aria-label="Download on the App Store" class="z1VUo"  tabindex="0">
           <img id="app-store" alt="Download on the App Store" " src="../images/app-store.png">
         </a>
-        <a aria-label="Get it on Google Play" class="z1VUo" href="" tabindex="0">
+        <a aria-label="Get it on Google Play" class="z1VUo"  tabindex="0">
           <img id="google-play-store" alt="Get it on Google Play" src="../images/googleplay.png">
         </a>
       </div>

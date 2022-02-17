@@ -7,15 +7,3 @@ function moveRegister(){
   console.log('発火');
   location = '../register/register.html';
 };
-
-
-
-
-
-
-
-
-
-
-
-
