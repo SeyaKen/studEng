@@ -29,9 +29,9 @@ header{
 .header-inner{
   align-items: center;
   display: flex;
-  justify-content: space-around;
   height: 50px;
   background-color: #fafafa;
+  margin-left: 15%;
 }
 
 .header-left{
@@ -99,52 +99,6 @@ header{
   background-color: #fff;
 }
 
-.header-right{
-  display: flex;
-}
-
-.question-button:hover {
-  background-color: #5aaaf9;
-}
-
-.question-button {
-  margin-left: 30px;
-  display: flex;
-  align-items: center;
-  height: 30px;
-  padding-right: 8px;
-  padding-left: 8px;
-  font-size: 13px;
-  background-color: #0071e3;
-  color: #fff !important;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  border-radius: 4px;
-}
-
-.login-register-button:hover {
-  background-color: #fff;
-  color: #5aaaf9 !important;
-  border: 1px solid #5aaaf9;
-}
-
-.login-register-button {
-  margin-left: 30px;
-  display: flex;
-  align-items: center;
-  height: 30px;
-  padding-right: 8px;
-  padding-left: 8px;
-  font-size: 13px;
-  background-color: #fff;
-  color: #0071e3 !important;
-  text-decoration: none;
-  border: 1px solid #0071e3;
-  cursor: pointer;
-  border-radius: 4px;
-}
 
 /* BODY */
 .main {
@@ -186,7 +140,7 @@ header{
 
 .main-left p:nth-of-type(3) {
   font-weight: bold;
-  font-size: 34px;
+  font-size: 33px;
   color: #000;
   text-align: center;
   width: 100%;
@@ -203,7 +157,7 @@ header{
 }
 
 .main-right-top p:nth-of-type(1){
- font-size: 40px;
+ font-size: 30px;
  font-weight: bold;
 }
 
@@ -241,18 +195,23 @@ header{
   border-color: transparent;
 }
 
+.main-right-top button:hover {
+  width: 80%;
+  background-color: #5aaaf9 !important;
+  border-color: transparent;
+}
+
 .main-right-middle {
   border: 1px solid #dbdbdb;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 15%;
+  height: 60px;
 }
 
 .main-right-middle p {
   margin: 0 !important;
-  padding: 20px 0 20px 0;
 }
 
 .main-right-middle a {
@@ -274,7 +233,7 @@ header{
 
 .main-right-bottom {
   text-align: center;
-  margin: 10px 0 70px 0;
+  margin: 10px 0 30px 0;
 }
 
 /* main-right-bottomの中の1番目のimgにCSSを適用させる */

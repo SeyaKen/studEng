@@ -130,11 +130,8 @@ header{
   display: flex;
   justify-content: center;
   background-color: #fafafa;
-  margin-top: 32px;
-}
-
-.main-left{
-  display: none;
+  align-items: center;
+  margin-top: 110px;
 }
 
 .main-right {
@@ -187,6 +184,12 @@ header{
 .main-right-top button:hover {
   width: 90%;
   background-color: #5aaaf9 !important;
+  border-color: transparent;
+}
+
+.main-right-top button:hover {
+  width: 90%;
+  background-color: #5aaaf9;
   border-color: transparent;
 }
 
