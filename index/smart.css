@@ -165,21 +165,25 @@ header{
   flex-direction: column;
   justify-content: center;
   height: 50%;
+  align-items: center;
 }
 
-.for-center {
-  text-align: center;
+.main-right-top-container{
+  width: 80%;
+}
+
+.main-right-top form {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .main-right input {
-  width: 90%;
+  width: 100%;
 }
 
 .main-right-top button {
-  width: 90%;
+  width: 100%;
   background-color: #5aaaf9;
   border-color: transparent;
   color: white;
@@ -188,9 +192,15 @@ header{
 }
 
 .main-right-top button:hover {
-  width: 90%;
+  width: 100%;
   background-color: #5aaaf9 !important;
   border-color: transparent;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .main-right-middle {

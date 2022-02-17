@@ -84,6 +84,12 @@ body {
   border-color: transparent;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .main-right-middle {
   border: 1px solid #dbdbdb;
   background-color: #fff;

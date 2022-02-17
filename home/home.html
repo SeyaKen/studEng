@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>HELLO WORLD!</h1>
+  <button style="width: 100px; height: 40px;" onclick="logout()"></button>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD4-qHtQX14Ul0vf1WcVxhTtmVoApbeSyM",
+      authDomain: "studeng.firebaseapp.com",
+      projectId: "studeng",
+      storageBucket: "studeng.appspot.com",
+      messagingSenderId: "1042587351457",
+      appId: "1:1042587351457:web:2e7e59a7041d8a832833e0",
+      measurementId: "G-PB8PFG67KQ"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+  <script src="home.js"></script>
+</body>
+</html>

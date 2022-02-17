@@ -199,6 +199,12 @@ header{
   border-color: transparent;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .main-right-middle {
   background-color: #fafafa;
   display: flex;

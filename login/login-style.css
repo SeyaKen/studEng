@@ -70,7 +70,7 @@ body {
 }
 
 .main-right-top button {
-  width: 80%;
+  width: 90%;
   background-color: #5aaaf9;
   border-color: transparent;
   color: white;
@@ -78,13 +78,16 @@ body {
   height: 36px;
 }
 
-.main-right-top button {
+.main-right-top button:hover {
   width: 90%;
   background-color: #5aaaf9;
   border-color: transparent;
-  color: white;
-  border-radius: 2px;
-  height: 36px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .main-right-middle {
