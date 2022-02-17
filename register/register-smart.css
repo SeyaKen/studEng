@@ -176,15 +176,21 @@ header{
 }
 
 .main-right-top button {
+  width: 80%;
+  background-color: #5aaaf9;
+  border-color: transparent;
+  color: white;
+  border-radius: 2px;
+  height: 36px;
+}
+
+.main-right-top button {
   width: 90%;
   background-color: #5aaaf9;
   border-color: transparent;
-}
-
-.main-right-top button:hover {
-  width: 90%;
-  background-color: #5aaaf9 !important;
-  border-color: transparent;
+  color: white;
+  border-radius: 2px;
+  height: 36px;
 }
 
 .main-right-top button:hover {

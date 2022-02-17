@@ -182,6 +182,9 @@ header{
   width: 90%;
   background-color: #5aaaf9;
   border-color: transparent;
+  color: white;
+  border-radius: 2px;
+  height: 36px;
 }
 
 .main-right-top button:hover {
