@@ -69,6 +69,26 @@ body {
   width: 90%;
 }
 
+.for-password {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.password-input {
+  border: none !important;
+  width: 90%;
+}
+
+.eye {
+  display: flex;
+  align-items: center;
+  width: 10%;
+}
+
 .main-right-top button {
   width: 90%;
   background-color: #5aaaf9;
@@ -76,11 +96,11 @@ body {
   color: white;
   border-radius: 2px;
   height: 36px;
-  cursor: pointer;
 }
 
 .main-right-top button:hover {
   width: 90%;
+  background-color: #5aaaf9 !important;
   border-color: transparent;
 }
 

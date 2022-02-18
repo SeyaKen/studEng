@@ -26,7 +26,12 @@
           <form autocomplete="off" class="main-right-from" id="register-form">
             <div class="for-center" id="for-center">
               <input onkeyup="emailLength(value)" type="email" id="register-email" class="form-control" required placeholder="メールアドレス"><br>
-              <input onkeyup="passwordLength(value)" type="password" id="register-password" class="form-control" required placeholder="パスワード"><br>
+              <div class="for-password">
+                <input onkeyup="passwordLength(value)" type="password" id="register-password" class="form-control password-input" required placeholder="パスワード">
+                <div class="eye">
+                  <i class="fa fa-eye"></i>
+                </div>
+              </div>
               <button type="submit" id="register-button">新規登録</button>
               <br>
               <div class="container error" id="registerError"></div>
