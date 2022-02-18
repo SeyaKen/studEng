@@ -1,4 +1,4 @@
-function loadbody() {
+function onload() {
   console.log('body is laoded');
 }
 
@@ -7,6 +7,23 @@ function moveLogin(){
   console.log('発火');
   location = '../login/login.html';
 };
+
+// ボタンの色、機能を管理する関数
+var registerEmail = 0;
+var registerPassword = 0;
+var element = document.getElementById('register-button');
+function passwordLength(str) {
+  registerPassword = str.length;
+  (registerEmail > 7 && registerPassword > 7)
+  ? element.style.backgroundColor = "#0071e3"
+  : element.style.backgroundColor = "#5aaaf9"
+}
+function emailLength(str) {
+  registerEmail = str.length;
+  (registerEmail > 7 && registerPassword > 7)
+  ? element.style.backgroundColor = "#0071e3"
+  : element.style.backgroundColor = "#5aaaf9"
+}
 
 const register = document.getElementById('register-form');
 

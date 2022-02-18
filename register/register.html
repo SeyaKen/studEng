@@ -17,16 +17,16 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
 </head>
-<body>
+<body onload="onload()">
   <main class="main">
     <div class="main-right">
       <div class="main-right-top">
         <div class="main-right-top-container">
           <p>新規登録</p>
           <form autocomplete="off" class="main-right-from" id="register-form">
-            <div class="for-center">
-              <input type="email" id="register-email" class="form-control" required placeholder="メールアドレス"><br>
-              <input type="password" id="register-password" class="form-control" required placeholder="パスワード"><br>
+            <div class="for-center" id="for-center">
+              <input onkeyup="emailLength(value)" type="email" id="register-email" class="form-control" required placeholder="メールアドレス"><br>
+              <input onkeyup="passwordLength(value)" type="password" id="register-password" class="form-control" required placeholder="パスワード"><br>
               <button type="submit" id="register-button">新規登録</button>
               <br>
               <div class="container error" id="registerError"></div>
