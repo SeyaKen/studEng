@@ -44,9 +44,9 @@
         <div class="main-right-top-container">
           <p>ログイン</p>
           <form autocomplete="off" class="main-right-from" id="login-form">
-              <input type="email" id="login-email" class="form-control" required placeholder="メールアドレス"><br>
-              <input type="password" id="login-password" class="form-control" required placeholder="パスワード"><br>
-              <button type="submit" class="">ログイン</button>
+              <input onkeyup="emailLength(value)" type="email" id="login-email" class="form-control" required placeholder="メールアドレス"><br>
+              <input onkeyup="passwordLength(value)" type="password" id="login-password" class="form-control" required placeholder="パスワード"><br>
+              <button type="submit" class="" id="login-button">ログイン</button>
               <br>
               <div class="container error" id="loginError"></div>
           </form>
@@ -54,9 +54,6 @@
       </div>
       <div class="main-right-middle">
         <p>まだアカウントをお持ちでない方は<a onclick="moveRegister()">こちら</a></p>
-      </div>
-      <div class="main-right-middle">
-        <p>ログインせずに<a>質問する</a></p>
       </div>
       <div class="get-the-app">
         <p>Get the app.</p>

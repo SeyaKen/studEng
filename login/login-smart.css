@@ -191,11 +191,11 @@ header{
   color: white;
   border-radius: 2px;
   height: 36px;
+  cursor: pointer;
 }
 
 .main-right-top button:hover {
   width: 90%;
-  background-color: #5aaaf9;
   border-color: transparent;
 }
 

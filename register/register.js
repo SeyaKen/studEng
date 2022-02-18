@@ -9,18 +9,20 @@ function moveLogin(){
 };
 
 // ボタンの色、機能を管理する関数
+/*メールアドレスのパターン 正規表現*/
+var pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
 var registerEmail = 0;
 var registerPassword = 0;
 var element = document.getElementById('register-button');
 function passwordLength(str) {
   registerPassword = str.length;
-  (registerEmail > 7 && registerPassword > 7)
+  (pattern.test(document.getElementById('register-email').value) && registerPassword > 7)
   ? element.style.backgroundColor = "#0071e3"
   : element.style.backgroundColor = "#5aaaf9"
 }
 function emailLength(str) {
   registerEmail = str.length;
-  (registerEmail > 7 && registerPassword > 7)
+  (pattern.test(document.getElementById('register-email').value) && registerPassword > 7)
   ? element.style.backgroundColor = "#0071e3"
   : element.style.backgroundColor = "#5aaaf9"
 }

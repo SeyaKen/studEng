@@ -2,6 +2,23 @@ function loadbody() {
   console.log('body is laoded');
 }
 
+// ボタンの色、機能を管理する関数
+var registerEmail = 0;
+var registerPassword = 0;
+var element = document.getElementById('login-button');
+function passwordLength(str) {
+  registerPassword = str.length;
+  (registerEmail > 0 && registerPassword > 7)
+  ? element.style.backgroundColor = "#0071e3"
+  : element.style.backgroundColor = "#5aaaf9"
+}
+function emailLength(str) {
+  registerEmail = str.length;
+  (registerEmail > 0 && registerPassword > 7)
+  ? element.style.backgroundColor = "#0071e3"
+  : element.style.backgroundColor = "#5aaaf9"
+}
+
 // 新規登録画面へ
 function moveRegister(){
   console.log('発火');
