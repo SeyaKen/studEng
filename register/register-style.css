@@ -78,6 +78,19 @@ body {
   border-radius: 0.25rem;
 }
 
+.for-password input:focus {
+  outline:none;
+  outline-width: 0;
+  box-shadow: none;
+}
+
+.for-password-focus {
+  outline: none !important;
+  border-color: #80bdff;
+  box-shadow: 0 0 0px 3px #c8deff;
+  
+}
+
 .password-input {
   border: none !important;
   width: 90%;
@@ -87,6 +100,7 @@ body {
   display: flex;
   align-items: center;
   width: 10%;
+  background-color: #fff;
 }
 
 .main-right-top button {

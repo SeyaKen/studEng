@@ -8,6 +8,39 @@ function moveLogin(){
   location = '../login/login.html';
 };
 
+// パスワードの切り替え
+const txt = document.getElementById('register-password');
+const btnEye = document.getElementById('password-eye');
+function pushHideButton() {
+  if (txt.type === "text") {
+    txt.type = "password";
+    btnEye.className = "fa fa-eye";
+  } else {
+    txt.type = "text";
+    btnEye.className = "fa fa-eye-slash";
+  }
+}
+
+// フォーカスに伴う変化の関数
+var txtPass = document.getElementById('for-password');
+function pushFocus() {
+  txtPass.classList.remove("password-input");
+  txtPass.classList.add("for-password-focus");
+}
+function blurFocus() {
+  txtPass.classList.remove("for-password-focus");
+}
+
+// フォーカスの感知
+const focus = document.getElementById('register-password');
+function focusCheck() {
+  if (focus === document.activeElement) {
+    console.log('Element has focus!');
+  } else {
+      console.log(`Element is not focused.`);
+  }
+}
+
 // ボタンの色、機能を管理する関数
 /*メールアドレスのパターン 正規表現*/
 var pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
