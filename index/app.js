@@ -70,8 +70,14 @@ loginForm.addEventListener('submit', e => {
   const loginPassword = document.getElementById('login-password').value;
   // console.log(loginEmail, loginPassword);
   auth.signInWithEmailAndPassword(loginEmail, loginPassword).then(() => {
-    console.log('ログインに成功しました。');
-    location = '../home/home.html';
+    if (auth.currentUser.emailVerified) {
+      console.log('ログインに成功しました。');
+      location = '../home/home.html';
+    } else {
+      var user = firebase.auth().currentUser;
+      user.sendEmailVerification();
+      location = '../ninshou/ninshou.html';
+    }
   }).catch(err => {
     console.log(err.message);
     const loginError = document.getElementById('loginError');
@@ -79,7 +85,7 @@ loginForm.addEventListener('submit', e => {
     (err.message == 'The password is invalid or the user does not have a password.')
     ? loginError.innerText = 'パスワードが間違っています。'
     : loginError.innerText = 'メールアドレスが登録されていません。'
-  });
+  })
 });
 
 
