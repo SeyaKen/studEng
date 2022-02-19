@@ -62,7 +62,7 @@ function emailLength(str) {
 
 const register = document.getElementById('register-form');
 
-register.addEventListener('submit', e=>{
+register.addEventListener('submit', e=> {
   e.preventDefault();
   const email = document.getElementById('register-email').value;
   const password = document.getElementById('register-password').value;
@@ -71,7 +71,7 @@ register.addEventListener('submit', e=>{
   } else {
     register.reset();
     try{
-      auth.createUserWithEmailAndPassword(email, password).then((result) => {
+      auth.createUserWithEmailAndPassword(email, password).then(result => {
         var user = firebase.auth().currentUser;
         user.sendEmailVerification().then(function() {
           console.log('新規登録に成功しました。');
@@ -85,7 +85,6 @@ register.addEventListener('submit', e=>{
           ? registerError.innerText = '既に登録済みです。'
           : 
           console.log('新規登録に失敗しました。');
-        
       }).catch(err => {
         console.log(err.message);
         console.log('エラー1');
@@ -95,10 +94,18 @@ register.addEventListener('submit', e=>{
         : 
         console.log('新規登録に失敗しました。');
       });
+    }).catch(err => {
+      console.log(err.message);
+      console.log('エラー2');
+      const registerError = document.getElementById('registerError');
+      (err.message == 'The email address is already in use by another account.')
+      ? registerError.innerText = '既に登録済みです。'
+      : 
+      console.log('新規登録に失敗しました。');
     });
   } catch(err) {
       console.log(err.message);
-      console.log('エラー1');
+      console.log('エラー3');
       const registerError = document.getElementById('registerError');
       (err.message == 'The email address is already in use by another account.')
       ? registerError.innerText = '既に登録済みです。'
