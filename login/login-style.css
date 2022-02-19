@@ -69,6 +69,40 @@ body {
   width: 90%;
 }
 
+.for-password {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.for-password input:focus {
+  outline:none;
+  outline-width: 0;
+  box-shadow: none;
+}
+
+.for-password-focus {
+  outline: none !important;
+  border-color: #80bdff;
+  box-shadow: 0 0 0px 3px #c8deff;
+  
+}
+
+.password-input {
+  border: none !important;
+  width: 90%;
+}
+
+.eye {
+  display: flex;
+  align-items: center;
+  width: 10%;
+  background-color: #fff;
+}
+
 .main-right-top button {
   width: 90%;
   background-color: #5aaaf9;
@@ -76,11 +110,11 @@ body {
   color: white;
   border-radius: 2px;
   height: 36px;
-  cursor: pointer;
 }
 
 .main-right-top button:hover {
   width: 90%;
+  background-color: #5aaaf9 !important;
   border-color: transparent;
 }
 

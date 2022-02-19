@@ -24,9 +24,14 @@
         <div class="main-right-top-container">
           <p>ログイン</p>
           <form autocomplete="off" class="main-right-from" id="login-form">
-            <div class="for-center">
+            <div class="for-center" id="for-center">
               <input onkeyup="emailLength(value)" type="email" id="login-email" class="form-control" required placeholder="メールアドレス"><br>
-              <input onkeyup="passwordLength(value)" type="password" id="login-password" class="form-control" required placeholder="パスワード"><br>
+              <div class="for-password" id="for-password">
+                <input onfocus="pushFocus()" onBlur="blurFocus()" onkeyup="passwordLength(value)" type="password" id="login-password" class="form-control password-input" required placeholder="パスワード">
+                <div class="eye" onclick="pushHideButton()">
+                  <i class="fa fa-eye" id="password-eye"></i>
+                </div>
+              </div>
               <button type="submit" id="login-button">ログイン</button>
               <br>
               <div class="container error" id="loginError"></div>

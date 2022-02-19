@@ -173,15 +173,59 @@ header{
 
 .main-right input {
   width: 90%;
+}.main-right-top {
+  margin-top: 10px;
+  background-color: #fafafa;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
 }
 
-.main-right-top button {
-  width: 80%;
-  background-color: #5aaaf9;
-  border-color: transparent;
-  color: white;
-  border-radius: 2px;
-  height: 36px;
+.for-center {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-right input {
+  width: 90%;
+}
+
+.for-password {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.password-input {
+  border: none !important;
+  width: 90%;
+}
+
+.eye {
+  display: flex;
+  align-items: center;
+  width: 10%;
+  background-color: #fff;
+}
+
+.for-password input:focus {
+  outline:none;
+  outline-width: 0;
+  box-shadow: none;
+}
+
+.for-password-focus {
+  outline: none !important;
+  border-color: #80bdff;
+  box-shadow: 0 0 0px 3px #c8deff;
+  
 }
 
 .main-right-top button {
