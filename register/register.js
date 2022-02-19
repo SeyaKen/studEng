@@ -76,7 +76,7 @@ register.addEventListener('submit', e=>{
         user.sendEmailVerification().then(function() {
           console.log('新規登録に成功しました。');
           // ここに指定したページに移動させる。
-          // location = '../ninshou/ninshou.html';
+          location = '../ninshou/ninshou.html';
         }).catch(err => {
           console.log(err.message);
           console.log('エラー0');
