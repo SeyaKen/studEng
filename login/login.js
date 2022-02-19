@@ -54,9 +54,9 @@ function focusCheck() {
 }
 
 // 新規登録画面へ
-function movelogin(){
+function moveRegister(){
   console.log('発火');
-  location = '../login/login.html';
+  location = '../register/register.html';
 };
 
 // ログイン

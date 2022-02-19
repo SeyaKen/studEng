@@ -2,6 +2,40 @@ function loadbody() {
   console.log('body is laoded');
 }
 
+
+// パスワードの切り替え
+const txt = document.getElementById('login-password');
+const btnEye = document.getElementById('password-eye');
+function pushHideButton() {
+  if (txt.type === "text") {
+    txt.type = "password";
+    btnEye.className = "fa fa-eye";
+  } else {
+    txt.type = "text";
+    btnEye.className = "fa fa-eye-slash";
+  }
+}
+
+// フォーカスに伴う変化の関数
+var txtPass = document.getElementById('for-password');
+function pushFocus() {
+  txtPass.classList.remove("password-input");
+  txtPass.classList.add("for-password-focus");
+}
+function blurFocus() {
+  txtPass.classList.remove("for-password-focus");
+}
+
+// フォーカスの感知
+const focus = document.getElementById('login-password');
+function focusCheck() {
+  if (focus === document.activeElement) {
+    console.log('Element has focus!');
+  } else {
+      console.log(`Element is not focused.`);
+  }
+}
+
 // 新規登録画面へ
 function moveRegister(){
   console.log('発火');
