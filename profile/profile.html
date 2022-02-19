@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+  <!-- css -->
+  <link href="profile-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
+  <link href="profile-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
+  <!-- bootstrap links -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- fontAweosum -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- googleFonts -->
+  <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
+</head>
+<body>
+  <!-- date and time section -->
+  <div class="my-container">
+    <p>認証メールが送信されました。
+      <br>
+      <br>
+      メールを確認し、本文に記載されたURLにアクセスして登録を完了してください。
+      <br>
+      <br>
+      ※URLにアクセス後、下のボタンを押すと、自動でログインされます。
+      <br>
+    </p>
+    <button class="" onclick="reload()">認証完了</button>
+    <div class="container error" id="loginError"></div>
+    <input type="file" onchange="uploadData()"id='files' name="Files[]" multiple>
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyD4-qHtQX14Ul0vf1WcVxhTtmVoApbeSyM",
+    authDomain: "studeng.firebaseapp.com",
+    projectId: "studeng",
+    storageBucket: "studeng.appspot.com",
+    messagingSenderId: "1042587351457",
+    appId: "1:1042587351457:web:2e7e59a7041d8a832833e0",
+    measurementId: "G-PB8PFG67KQ"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  const auth = firebase.auth();
+  const fs = firebase.firestore();
+</script>
+
+<script src="profile.js"></script>
+</body>
+</html>

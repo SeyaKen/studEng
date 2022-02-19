@@ -34,3 +34,11 @@ main {
   justify-content: space-around;
 }
 
+.buttons button {
+  background-color: #0071e3;
+  border-color: transparent;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

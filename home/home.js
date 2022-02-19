@@ -11,6 +11,10 @@ auth.onAuthStateChanged(user=>{
 
 function logout() {
   auth.signOut().then(() => {
-    location = '../index/index.html';
+    location = '../profile/profile.html';
   });
+};
+
+function moveToProfile() {
+  location = '../profile/profile.html';
 };
