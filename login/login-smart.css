@@ -241,6 +241,7 @@ header{
 .main-right-top button:hover {
   width: 90%;
   border-color: transparent;
+  cursor: pointer;
 }
 
 .error {

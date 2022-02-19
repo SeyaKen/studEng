@@ -231,6 +231,7 @@ header{
   width: 90%;
   background-color: #5aaaf9 !important;
   border-color: transparent;
+  cursor: pointer;
 }
 
 .error {

@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Users</title>
   <!-- css -->
-  <link href="ninshou-smart.css" rel="stylesheet" type="text/css" media="(max-width: 620px)" >
-  <link href="ninshou-style.css" rel="stylesheet" type="text/css" media="(min-width: 621px)" >
+  <link href="ninshou-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
+  <link href="ninshou-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
   <!-- bootstrap links -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,13 +18,20 @@
   <link rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
 </head>
-<body onloda="onload()">
+<body>
   <!-- date and time section -->
   <div class="my-container">
-    <h3>認証メールが送信されました。<br>
-      メールを確認し、本文に記載されたURLにアクセスして登録を完了してください。<br>
-    </h3>
+    <p>認証メールが送信されました。
+      <br>
+      <br>
+      メールを確認し、本文に記載されたURLにアクセスして登録を完了してください。
+      <br>
+      <br>
+      ※URLにアクセス後、下のボタンを押すと、自動でログインされます。
+      <br>
+    </p>
     <button class="" onclick="reload()">認証完了</button>
+    <div class="container error" id="loginError"></div>
 </div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
