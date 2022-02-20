@@ -20,22 +20,26 @@ body {
 }
 
 /* HEADER */
-header{
-  height: 50px;
+.header{
+  height: 60px;
   display: flex;
   align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
+  justify-content: center;
 }
 
 .header-inner{
   align-items: center;
   display: flex;
-  height: 50px;
-  background-color: #fafafa;
-  margin-left: 15%;
+  background-color: #fff;
+  width: 90%;
+  justify-content: space-around;
 }
 
 .header-left{
   display: flex;
+  align-items: center;
 }
 
 /* 「::」擬似要素とは、要素の一部に
@@ -49,7 +53,7 @@ header{
   margin: 0;
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
-  font-size: 20px;
+  font-size: 28px;
   color: #0071e3;
   text-align: center;
 }
@@ -57,9 +61,11 @@ header{
 .search-area {
   display: flex;
   position: relative;
-  height: 30px;
-  width: 200px;
+  height: 36px;
+  width: 268px;
   margin-left: 20px;
+  background-color: #efefef;
+  border-radius: 7px;
 }
 
 /* 「:」は擬似クラス=>指定の要素が特定の状態で */
@@ -93,10 +99,12 @@ header{
   padding: 0 8px 0 30px;
   height: inherit;
   width: inherit;
-  border-color: #dbdbdb;
+  border: none;
+  outline: none;
   border-width: 0.5px;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: #efefef;
+  border-radius: 7px;
 }
 
 
