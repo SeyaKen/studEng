@@ -18,7 +18,12 @@ function uploadData() {
    
   thisRef.put(file).then(res=> {
     console.log('Uploaded');
-    alert('Upload Success');
+    console.log(res.getDownloadURL().toString());
+    thisRef.getDownloadURL().then(url => {
+      console.log(url);
+    }).catch(e => {
+      console.log(e);
+    });
   }).catch(e => {
     console.log('エラー' + e);
   });
