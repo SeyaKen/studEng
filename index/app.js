@@ -1,8 +1,3 @@
-function loadbody() {
-  console.log('body is laoded');
-}
-
-
 // パスワードの切り替え
 const txt = document.getElementById('login-password');
 const btnEye = document.getElementById('password-eye');

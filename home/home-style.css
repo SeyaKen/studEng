@@ -15,10 +15,92 @@ body {
   background-color: #fafafa !important;
 }
 
-body {
+/* HEADER */
+.header{
+  height: 60px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
+  justify-content: center;
+}
+
+.header-inner{
+  align-items: center;
+  display: flex;
+  background-color: #fff;
+  width: 90%;
+  justify-content: space-around;
+}
+
+.header-left{
+  display: flex;
+  align-items: center;
+}
+
+/* 「::」擬似要素とは、要素の一部に
+対してスタイルを適用できる指定方法です。 */
+
+/* .logo::before {
+  content: 'StudEng';
+} */
+
+.logo {
+  margin: 0;
+  /* font-family: 'Parisienne', cursive; */
+  font-weight: bold;
+  font-size: 28px;
+  color: #0071e3;
+  text-align: center;
+}
+
+.search-area {
+  display: flex;
+  position: relative;
+  height: 36px;
+  width: 268px;
+  margin-left: 20px;
+  background-color: #efefef;
+  border-radius: 7px;
+}
+
+/* 「:」は擬似クラス=>指定の要素が特定の状態で */
+/* ある場合にスタイルを適用させるセレクタです。 */ 
+.search-button:focus {
+	outline:0;
+}
+
+.search-button {
+  margin-left: 5px;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-button i {
+  color: black;
+}
+
+.search-input:focus {
+  outline:0;
+}
+
+.search-input {
+  padding: 0 8px 0 30px;
+  height: inherit;
+  width: inherit;
+  border: none;
+  outline: none;
+  border-width: 0.5px;
+  border-radius: 3px;
+  background-color: #efefef;
+  border-radius: 7px;
 }
 
 main {

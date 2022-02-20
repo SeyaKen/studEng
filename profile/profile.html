@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Users</title>
+  <title>StudEng</title>
+  <link rel="icon" href="../images/favicon.png">
   <!-- css -->
   <link href="profile-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
   <link href="profile-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
@@ -19,13 +20,33 @@
       href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
 </head>
 <body>
-  <!-- date and time section -->
+  <header class="header">
+    <div class="header-inner">
+      <h1 class="logo">StudEng</h1>
+      <div class="header-left">
+        <div class="search-area">
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+          <input type="text" value="" class="search-input" placeholder="検索">
+        </div>
+      </div>
+    </div>
+  </header>
+  
   <main class="container">
     <input style="display: none" type="file" onchange="uploadData()" id='files' name="Files[]" multiple>
-    <div class="image-container">
-      <button onclick="inputClick()">
-        <img src="../images/user.jpg" id="unregistered-picture" class="fas fa-user unregistered-picture"/>
-      </button>
+    <div class="top-container">
+      <div class="top-left">
+        <div class="image-container">
+          <button onclick="inputClick()">
+            <img src="../images/user.jpg" id="unregistered-picture" class="fas fa-user unregistered-picture"/>
+          </button>
+        </div>
+      </div>
+      <div class="top-right">
+        <p>瀬谷　剣</p>
+      </div>
     </div>
   </main>
 
