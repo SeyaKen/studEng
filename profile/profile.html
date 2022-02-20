@@ -21,9 +21,11 @@
 <body>
   <!-- date and time section -->
   <main class="container">
-    <input type="file" onchange="uploadData()"id='files' name="Files[]" multiple>
+    <input style="display: none" type="file" onchange="uploadData()" id='files' name="Files[]" multiple>
     <div class="image-container">
-    <i id="unregistered-picture" class="fas fa-user unregistered-picture"></i>
+      <button onclick="inputClick()">
+        <img src="../images/user.jpg" id="unregistered-picture" class="fas fa-user unregistered-picture"/>
+      </button>
     </div>
   </main>
 

@@ -1,25 +1,51 @@
-let storageRef = firebase.storage().ref('Images');
+
+// ユーザーがログインしているか確認
+auth.onAuthStateChanged(userr => {
+  if(userr && auth.currentUser.emailVerified) {
+    uid = userr.uid;
+    user = userr;
+    storagePersonalRef = firebase.storage().ref(userr.uid);
+    storagePersonalRef.child('ProfilePicture').getDownloadURL().then(url => {
+    let imageSrc = document.getElementById('unregistered-picture');
+    // data-idという属性をここで付加している。
+    imageSrc.setAttribute('src', url);
+    }).catch(e => {
+      console.log(e);
+    });
+    console.log('ログインしています！');
+  } else {
+    console.log('ログインしていません。')
+    location = '../index/index.html';
+  }
+});
+
+var user;
+var uid;
+let storagePersonalRef;
 
 // Firebaseから画像をダウンロードする関数
-// storageRef.child('Web 1920 – 1.png').delete.then~
+// storagePersonalRef.child('Web 1920 – 1.png').delete.then~
 // で画像を消すことができる。
-storageRef.child('Web 1920 – 1.png').getDownloadURL().then(url => {
-  console.log(url);
-}).catch(e => {
-  console.log(e);
-});
+// storagePersonalRef.child('Web 1920 – 1.png').getDownloadURL().then(url => {
+// }).catch(e => {
+//   console.log(e);
+// });
+
+// buttonを使ってinputを押す処理
+function inputClick() {
+  document.getElementById('files').click();
+}
 
 // Firebaseに画像をアップロードする関数
 function uploadData() {
   let file = document.getElementById('files').files[0];
-  console.log(file);
-
-  let thisRef = storageRef.child(file.name);
-   
+  let thisRef = storagePersonalRef.child('ProfilePicture');
   thisRef.put(file).then(res=> {
     console.log('Uploaded');
-    console.log(res.getDownloadURL().toString());
     thisRef.getDownloadURL().then(url => {
+      let imageSrc = document.getElementById('unregistered-picture');
+      // data-idという属性をここで付加している。
+      imageSrc.setAttribute('src', url);
       console.log(url);
     }).catch(e => {
       console.log(e);
@@ -27,5 +53,4 @@ function uploadData() {
   }).catch(e => {
     console.log('エラー' + e);
   });
-
 }
