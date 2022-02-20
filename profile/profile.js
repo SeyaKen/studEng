@@ -1,21 +1,38 @@
 
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(userr => {
-  if(userr && auth.currentUser.emailVerified) {
+  try{
+    firebase.storage().ref(userr.uid).child('ProfilePicture');
+      if(userr && auth.currentUser.emailVerified) {
+        uid = userr.uid;
+        user = userr;
+        storagePersonalRef = firebase.storage().ref(userr.uid);
+        storagePersonalRef.child('ProfilePicture').getDownloadURL().then(url => {
+        let imageSrc = document.getElementById('unregistered-picture');
+        // data-idという属性をここで付加している。
+        imageSrc.setAttribute('src', url);
+        }).catch(e => {
+          console.log('エラーです。');
+          console.log(e);
+          uid = userr.uid;
+          user = userr;
+          storagePersonalRef = firebase.storage().ref(userr.uid);
+        });
+        console.log('ログインしています！');
+    } else {
+      console.log('ログインしていません。')
+      history.back();
+    }
+  } catch(e) {
+    if(userr && auth.currentUser.emailVerified) {
+    console.log(e);
     uid = userr.uid;
     user = userr;
     storagePersonalRef = firebase.storage().ref(userr.uid);
-    storagePersonalRef.child('ProfilePicture').getDownloadURL().then(url => {
-    let imageSrc = document.getElementById('unregistered-picture');
-    // data-idという属性をここで付加している。
-    imageSrc.setAttribute('src', url);
-    }).catch(e => {
-      console.log(e);
-    });
-    console.log('ログインしています！');
-  } else {
-    console.log('ログインしていません。')
-    location = '../index/index.html';
+    } else {
+      console.log('ログインしていません。')
+      history.back();
+    }
   }
 });
 
