@@ -15,6 +15,14 @@ body {
   background-color: #fafafa !important;
 }
 
+* a {
+  text-decoration: none !important;
+}
+
+* p {
+  margin-bottom: 0 !important;
+}
+
 /* HEADER */
 .header{
   height: 60px;
@@ -110,12 +118,14 @@ body {
   align-items: center;
   padding: 30px 20px 0;
   margin: 0 auto 30px;
+  flex-direction: column;
 }
 
 .top-container {
   display: flex;
   width: 80%;
-  justify-content: space-between;
+  justify-content: space-around;
+  height: 200px;
 }
 
 /* top-left */
@@ -155,14 +165,107 @@ body {
 /* top-right */
 .top-right {
   width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90%;
 }
 
-.top-right p:first-child{
+/* top-right-top */
+.top-right-top {
   padding-top: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.top-right-top p:first-child{
   font-size: 28px;
   line-height: 32px;
+  margin-right: 20px;
 }
 
+.top-right-top a {
+  border: 1px solid #dbdbdb;
+  padding: 5px 9px;
+  border-radius: 3px;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.top-right-top a:hover {
+  border: 1px solid #dbdbdb;
+  padding: 5px 9px;
+  border-radius: 3px;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* top-right-bottom */
+/* .top-right-bottom {
+
+} */
+
+.top-right-bottom p {
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 0 !important;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden; 
+}
+
+/* bottom-container */
+.bottom-container {
+  display: flex;
+  width: 80%;
+  border-top: 1px solid #dbdbdb;
+  margin-top: 5%;
+  justify-content: space-around;
+}
+
+.bottom-container-questions {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 50%;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.border0 {
+  height: 7px;
+  background-color: #0071e3;
+  width: 100%;
+}
+
+.bottom-container-questions p {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+.bottom-container-teaching {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 50%;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.border1 {
+  height: 7px;
+  width: 100%;
+}
+
+.bottom-container-teaching p {
+  padding-top: 7px;
+  font-weight: bold;
+}
 
 
 

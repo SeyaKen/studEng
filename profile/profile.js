@@ -9,7 +9,7 @@ auth.onAuthStateChanged(userr => {
         storagePersonalRef = firebase.storage().ref(userr.uid);
         storagePersonalRef.child('ProfilePicture').getDownloadURL().then(url => {
         let imageSrc = document.getElementById('unregistered-picture');
-        // data-idという属性をここで付加している。
+        // srcという属性をここで付加している。
         imageSrc.setAttribute('src', url);
         }).catch(e => {
           console.log('エラーです。');
@@ -70,4 +70,9 @@ function uploadData() {
   }).catch(e => {
     console.log('エラー' + e);
   });
+}
+
+function toggle(me, theOther) {
+  document.getElementById(me).style.backgroundColor = "#0071e3";
+  document.getElementById(theOther).style.backgroundColor = "transparent";
 }
