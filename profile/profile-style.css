@@ -267,6 +267,10 @@ body {
   font-weight: bold;
 }
 
+/* pの処理  */
+.smart-texts {
+  display: none !important;
+}
 
 
 

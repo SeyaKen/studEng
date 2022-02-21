@@ -20,19 +20,15 @@ body {
 }
 
 /* HEADER */
-header{
-  height: 50px;
-  display: flex;
-  align-items: center;
-  margin-top: 70px;
-}
+
 
 .header-inner{
   align-items: center;
   display: flex;
   justify-content: space-around;
-  height: 50px;
-  background-color: #fafafa;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
 }
 
 .header-left{
@@ -97,7 +93,7 @@ header{
   border-color: #dbdbdb;
   border-width: 0.5px;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: #efefef;
 }
 
 .header-right{
