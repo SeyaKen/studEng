@@ -1,7 +1,7 @@
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(user => {
   if(user && auth.currentUser.emailVerified) {
-    return ds.collection('users').doc(user.uid).set({
+    return db.collection('users').doc(user.uid).set({
       name: '',
       email: '',
       selfIntroduction: '',

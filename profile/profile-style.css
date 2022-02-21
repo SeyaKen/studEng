@@ -130,7 +130,7 @@ body {
 
 /* top-left */
 .top-left {
-  width: 25%;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;

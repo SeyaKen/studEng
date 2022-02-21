@@ -1,39 +1,28 @@
 
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(userr => {
-  try{
-    firebase.storage().ref(userr.uid).child('ProfilePicture');
+    db.collection('users').doc(userr.uid).get().then(snapshot=> {
+      console.log(snapshot.data().ProfilePicture == '');
       if(userr && auth.currentUser.emailVerified) {
-        uid = userr.uid;
-        user = userr;
-        storagePersonalRef = firebase.storage().ref(userr.uid);
-        storagePersonalRef.child('ProfilePicture').getDownloadURL().then(url => {
-        let imageSrc = document.getElementById('unregistered-picture');
-        // srcという属性をここで付加している。
-        imageSrc.setAttribute('src', url);
-        }).catch(e => {
-          console.log('エラーです。');
-          console.log(e);
+        if(snapshot.data().ProfilePicture == '') {
           uid = userr.uid;
           user = userr;
           storagePersonalRef = firebase.storage().ref(userr.uid);
-        });
-        console.log('ログインしています！');
+        } else {
+          uid = userr.uid;
+          user = userr;
+          storagePersonalRef = firebase.storage().ref(userr.uid);
+          url = snapshot.data().ProfilePicture;
+          let imageSrc = document.getElementById('unregistered-picture');
+          // srcという属性をここで付加している。
+          imageSrc.setAttribute('src', url);
+          console.log('ログインしています！');
+        }
     } else {
       console.log('ログインしていません。')
       history.back();
     }
-  } catch(e) {
-    if(userr && auth.currentUser.emailVerified) {
-    console.log(e);
-    uid = userr.uid;
-    user = userr;
-    storagePersonalRef = firebase.storage().ref(userr.uid);
-    } else {
-      console.log('ログインしていません。')
-      history.back();
-    }
-  }
+    });
 });
 
 var user;
@@ -60,10 +49,19 @@ function uploadData() {
   thisRef.put(file).then(res=> {
     console.log('Uploaded');
     thisRef.getDownloadURL().then(url => {
-      let imageSrc = document.getElementById('unregistered-picture');
-      // data-idという属性をここで付加している。
-      imageSrc.setAttribute('src', url);
-      console.log(url);
+      db.collection('users').doc(user.uid).update({
+        ProfilePicture: url,
+      }).then(() => {
+        console.log('写真成功！');
+        let imageSrc = document.getElementById('unregistered-picture');
+        // data-idという属性をここで付加している。
+        imageSrc.setAttribute('src', url);
+        console.log(url);
+      }).catch(err => {
+        console.log(err);
+        console.log('メール認証が終わっていません。');
+        console.log('ログインしていません。');
+    });
     }).catch(e => {
       console.log(e);
     });
