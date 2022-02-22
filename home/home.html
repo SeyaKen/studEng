@@ -29,8 +29,19 @@
           <input type="text" value="" class="search-input" placeholder="検索">
         </div>
       </div>
+      <div class="header-right-logined" id="header-right-logined">
+        <button onclick="moveToQuestion()" class="question-screen">質問する</button>
+        <button onclick="moveToProfile()" class="to-profile-button">
+          <img src="../images/user.jpg" id="unregistered-picture" class="fas fa-user unregistered-picture"/>
+        </button>
+      </div>
+      <div class="header-right-logouted" id="header-right-logouted">
+        <button onclick="moveToLogin()" class="question-screen">ログイン</button>
+        <button onclick="moveToRegister()" class="question-screen">新規登録</button>
+      </div>
     </div>
   </header>
+
   <main>
     <h1>HELLO WORLD!</h1>
     <div class="buttons">
@@ -38,6 +49,7 @@
       <button style="width: 100px; height: 40px;" onclick="moveToProfile()">プロフィール</button>
     </div>
   </main>
+
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 

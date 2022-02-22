@@ -103,6 +103,63 @@ body {
   border-radius: 7px;
 }
 
+/* ログインしている時 */
+.header-right-logined {
+  display: flex;
+  align-items: center;
+}
+
+.question-screen {
+  text-align: center;
+  padding: 0 7px 0 7px;
+  height: 34px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #0071e3;
+  color: #fff;
+  font-size: 14px;
+  margin-right: 22px;
+  cursor: pointer;
+}
+
+.to-profile-button {
+  height: 36px;
+  width: 36px;
+  border: none;
+  cursor: pointer;
+  outline: none !important;
+  border-radius: 100%;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.to-profile-button img {
+  height: 36px;
+  width: 36px;
+}
+
+/* ログインしていない時 */
+.header-right-logouted {
+  display: flex;
+  align-items: center;
+}
+
+.header-right-logouted button {
+  text-align: center;
+  padding: 0 7px 0 7px;
+  height: 34px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #0071e3;
+  color: #fff;
+  font-size: 14px;
+  margin-right: 22px;
+  cursor: pointer;
+}
+
+/* main */
 main {
   height: 40%;
   display: flex;
