@@ -33,7 +33,6 @@ auth.onAuthStateChanged(userr => {
         let imageSrc = document.getElementById('unregistered-picture');
         // srcという属性をここで付加している。
         imageSrc.setAttribute('src', url);
-        console.log('ログインしています！');
       }
     });
   } else {
@@ -42,12 +41,10 @@ auth.onAuthStateChanged(userr => {
     parentDiv.className = 'header-right-logouted';
 
     let button0 = document.createElement('button');
-    button0.className = 'question-screen';
     button0.textContent = 'ログイン';
     button0.setAttribute('onclick', 'moveToLogin()');
 
     let button1 = document.createElement('button');
-    button1.className = 'question-screen';
     button1.textContent = '新規登録';
     button1.setAttribute('onclick', 'moveToRegister()');
 
