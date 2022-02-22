@@ -111,7 +111,7 @@ body {
 
 .question-screen {
   text-align: center;
-  padding: 0 7px 0 7px;
+  padding: 0 10px 0 10px;
   height: 34px;
   border: none;
   outline: none;
@@ -147,7 +147,7 @@ body {
 
 .header-right-logouted button {
   text-align: center;
-  padding: 0 7px 0 7px;
+  padding: 0 10px 0 10px;
   height: 34px;
   border: none;
   outline: none;

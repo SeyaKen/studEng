@@ -1,10 +1,9 @@
 
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(userr => {
-  try{
+  if(userr && auth.currentUser.emailVerified) {
+    document.getElementById("header-right-logouted").style.display = "none";
     db.collection('users').doc(userr.uid).get().then(snapshot=> {
-    if(userr && auth.currentUser.emailVerified) {
-      document.getElementById("header-right-logouted").style.display = "none";
       if(snapshot.data().ProfilePicture == '') {
         uid = userr.uid;
         user = userr;
@@ -17,14 +16,10 @@ auth.onAuthStateChanged(userr => {
         imageSrc.setAttribute('src', url);
         console.log('ログインしています！');
       }
+    });
   } else {
     document.getElementById("header-right-logined").style.display = "none";
-    console.log('ログインしていません。')
   }
-  }).catch(err => {
-    console.log(err.message);
-    document.getElementById("header-right-logined").style.display = "none";
-  });
 });
 
 var user;
