@@ -1,8 +1,27 @@
-
+const addContainer = document.getElementById('header-inner');
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(userr => {
   if(userr && auth.currentUser.emailVerified) {
-    document.getElementById("header-right-logouted").style.display = "none";
+    console.log('ログインしています。');
+    let parentDiv = document.createElement('div');
+    parentDiv.className = 'header-right-logined';
+
+    let button0 = document.createElement('button');
+    button0.className = 'question-screen';
+    button0.textContent = '質問する';
+    button0.setAttribute('onclick', 'moveToQuestion()');
+
+    let button1 = document.createElement('button');
+    let imageProfile = document.createElement('img');
+    button1.className = 'to-profile-button';
+    button1.setAttribute('onclick', 'moveToProfile()');
+    imageProfile.className = 'fas fa-user unregistered-picture';
+    imageProfile.setAttribute('id', 'unregistered-picture');
+    button1.appendChild(imageProfile);
+
+    parentDiv.appendChild(button0);
+    parentDiv.appendChild(button1);
+    addContainer.appendChild(parentDiv);
     db.collection('users').doc(userr.uid).get().then(snapshot=> {
       if(snapshot.data().ProfilePicture == '') {
         uid = userr.uid;
@@ -18,7 +37,23 @@ auth.onAuthStateChanged(userr => {
       }
     });
   } else {
-    document.getElementById("header-right-logined").style.display = "none";
+    console.log('ログインしていません。');
+    let parentDiv = document.createElement('div');
+    parentDiv.className = 'header-right-logouted';
+
+    let button0 = document.createElement('button');
+    button0.className = 'question-screen';
+    button0.textContent = 'ログイン';
+    button0.setAttribute('onclick', 'moveToLogin()');
+
+    let button1 = document.createElement('button');
+    button1.className = 'question-screen';
+    button1.textContent = '新規登録';
+    button1.setAttribute('onclick', 'moveToRegister()');
+
+    parentDiv.appendChild(button0);
+    parentDiv.appendChild(button1);
+    addContainer.appendChild(parentDiv);
   }
 });
 
