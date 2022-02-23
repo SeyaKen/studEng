@@ -6,11 +6,6 @@ auth.onAuthStateChanged(userr => {
     let parentDiv = document.createElement('div');
     parentDiv.className = 'header-right-logined';
 
-    let button0 = document.createElement('button');
-    button0.className = 'question-screen';
-    button0.textContent = '質問する';
-    button0.setAttribute('onclick', 'moveToQuestion()');
-
     let button1 = document.createElement('button');
     let imageProfile = document.createElement('img');
     button1.className = 'to-profile-button';
@@ -19,7 +14,6 @@ auth.onAuthStateChanged(userr => {
     imageProfile.setAttribute('id', 'unregistered-picture');
     button1.appendChild(imageProfile);
 
-    parentDiv.appendChild(button0);
     parentDiv.appendChild(button1);
     addContainer.appendChild(parentDiv);
     db.collection('users').doc(userr.uid).get().then(snapshot=> {
@@ -58,16 +52,6 @@ auth.onAuthStateChanged(userr => {
 
 var user;
 var uid;
-
-function moveToQuestion() {
-  location = '../question/question.html';
-};
-
-function logout() {
-  auth.signOut().then(() => {
-    location = '../index/index.html';
-  });
-};
 
 function moveToProfile() {
   location = '../profile/profile.html';

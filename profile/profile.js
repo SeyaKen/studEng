@@ -8,6 +8,8 @@ auth.onAuthStateChanged(userr => {
           uid = userr.uid;
           user = userr;
           storagePersonalRef = firebase.storage().ref(userr.uid);
+          let imageSrc = document.getElementById('unregistered-picture');
+          imageSrc.setAttribute('src', '../images/user.jpg');
         } else {
           uid = userr.uid;
           user = userr;
