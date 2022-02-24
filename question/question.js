@@ -60,13 +60,12 @@ const target1 = document.getElementById('plus-buttton-container');
 
 // オブザーバーの作成
 const observer = new MutationObserver(records => {
-  console.log(target.lastElementChild);
   let child = target.lastElementChild;
 
   // 要素の位置座標を取得
   var clientRect = child.getBoundingClientRect();
   // 画面の左端から、要素の左端までの距離
-  var x = clientRect.left - 45;
+  var x = clientRect.left - 50;
   // 画面の上端から、要素の上端までの距離
   var y = clientRect.top -3;
 
@@ -77,11 +76,9 @@ const observer = new MutationObserver(records => {
   plusButton.appendChild(plusIcon);
   plusButton.setAttribute('onclick', '');
   target1.appendChild(plusButton);
-  console.log(y);
-  target1.style.display = "block";
+  target1.style.display = "flex";
   target1.style.top = `${y}px`;
   target1.style.left = `${x}px`;
-  target1.appendChild(target1);
 });
 
 // 監視の開始
