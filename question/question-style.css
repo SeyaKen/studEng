@@ -12,7 +12,7 @@ body {
   padding: 0px;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #fafafa !important;
+  background-color: #fff !important;
 }
 
 /* HEADER */
@@ -175,7 +175,6 @@ body {
   text-decoration: none !important;
   height: 45px;
   font-size: 23px !important;
-  background-color: #fafafa!important;
   display: flex;
   width: 100%;
   box-shadow: none;
@@ -188,7 +187,6 @@ body {
   margin-top: 10px;
   height: 30px !important;
   font-size: 18px !important;
-  background-color: #fafafa!important;
   display: flex;
   width: 100%;
   box-shadow: none;
@@ -219,20 +217,29 @@ body {
 .plus-buttton-container {
   align-items: center;
   justify-content: center;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   position: absolute;
   display: none;
+  border-radius: 1000px;
+  padding: 16px;
+  background-color: #fff;
 }
 
 .plus-button {
   width: 100%;
   height: 100%;
-  padding-right: 20px;
+  border-radius: 1000px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border:1px solid grey;
 }
 
-.plus-button-icon {
-  font-size: 25px;
+.plus-button i {
+  font-size: 15px !important;
 }
 
 

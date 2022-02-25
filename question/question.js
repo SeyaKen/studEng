@@ -60,17 +60,20 @@ const target1 = document.getElementById('plus-buttton-container');
 
 // オブザーバーの作成
 const observer = new MutationObserver(records => {
+  if(document.getElementById('plus-buttton') == null) {
+
   let child = target.lastElementChild;
 
   // 要素の位置座標を取得
   var clientRect = child.getBoundingClientRect();
   // 画面の左端から、要素の左端までの距離
-  var x = clientRect.left - 50;
+  var x = clientRect.left - 55;
   // 画面の上端から、要素の上端までの距離
-  var y = clientRect.top -3;
+  var y = clientRect.top -8;
 
   let plusButton = document.createElement('button');
   plusButton.className = 'plus-button';
+  plusButton.setAttribute('id', 'plus-buttton');
   let plusIcon = document.createElement('i');
   plusIcon.className = 'fas fa-plus fa-lg fa-fw plus-button-icon';
   plusButton.appendChild(plusIcon);
@@ -79,6 +82,31 @@ const observer = new MutationObserver(records => {
   target1.style.display = "flex";
   target1.style.top = `${y}px`;
   target1.style.left = `${x}px`;
+  } else {
+  const deleteTarget = document.getElementById('plus-buttton');
+  deleteTarget.remove();
+  
+  let child = target.lastElementChild;
+
+  // 要素の位置座標を取得
+  var clientRect = child.getBoundingClientRect();
+  // 画面の左端から、要素の左端までの距離
+  var x = clientRect.left - 55;
+  // 画面の上端から、要素の上端までの距離
+  var y = clientRect.top -8;
+
+  let plusButton = document.createElement('button');
+  plusButton.className = 'plus-button';
+  plusButton.setAttribute('id', 'plus-buttton');
+  let plusIcon = document.createElement('i');
+  plusIcon.className = 'fas fa-plus fa-lg fa-fw plus-button-icon';
+  plusButton.appendChild(plusIcon);
+  plusButton.setAttribute('onclick', '');
+  target1.appendChild(plusButton);
+  target1.style.display = "flex";
+  target1.style.top = `${y}px`;
+  target1.style.left = `${x}px`;
+  }
 });
 
 // 監視の開始
