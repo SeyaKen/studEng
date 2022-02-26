@@ -83,16 +83,19 @@ function buttonCreater() {
   var x = clientRect.left - 65;
   // 画面の上端から、要素の上端までの距離
   console.log(clientRect.top);
-  console.log(document.body.scrollTop);
+  var top = document.documentElement.scrollTop || document.body.scrollTop
+  console.log(top);
+  var A = document.documentElement;
+  var Y = A.scrollHeight - A.clientHeight;
+  console.log(Y);
+  console.log(A.scrollHeight);
+  console.log(A.clientHeight);
   if(clientRect.top > 600) {
     console.log('実行');
-    var A = document.documentElement;
-    var Y = A.scrollHeight - A.clientHeight;
-    console.log(Y);
-    window.scroll({top: Y, left: 0, behavior: 'smooth'});
+    window.scroll({top: Y - 250, left: 0, behavior: 'smooth'});
   }
   
-  var y = clientRect.bottom - 33 + document.body.scrollTop;
+  var y = clientRect.bottom + top - 33;
 
   let plusButton = document.createElement('button');
   plusButton.className = 'plus-button';
