@@ -13,6 +13,9 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #fafafa !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 * a {
@@ -24,15 +27,15 @@ body {
   display: flex;
   justify-content: center;
   background-color: #fafafa;
-  margin-top: 60px;
+  
 }
 
 .main-right {
   width: 400px;
-  height: 590px;
+  height: 434px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -48,9 +51,8 @@ body {
 }
 
 .main-right-top {
-  border: #dbdbdb solid 1px;
   margin-top: 10px;
-  background-color: #fff;
+  background-color: #fafafa;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -126,8 +128,7 @@ body {
 }
 
 .main-right-middle {
-  border: 1px solid #dbdbdb;
-  background-color: #fff;
+  background-color: #fafafa;
   display: flex;
   align-items: center;
   justify-content: center;

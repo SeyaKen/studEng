@@ -126,7 +126,8 @@ body {
   display: flex;
   justify-content: center;
   background-color: #fafafa;
-  margin-top: 32px;
+  align-items: center;
+  height: 60%;
 }
 
 .main-left{
@@ -135,10 +136,10 @@ body {
 
 .main-right {
   width: 400px;
-  height: 440px;
+  height: 383px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -153,6 +154,17 @@ body {
   width: 85%;
 }
 
+.for-center {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-right input {
+  width: 90%;
+}
+
 .main-right-top {
   margin-top: 10px;
   background-color: #fafafa;
@@ -161,36 +173,6 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 50%;
-}
-
-.for-center {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.main-right input {
-  width: 90%;
-}.main-right-top {
-  margin-top: 10px;
-  background-color: #fafafa;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 50%;
-}
-
-.for-center {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.main-right input {
-  width: 90%;
 }
 
 .for-password {

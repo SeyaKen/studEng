@@ -13,6 +13,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #fafafa !important;
+  display: flex;
+  justify-content: center;
 }
 
 * a {
@@ -20,6 +22,7 @@ body {
 }
 
 /* HEADER */
+
 
 .header-inner{
   align-items: center;
@@ -58,6 +61,43 @@ body {
   margin-left: 20px;
 }
 
+/* 「:」は擬似クラス=>指定の要素が特定の状態で */
+/* ある場合にスタイルを適用させるセレクタです。 */ 
+.search-button:focus {
+	outline:0;
+}
+
+.search-button {
+  margin-left: 5px;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-button i {
+  color: black;
+}
+
+.search-input:focus {
+  outline:0;
+}
+
+.search-input {
+  padding: 0 8px 0 30px;
+  height: inherit;
+  width: inherit;
+  border-color: #dbdbdb;
+  border-width: 0.5px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
 .header-right{
   display: none;
 }
@@ -89,15 +129,15 @@ body {
   justify-content: center;
   background-color: #fafafa;
   align-items: center;
-  margin-top: 110px;
+  height: 75%;
 }
 
 .main-right {
   width: 400px;
-  height: 440px;
+  height: 383px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -113,6 +153,25 @@ body {
 }
 
 .main-right-top {
+  margin-top: 10px;
+  background-color: #fafafa;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+}
+
+.for-center {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-right input {
+  width: 90%;
+}.main-right-top {
   margin-top: 10px;
   background-color: #fafafa;
   text-align: center;
