@@ -67,6 +67,8 @@ register.addEventListener('submit', e=> {
   const email = document.getElementById('register-email').value;
   const password = document.getElementById('register-password').value;
   if(password.length < 8) {
+    const errorOn = document.getElementById('registerError');
+    errorOn.classList.add('error-on');
     registerError.innerText = '7文字以上のパスワードを設定してください。';
   } else {
     register.reset();
@@ -81,35 +83,43 @@ register.addEventListener('submit', e=> {
           console.log(err.message);
           console.log('エラー0');
           const registerError = document.getElementById('registerError');
+          const errorOn = document.getElementById('registerError');
+          errorOn.classList.add('error-on');
           (err.message == 'The email address is already in use by another account.')
           ? registerError.innerText = '既に登録済みです。'
-          : 
+          : registerError.innerText = '正しいメールアドレスもしくはパスワード入力してください。'
           console.log('新規登録に失敗しました。');
       }).catch(err => {
         console.log(err.message);
         console.log('エラー1');
+        const errorOn = document.getElementById('registerError');
+        errorOn.classList.add('error-on');
         const registerError = document.getElementById('registerError');
         (err.message == 'The email address is already in use by another account.')
         ? registerError.innerText = '既に登録済みです。'
-        : 
+        : registerError.innerText = '正しいメールアドレスもしくはパスワード入力してください。'
         console.log('新規登録に失敗しました。');
       });
     }).catch(err => {
       console.log(err.message);
       console.log('エラー2');
+      const errorOn = document.getElementById('registerError');
+      errorOn.classList.add('error-on');
       const registerError = document.getElementById('registerError');
       (err.message == 'The email address is already in use by another account.')
       ? registerError.innerText = '既に登録済みです。'
-      : 
+      : registerError.innerText = '正しいメールアドレスもしくはパスワード入力してください。'
       console.log('新規登録に失敗しました。');
     });
   } catch(err) {
       console.log(err.message);
       console.log('エラー3');
+      const errorOn = document.getElementById('registerError');
+      errorOn.classList.add('error-on');
       const registerError = document.getElementById('registerError');
       (err.message == 'The email address is already in use by another account.')
       ? registerError.innerText = '既に登録済みです。'
-      : 
+      : registerError.innerText = '正しいメールアドレスもしくはパスワード入力してください。'
       console.log('新規登録に失敗しました。');
     };
   }

@@ -127,6 +127,10 @@ body {
   font-weight: 600;
 }
 
+.error-on {
+  height: 50px;
+}
+
 .main-right-middle {
   background-color: #fafafa;
   display: flex;

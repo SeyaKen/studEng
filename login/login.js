@@ -80,6 +80,8 @@ loginForm.addEventListener('submit', e => {
     }
   }).catch(err => {
     console.log(err.message);
+    const errorOn = document.getElementById('loginError');
+    errorOn.classList.add('error-on');
     const loginError = document.getElementById('loginError');
     // idがloginErrorの要素の中身にエラーメッセージを代入。
     (err.message == 'The password is invalid or the user does not have a password.')
