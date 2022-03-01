@@ -74,7 +74,7 @@ document.addEventListener('keyup', (event) => {
 // クリックした時
 document.addEventListener('click', (event) => {
   console.log('Click');
-  var current = document.activeElement.children[check];
+  var current = document.activeElement.children[3].attributes.value;
   console.log(current == target.lastElementChild);
   console.log(current);
   console.log(target.lastElementChild);
@@ -83,7 +83,7 @@ document.addEventListener('click', (event) => {
     if(deleteTarget != null) {
       deleteTarget.remove();
     } else {
-      buttonCreater();
+      // buttonCreater();
     }
   } else {
     target1.style.display = 'none';
