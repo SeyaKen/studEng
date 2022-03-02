@@ -3,6 +3,7 @@ const addContainer = document.getElementById('header-inner');
 auth.onAuthStateChanged(userr => {
   if(userr && auth.currentUser.emailVerified) {
     console.log('ログインしています。');
+    buttonCreater();
     let parentDiv = document.createElement('div');
     parentDiv.className = 'header-right-logined';
 
@@ -73,28 +74,69 @@ document.addEventListener('keyup', (event) => {
 
 // クリックした時
 document.addEventListener('click', (event) => {
-  console.log('Click');
-  var current = document.activeElement.children[3].attributes.value;
-  console.log(current == target.lastElementChild);
-  console.log(current);
-  console.log(target.lastElementChild);
-  if(target.lastElementChild.innerHTML == '<br>') {
+  console.log(event.clientX);
+  console.log(event.clientY);
+  let px = event.pageX;  //クリックX
+  let py = event.pageY;  //クリックY
+ 
+  let ox = window.pageXOffset;  //スクロールX
+  let oy = window.pageYOffset;  //スクロールY
+ 
+  let obj = document.elementFromPoint(px - ox, py - oy);  //object
+ 
+  let objX = obj.getBoundingClientRect().left;  //objectのX
+  let objY = obj.getBoundingClientRect().top;
+  if(true) {
+    let child = target.lastElementChild;
+    var clientRect = child.getBoundingClientRect();
+    // console.log(clientRect.top);
+    // console.log(objY);
+    // console.log(clientRect.left);
+    // console.log(objX);
     const deleteTarget = document.getElementById('plus-buttton');
     if(deleteTarget != null) {
       deleteTarget.remove();
+
+      let plusButton = document.createElement('button');
+      plusButton.className = 'plus-button';
+      plusButton.setAttribute('id', 'plus-buttton');
+      let plusIcon = document.createElement('p');
+      plusIcon.className = 'plus-button-icon';
+      plusIcon.innerHTML = '+';
+      plusButton.appendChild(plusIcon);
+      plusButton.setAttribute('onclick', 'optionsToggle()');
+      target1.prepend(plusButton);
+      target1.style.display = "flex";
+      target1.style.top = `${objY - 6}px`;
+      target1.style.left = `${objX + 40}px`;
     } else {
-      // buttonCreater();
+      // 画面の左端から、要素の左端までの距離
+      var x = event.clientX;
+      var y = event.clientY;
+
+      let plusButton = document.createElement('button');
+      plusButton.className = 'plus-button';
+      plusButton.setAttribute('id', 'plus-buttton');
+      let plusIcon = document.createElement('p');
+      plusIcon.className = 'plus-button-icon';
+      plusIcon.innerHTML = '+';
+      plusButton.appendChild(plusIcon);
+      plusButton.setAttribute('onclick', 'optionsToggle()');
+      target1.prepend(plusButton);
+      target1.style.display = "flex";
+      target1.style.top = `${objY - 6}px`;
+      target1.style.left = `${objX  + 40}px`;
     }
   } else {
     target1.style.display = 'none';
   }
 });
-kaisuu = 0;
+
+kaisuu = 1;
 // ボタンを作る関数
 function buttonCreater() {
   let child = target.lastElementChild;
   child.setAttribute('value', `${kaisuu}`);
-  child.setAttribute('onclick', '      ');
   console.log(kaisuu);
   kaisuu++
   // 要素の位置座標を取得
