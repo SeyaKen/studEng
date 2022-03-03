@@ -3,7 +3,7 @@ const addContainer = document.getElementById('header-inner');
 auth.onAuthStateChanged(userr => {
   if(userr && auth.currentUser.emailVerified) {
     console.log('ログインしています。');
-    buttonCreater();
+    firstButtonCreater(target.lastElementChild);
     let parentDiv = document.createElement('div');
     parentDiv.className = 'header-right-logined';
 
@@ -59,23 +59,30 @@ var uid;
 const target = document.getElementById('question-container-inner1');
 const target1 = document.getElementById('plus-buttton-container');
 
-// キーボードを打った時
-document.addEventListener('keyup', (event) => {
+// keyが押し込まれた時に発火する関数
+// 一番上の行の時だけbackspace押すと、サブタイトルになる関数
+document.addEventListener('keydown', (event) => {
+  var current = document.activeElement.children[0];
+  console.log(target.lastElementChild != current);
+  console.log(target.lastElementChild.innerHTML == '<br>');
   if(target.lastElementChild.innerHTML == '<br>') {
-    const deleteTarget = document.getElementById('plus-buttton');
-    if(deleteTarget != null) {
-      deleteTarget.remove();
+    if(target.lastElementChild == current
+      && event.code == 'Backspace') {
+      document.getElementById('input2').focus();
     }
-    buttonCreater();
-  } else {
-    target1.style.display = 'none';
+  }
+  var deleteTarget = document.getElementById('plus-buttton');
+  if(deleteTarget != null) {
+    console.log(deleteTarget);
+    console.log('消せていますか？？');
+    deleteTarget.remove();
   }
 });
 
-// クリックした時
+// クリックした同じ行じゃなかったら、既存のボタンを消して新しいボタンを作る
 document.addEventListener('click', (event) => {
-  console.log(event.clientX);
-  console.log(event.clientY);
+  const deleteTarget = document.getElementById('plus-buttton');
+  deleteTarget.remove();
   let px = event.pageX;  //クリックX
   let py = event.pageY;  //クリックY
  
@@ -86,59 +93,45 @@ document.addEventListener('click', (event) => {
  
   let objX = obj.getBoundingClientRect().left;  //objectのX
   let objY = obj.getBoundingClientRect().top;
-  if(true) {
-    let child = target.lastElementChild;
-    var clientRect = child.getBoundingClientRect();
-    // console.log(clientRect.top);
-    // console.log(objY);
-    // console.log(clientRect.left);
-    // console.log(objX);
-    const deleteTarget = document.getElementById('plus-buttton');
-    if(deleteTarget != null) {
-      deleteTarget.remove();
 
-      let plusButton = document.createElement('button');
-      plusButton.className = 'plus-button';
-      plusButton.setAttribute('id', 'plus-buttton');
-      let plusIcon = document.createElement('p');
-      plusIcon.className = 'plus-button-icon';
-      plusIcon.innerHTML = '+';
-      plusButton.appendChild(plusIcon);
-      plusButton.setAttribute('onclick', 'optionsToggle()');
-      target1.prepend(plusButton);
-      target1.style.display = "flex";
-      target1.style.top = `${objY - 6}px`;
-      target1.style.left = `${objX + 40}px`;
-    } else {
-      // 画面の左端から、要素の左端までの距離
-      var x = event.clientX;
-      var y = event.clientY;
+  var top = document.documentElement.scrollTop || document.body.scrollTop;
+  
+  objY = objY.bottom + top;
 
-      let plusButton = document.createElement('button');
-      plusButton.className = 'plus-button';
-      plusButton.setAttribute('id', 'plus-buttton');
-      let plusIcon = document.createElement('p');
-      plusIcon.className = 'plus-button-icon';
-      plusIcon.innerHTML = '+';
-      plusButton.appendChild(plusIcon);
-      plusButton.setAttribute('onclick', 'optionsToggle()');
-      target1.prepend(plusButton);
-      target1.style.display = "flex";
-      target1.style.top = `${objY - 6}px`;
-      target1.style.left = `${objX  + 40}px`;
-    }
-  } else {
-    target1.style.display = 'none';
+  console.log("クリックした位置のX座標　x:" + (px-ox));
+  console.log("クリックした位置のY座標　y:" + (py-oy));
+  console.log("クリックした要素のX座標　x:" + objX);
+  console.log("クリックした要素のY座標　y:" + objY);
+  if(deleteTarget != null) {
+    console.log('消せてる？');
+    deleteTarget.remove();
+  }
+  let child = document.getElementById(currentId);
+  // 要素の位置座標を取得
+  var clientRect = child.getBoundingClientRect();
+  // 画面の左端から、要素の左端までの距離
+  var x = clientRect.left + 40;
+  // 画面の上端から、要素の上端までの距離
+  var top = document.documentElement.scrollTop || document.body.scrollTop
+  var A = document.documentElement;
+  var Y = A.scrollHeight - A.clientHeight;
+  if(clientRect.top > 600) {
+    window.scroll({top: Y - 250, left: 0, behavior: 'smooth'});
   }
 });
 
-kaisuu = 1;
-// ボタンを作る関数
-function buttonCreater() {
-  let child = target.lastElementChild;
-  child.setAttribute('value', `${kaisuu}`);
-  console.log(kaisuu);
-  kaisuu++
+var currentId;
+
+function Text(id) {
+  console.log('idです！');
+  console.log(id);
+  currentId = id;
+}
+
+// 元々いる場所の位置情報をもとに＋？pxタスことで
+// ボタンの位置を特定する関数
+// 引数に基準となる要素を引数に指定
+function buttonCreater(child) {
   // 要素の位置座標を取得
   var clientRect = child.getBoundingClientRect();
   // 画面の左端から、要素の左端までの距離
@@ -167,6 +160,39 @@ function buttonCreater() {
   target1.style.left = `${x}px`;
 }
 
+// ここから上がまだ完成していない。
+
+// 最初だけこの関数でボタンを作る
+function firstButtonCreater(child) {
+  // 要素の位置座標を取得
+  var clientRect = child.getBoundingClientRect();
+  // 画面の左端から、要素の左端までの距離
+  var x = clientRect.left + 40;
+  // 画面の上端から、要素の上端までの距離
+  var top = document.documentElement.scrollTop || document.body.scrollTop
+  var A = document.documentElement;
+  var Y = A.scrollHeight - A.clientHeight;
+  if(clientRect.top > 600) {
+    window.scroll({top: Y - 250, left: 0, behavior: 'smooth'});
+  }
+  
+  var y = clientRect.bottom + top - 36;
+
+  let plusButton = document.createElement('button');
+  plusButton.className = 'plus-button';
+  plusButton.setAttribute('id', 'plus-buttton');
+  let plusIcon = document.createElement('p');
+  plusIcon.className = 'plus-button-icon';
+  plusIcon.innerHTML = '+';
+  plusButton.appendChild(plusIcon);
+  plusButton.setAttribute('onclick', 'optionsToggle()');
+  target1.prepend(plusButton);
+  target1.style.display = "flex";
+  target1.style.top = `${y}px`;
+  target1.style.left = `${x}px`;
+}
+
+// ボタンの機能をdisplayしたり消したりする関数
 function optionsToggle() {
   const optionsButton = document.getElementById('plus-button-options');
   (optionsButton.style.visibility == 'hidden')
