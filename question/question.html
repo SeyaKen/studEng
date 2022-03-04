@@ -20,54 +20,40 @@
       href="https://fonts.googleapis.com/css?family=Tangerine|Lato|Gamja+Flower|Open+Sans|Roboto+Slab|Indie+Flower|Lobster|Open+Sans|Kosugi+Maru">
 </head>
 <body>
+  <input style="display: none" type="file" onchange="uploadData()" id='files' name="Files[]" multiple>
   <div class="most-container" id="most-container">
-    <div class="plus-buttton-container" id="plus-buttton-container">
-      <div class="plus-button-options" id="plus-button-options">
-        <button class="options-button0">
-          <i class="fas fa-image"></i>
-          <p>画像</p>
-        </button>
-      </div>
-    </div>
-  <header class="header">
-    <div class="header-inner" id="header-inner">
-      <h1 class="logo">StudEng</h1>
-      <div class="header-left">
-        <div class="search-area">
-          <button onclick="test()" type="submit" class="search-button">
-            <i class="fas fa-search"></i>
-          </button>
-          <input type="text" value="" class="search-input" placeholder="検索">
+    <header class="header">
+      <div class="header-inner" id="header-inner">
+        <h1 class="logo">StudEng</h1>
+        <div class="header-left">
+          <div class="search-area">
+            <button onclick="test()" type="submit" class="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+            <input type="text" value="" class="search-input" placeholder="検索">
+          </div>
         </div>
       </div>
-      <!-- <div class="header-right-logined" id="header-right-logined">
-        <button onclick="moveToQuestion()" class="question-screen">質問する</button>
-        <button onclick="moveToProfile()" class="to-profile-button">
-          <img src="../images/user.jpg" id="unregistered-picture" class="fas fa-user unregistered-picture"/>
-        </button>
-      </div>
-      <div class="header-right-logouted" id="header-right-logouted">
-        <button onclick="moveToLogin()" class="question-screen">ログイン</button>
-        <button onclick="moveToRegister()" class="question-screen">新規登録</button>
-      </div> -->
-    </div>
-  </header>
+    </header>
 
-  <div class="main">
-    <div class="main-question">
-      <input id="input1" class="input1" placeholder="質問のタイトル" value="">
-      <input id="input2" class="input2" placeholder="タグ（&quot;前置詞&quot;、 &quot;スラング&quot;、 &quot;発音&quot;、 など）" value="">
+    <div class="main">
+      <div class="main-question">
+        <input id="input1" class="input1" placeholder="質問のタイトル" value="">
+        <input id="input2" class="input2" placeholder="タグ（&quot;前置詞&quot;、 &quot;スラング&quot;、 &quot;発音&quot;、 など）" value="">
+      </div>
+      <div class="images-add-button-container">
+        <button onclick="inputClick()">
+          <img src="../images/image.png" alt="">
+        </button>
+      </div>
+      <div class="question-container">
+        <div class="question-container-inner" id="question-container-inner">
+          <div contenteditable="true" role="textbox" class="question-container-inner1" id="question-container-inner1">
+            <p>ここに質問内容をお書きください<br></p>
+          </div>
+      </div>
     </div>
-    <div class="question-container">
-      <div class="question-container-inner" id="question-container-inner">
-        <div role="textbox" contenteditable="true" class="question-container-inner1" id="question-container-inner1">
-        <input style="border: none;" type="text" name="" value="" size="" maxlength="">
-        </div>
-    </div>
   </div>
-  </div>
-  </div>
-  <div id="page-bottom" style="display: none;"></div>
 </body>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
