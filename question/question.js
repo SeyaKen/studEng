@@ -20,12 +20,14 @@ auth.onAuthStateChanged(userr => {
       if(snapshot.data().ProfilePicture == '') {
         uid = userr.uid;
         user = userr;
+        storagePersonalRef = firebase.storage().ref(userr.uid);
         let imageSrc = document.getElementById('unregistered-picture');
         imageSrc.setAttribute('src', '../images/user.jpg');
       } else {
         uid = userr.uid;
         user = userr;
         url = snapshot.data().ProfilePicture;
+        storagePersonalRef = firebase.storage().ref(userr.uid);
         let imageSrc = document.getElementById('unregistered-picture');
         // srcという属性をここで付加している。
         imageSrc.setAttribute('src', url);
@@ -63,13 +65,15 @@ const target1 = document.getElementById('plus-buttton-container');
 document.addEventListener('keydown', (event) => {
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
-  let child = target.lastElementChild;
-  var clientRect = child.getBoundingClientRect();
-  var A = document.documentElement;
-  var Y = A.scrollHeight - A.clientHeight;
-  if(clientRect.top > 200) {
-    console.log('動いてる？');
-    window.scroll({top: Y - 200, left: 0, behavior: 'smooth'});
+  if(event.key == "Enter") {
+    console.log(event);
+    let child = target.lastElementChild;
+    var clientRect = child.getBoundingClientRect();
+    var A = document.documentElement;
+    var Y = A.scrollHeight - A.clientHeight;
+    if(clientRect.top > 200) {
+      window.scroll({top: Y - 200, left: 0, behavior: 'smooth'});
+    }
   }
 
   var current = document.activeElement.children[0];
@@ -80,6 +84,49 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+
+// buttonを使ってinputを押す処理
+function inputClick() {
+  document.getElementById('files').click();
+}
+
+// Firebaseに画像をアップロードする関数
+function uploadData() {
+  var randomStrings = Math.random().toString(32).substring(2);
+  let file = document.getElementById('files').files[0];
+  let thisRef = storagePersonalRef.child(randomStrings);
+  thisRef.put(file).then(res=> {
+    console.log('Uploaded');
+    thisRef.getDownloadURL().then(url => {
+        console.log('写真成功！');
+        let pTag = document.createElement('p');
+        let brTag = document.createElement('br');
+        pTag.appendChild(brTag);
+        let figureParent = document.createElement('figure');
+        figureParent.setAttribute('class', 'question-picture0');
+        let childImg = document.createElement('img');
+        childImg.setAttribute('src', url);
+        childImg.setAttribute('width', '100%');
+        childImg.setAttribute('contenteditable', 'true');
+        childImg.setAttribute('draggabel', 'false');
+        figureParent.appendChild(childImg);
+        target.appendChild(figureParent);
+        target.appendChild(pTag);
+        // data-idという属性をここで付加している。
+        console.log(url);
+    }).catch(e => {
+      console.log(e);
+    });
+  }).catch(e => {
+    console.log('エラー' + e);
+  });
+}
+
+function focusDetect() {
+  document.getElementById('paceholder').classList.add("after-click");
+  document.getElementById('paceholder').innerHTML = '<br>';
+  document.getElementById('paceholder').removeAttribute('onclick');
+}
 
 function moveToProfile() {
   location = '../profile/profile.html';

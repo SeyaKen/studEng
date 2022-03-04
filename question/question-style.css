@@ -242,9 +242,22 @@ button:hover {
   outline: none; 
 }
 
-.question-container-inner1 p {
+.before-click {
+  color:grey;
+}
+
+.after-click {
   margin-top: 15px;
   margin-bottom: 15px;
   line-height: 30px;
   font-size: 18px;
+}
+
+.question-container-inner1 p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 40px;
+  font-size: 18px;
+  padding-left: 10px;
+  border-left: 4px solid #efefef;
 }
