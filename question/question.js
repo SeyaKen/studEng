@@ -59,15 +59,15 @@ var uid;
 // 監視ターゲットの取得
 const target = document.getElementById('question-container-inner1');
 const target1 = document.getElementById('plus-buttton-container');
+const input1 = document.getElementById('input1');
+const input2 = document.getElementById('input2');
 
 // keyが押し込まれた時に発火する関数
 // 一番上の行の時だけbackspace押すと、サブタイトルになる関数
 document.addEventListener('keydown', (event) => {
-  console.log(event);
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
   if(event.key == "Enter") {
-    console.log(event);
     let child = target.lastElementChild;
     var clientRect = child.getBoundingClientRect();
     var A = document.documentElement;
@@ -78,15 +78,40 @@ document.addEventListener('keydown', (event) => {
   }
 
   var current = document.activeElement.children[0];
-  if(target.lastElementChild.innerHTML == '<br>') {
-    if(target.lastElementChild == current && event.code == 'Backspace') {
-      document.getElementById('input2').focus();
-    }
+  if(target.lastElementChild.innerHTML == '<br>'
+  && target.lastElementChild == current
+  && event.code == 'Backspace') {
+    input2.focus();
+    input2Check = true;
+  } else if(input2.innerHTML == ''
+  && input2Check
+  && event.code == 'Backspace') {
+    input1.focus();
+    input2Check = false;
+    input1Check = true;
+  } else if(input1.innerHTML == ''
+  && input1Check
+  && event.code == 'Enter') {
+    input2.focus();
+    input1Check = false;
+    input2Check = true;
+  } else if(input2.innerHTML == ''
+  && input2Check
+  && event.code == 'Enter') {
+    console.log(target.children[0]);
+    target.focus();
+    input1Check = false;
   }
 });
 
 document.addEventListener('keyup', (event) => {
   if(event.key == "Enter") {
+    if(input2.innerHTML == ''
+    && input2Check
+    && event.code == 'Enter') {
+      target.children[0].remove();
+      input2Check = false;
+    }
     var kesitai = document.getElementById('kesitai');
     if(kesitai != null) {
       kesitai.remove();
@@ -97,6 +122,17 @@ document.addEventListener('keyup', (event) => {
       target.appendChild(pTag);
     }
   }
+});
+
+// クリックした時
+var input1Check;
+var input2Check;
+document.addEventListener('click', (event) => {
+  if(event.srcElement.id == 'input1') {
+    input1Check = true;
+  } else if (event.srcElement.id == 'input2') {
+    input2Check = true;
+  };
 });
 
 // figureの監視
@@ -127,30 +163,42 @@ function uploadData() {
   let file = document.getElementById('files').files[0];
   let thisRef = storagePersonalRef.child(randomStrings);
   thisRef.put(file).then(res=> {
-    console.log('Uploaded');
     thisRef.getDownloadURL().then(url => {
-        console.log('写真成功！');
         let pTag = document.createElement('p');
         let brTag = document.createElement('br');
+        let buttonTag = document.createElement('button');
+        let xTag = document.createElement('p');
+        xTag.innerHTML = '×'; 
+        buttonTag.setAttribute('value', randomStrings);
+        buttonTag.setAttribute('onclick', 'deletePicture(this.value)');
+        buttonTag.setAttribute('contenteditable', 'false');
+        buttonTag.setAttribute('class', 'delete-picture-button');
+        buttonTag.appendChild(xTag);
         pTag.appendChild(brTag);
         let figureParent = document.createElement('figure');
         figureParent.setAttribute('class', 'question-picture0');
+        figureParent.setAttribute('id', randomStrings);
         let childImg = document.createElement('img');
         childImg.setAttribute('src', url);
         childImg.setAttribute('width', '100%');
         childImg.setAttribute('contenteditable', 'false');
         childImg.setAttribute('draggabel', 'false');
+        figureParent.appendChild(buttonTag);
         figureParent.appendChild(childImg);
         target.appendChild(figureParent);
         target.appendChild(pTag);
-        // data-idという属性をここで付加している。
-        console.log(url);
     }).catch(e => {
       console.log(e);
     });
   }).catch(e => {
     console.log('エラー' + e);
   });
+}
+
+function deletePicture(value) {
+  console.log(value);
+  document.getElementById(value).remove();
+  storagePersonalRef.child(value).delete();
 }
 
 function focusDetect() {
