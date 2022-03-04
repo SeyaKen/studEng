@@ -85,6 +85,19 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// figureの監視
+const observer = new MutationObserver(records => {
+  if(records[0].addedNodes[0].nodeName == 'FIGURE'
+  && records[0].addedNodes[0].innerHTML == '<br>') {
+    
+  }
+});
+  
+  // 監視の開始
+  observer.observe(target, {
+    childList: true
+  });
+
 // buttonを使ってinputを押す処理
 function inputClick() {
   document.getElementById('files').click();
