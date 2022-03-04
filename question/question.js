@@ -63,6 +63,7 @@ const target1 = document.getElementById('plus-buttton-container');
 // keyが押し込まれた時に発火する関数
 // 一番上の行の時だけbackspace押すと、サブタイトルになる関数
 document.addEventListener('keydown', (event) => {
+  console.log(event);
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
   if(event.key == "Enter") {
@@ -77,7 +78,6 @@ document.addEventListener('keydown', (event) => {
   }
 
   var current = document.activeElement.children[0];
-  console.log(target.lastElementChild.innerHTML == '<br>');
   if(target.lastElementChild.innerHTML == '<br>') {
     if(target.lastElementChild == current && event.code == 'Backspace') {
       document.getElementById('input2').focus();
@@ -85,11 +85,29 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+document.addEventListener('keyup', (event) => {
+  if(event.key == "Enter") {
+    var kesitai = document.getElementById('kesitai');
+    if(kesitai != null) {
+      kesitai.remove();
+      kesitai = null;
+      let pTag = document.createElement('p');
+      let brTag = document.createElement('br');
+      pTag.appendChild(brTag);
+      target.appendChild(pTag);
+    }
+  }
+});
+
 // figureの監視
 const observer = new MutationObserver(records => {
-  if(records[0].addedNodes[0].nodeName == 'FIGURE'
-  && records[0].addedNodes[0].innerHTML == '<br>') {
-    
+  try{
+    if(records[0].addedNodes[0].nodeName == 'FIGURE'
+    && records[0].addedNodes[0].innerHTML == '<br>') {
+      kesitai = records[0].addedNodes[0].setAttribute('id', 'kesitai');
+    }
+  } catch(e) {
+    console.log(e);
   }
 });
   
@@ -120,7 +138,7 @@ function uploadData() {
         let childImg = document.createElement('img');
         childImg.setAttribute('src', url);
         childImg.setAttribute('width', '100%');
-        childImg.setAttribute('contenteditable', 'true');
+        childImg.setAttribute('contenteditable', 'false');
         childImg.setAttribute('draggabel', 'false');
         figureParent.appendChild(childImg);
         target.appendChild(figureParent);
