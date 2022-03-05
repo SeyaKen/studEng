@@ -67,7 +67,8 @@ const input2 = document.getElementById('input2');
 var even;
 document.addEventListener('keydown', (event) => {
   even = event;
-  console.log(event.keyCode);
+  console.log(event.path[0].childNodes[0]);
+  console.log(document.activeElement.children[0]);
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
   if(event.key == "Enter") {
@@ -84,7 +85,7 @@ document.addEventListener('keydown', (event) => {
   if(target.children[0].innerHTML == '<br>'
   && target.children[0] == current
   && event.code == 'Backspace') {
-    input2.focus();
+    // input2.focus();
   } else if(event.path[0].id == 'input2'
   && event.path[0].value == ''
   && event.code == 'Backspace') {
@@ -103,8 +104,20 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+var pChecker;
+var undifined;
 document.addEventListener('keyup', (event) => {
-  console.log(event);
+  if(even.path[0].id == 'question-container-inner1'
+    && event.path[0].childNodes[0] == undifined
+    && event.code == 'Backspace') {
+    let pTag = document.createElement('p');
+    pTag.setAttribute('id', 'placeholder');
+    pTag.setAttribute('onclick', '');
+    let brTag = document.createElement('br');
+    pTag.appendChild(brTag);
+    target.appendChild(pTag);
+    input2.focus();
+  }
   if(even.keyCode == 13) {
     if(even.path[0].id == 'input2'
     && even.code == 'Enter') {
@@ -189,9 +202,9 @@ function deletePicture(value) {
 }
 
 function focusDetect() {
-  document.getElementById('paceholder').classList.add("after-click");
-  document.getElementById('paceholder').innerHTML = '<br>';
-  document.getElementById('paceholder').removeAttribute('onclick');
+  document.getElementById('placeholder').classList.add("after-click");
+  document.getElementById('placeholder').innerHTML = '<br>';
+  document.getElementById('placeholder').removeAttribute('onclick');
 }
 
 function moveToProfile() {
