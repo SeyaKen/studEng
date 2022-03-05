@@ -64,7 +64,10 @@ const input2 = document.getElementById('input2');
 
 // keyが押し込まれた時に発火する関数
 // 一番上の行の時だけbackspace押すと、サブタイトルになる関数
+var even;
 document.addEventListener('keydown', (event) => {
+  even = event;
+  console.log(event.keyCode);
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
   if(event.key == "Enter") {
@@ -78,39 +81,34 @@ document.addEventListener('keydown', (event) => {
   }
 
   var current = document.activeElement.children[0];
-  if(target.lastElementChild.innerHTML == '<br>'
-  && target.lastElementChild == current
+  if(target.children[0].innerHTML == '<br>'
+  && target.children[0] == current
   && event.code == 'Backspace') {
     input2.focus();
-    input2Check = true;
-  } else if(input2.innerHTML == ''
-  && input2Check
+  } else if(event.path[0].id == 'input2'
+  && event.path[0].value == ''
   && event.code == 'Backspace') {
     input1.focus();
-    input2Check = false;
-    input1Check = true;
-  } else if(input1.innerHTML == ''
-  && input1Check
-  && event.code == 'Enter') {
+  } else if(event.path[0].id == 'input1'
+  && event.path[0].value == ''
+  && event.code == 'Backspace') {
     input2.focus();
-    input1Check = false;
-    input2Check = true;
-  } else if(input2.innerHTML == ''
-  && input2Check
-  && event.code == 'Enter') {
-    console.log(target.children[0]);
+  } else if(event.path[0].id == 'input2'
+  && event.keyCode == 13) {
+    focusDetect();
     target.focus();
-    input1Check = false;
+  } else if(event.path[0].id == 'input1'
+  && event.keyCode == 13) {
+    input2.focus();
   }
 });
 
 document.addEventListener('keyup', (event) => {
-  if(event.key == "Enter") {
-    if(input2.innerHTML == ''
-    && input2Check
-    && event.code == 'Enter') {
+  console.log(event);
+  if(even.keyCode == 13) {
+    if(even.path[0].id == 'input2'
+    && even.code == 'Enter') {
       target.children[0].remove();
-      input2Check = false;
     }
     var kesitai = document.getElementById('kesitai');
     if(kesitai != null) {
@@ -122,17 +120,6 @@ document.addEventListener('keyup', (event) => {
       target.appendChild(pTag);
     }
   }
-});
-
-// クリックした時
-var input1Check;
-var input2Check;
-document.addEventListener('click', (event) => {
-  if(event.srcElement.id == 'input1') {
-    input1Check = true;
-  } else if (event.srcElement.id == 'input2') {
-    input2Check = true;
-  };
 });
 
 // figureの監視
