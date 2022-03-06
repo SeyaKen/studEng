@@ -10,13 +10,22 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: #fafafa !important;
+  background-color: #fff !important;
+  width: 100vw;
+  height: 100vh;
 }
 
-* a {
-  text-decoration: none !important;
+.most-container {
+  padding: 60px 0px 50vh;
+  position: relative;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 /* HEADER */
@@ -158,3 +167,119 @@ body {
   font-size: 14px;
   cursor: pointer;
 }
+
+/* ここから */
+.main{
+  max-width: 620px;
+  width: 100%;
+  margin: 0px auto;
+  padding-top: 20px;
+}
+
+.main-question {
+  width: 100%;
+}
+
+.input1 {
+  border: none !important;
+  text-decoration: none !important;
+  height: 45px;
+  font-size: 23px !important;
+  display: flex;
+  width: 100%;
+  box-shadow: none;
+  outline: none !important;
+}
+
+.input2 {
+  border: none !important;
+  text-decoration: none !important;
+  margin-top: 10px;
+  height: 30px !important;
+  font-size: 18px !important;
+  display: flex;
+  width: 100%;
+  box-shadow: none;
+  outline: none !important;
+}
+
+.question-container {
+  padding: 15px 0;
+}
+
+.images-add-button-container {
+  width: inherit;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 30px;
+  background-color: transparent;
+}
+
+.images-add-button-container button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.images-add-button-container img {
+  height: 30px;
+}
+
+.question-container-inner1 {
+  outline: none; 
+}
+
+.question-container-inner1 * {
+  outline: none; 
+}
+
+.before-click {
+  color:grey;
+}
+
+.after-click {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 30px;
+  font-size: 18px;
+}
+
+.question-container-inner1 p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 40px;
+  font-size: 18px;
+  padding-left: 10px;
+  border-left: 4px solid #efefef;
+}
+
+.question-picture0 {
+  position: relative;
+}
+
+.delete-picture-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-radius: 100%;
+  background-color: rgba(239, 239, 239, 0.7);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-picture-button p {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: inherit;
+  border: none !important;
+  line-height: inherit !important;
+}
+

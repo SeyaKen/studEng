@@ -159,7 +159,9 @@ function inputClick() {
 
 // Firebaseに画像をアップロードする関数
 function uploadData() {
-  var randomStrings = Math.random().toString(32).substring(2);
+  var randomStrings1 = Math.random().toString(32).substring(2);
+  var randomStrings2 = Math.random().toString(32).substring(2);
+  var randomStrings = randomStrings1 + randomStrings2;
   let file = document.getElementById('files').files[0];
   let thisRef = storagePersonalRef.child(randomStrings);
   thisRef.put(file).then(res=> {
@@ -205,6 +207,27 @@ function focusDetect() {
   document.getElementById('placeholder').classList.add("after-click");
   document.getElementById('placeholder').innerHTML = '<br>';
   document.getElementById('placeholder').removeAttribute('onclick');
+}
+
+// データベースに情報を入れる関数
+function questioninsert() {
+  var randomStrings1 = Math.random().toString(32).substring(2);
+  var randomStrings2 = Math.random().toString(32).substring(2);
+  var randomStrings0 = randomStrings1 + randomStrings2;
+  var date = new Date();
+  var time = date.getTime(); 
+  db.collection('questions').doc(randomStrings0).set({
+    date: date,
+    time: time,
+    userId: uid,
+  }).then(() => {
+    console.log('ログインに成功しました。');
+    // ここに指定したページに移動させる。
+    location = '../home/home.html';
+  }).catch(err => {
+    console.log(err.message);
+    console.log('失敗');
+  });
 }
 
 function moveToProfile() {
