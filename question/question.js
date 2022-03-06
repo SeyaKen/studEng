@@ -3,57 +3,15 @@ const addContainer = document.getElementById('header-inner');
 auth.onAuthStateChanged(userr => {
   if(userr && auth.currentUser.emailVerified) {
     console.log('ログインしています。');
-    let parentDiv = document.createElement('div');
-    parentDiv.className = 'header-right-logined';
-
-    let button1 = document.createElement('button');
-    let imageProfile = document.createElement('img');
-    button1.className = 'to-profile-button';
-    button1.setAttribute('onclick', 'moveToProfile()');
-    imageProfile.className = 'fas fa-user unregistered-picture';
-    imageProfile.setAttribute('id', 'unregistered-picture');
-    button1.appendChild(imageProfile);
-
-    parentDiv.appendChild(button1);
-    addContainer.appendChild(parentDiv);
-    db.collection('users').doc(userr.uid).get().then(snapshot=> {
-      if(snapshot.data().ProfilePicture == '') {
-        uid = userr.uid;
-        user = userr;
-        storagePersonalRef = firebase.storage().ref(userr.uid);
-        let imageSrc = document.getElementById('unregistered-picture');
-        imageSrc.setAttribute('src', '../images/user.jpg');
-      } else {
-        uid = userr.uid;
-        user = userr;
-        url = snapshot.data().ProfilePicture;
-        storagePersonalRef = firebase.storage().ref(userr.uid);
-        let imageSrc = document.getElementById('unregistered-picture');
-        // srcという属性をここで付加している。
-        imageSrc.setAttribute('src', url);
-      }
-    });
-  } else {
-    console.log('ログインしていません。');
-    let parentDiv = document.createElement('div');
-    parentDiv.className = 'header-right-logouted';
-
-    let button0 = document.createElement('button');
-    button0.textContent = 'ログイン';
-    button0.setAttribute('onclick', 'moveToLogin()');
-
-    let button1 = document.createElement('button');
-    button1.textContent = '新規登録';
-    button1.setAttribute('onclick', 'moveToRegister()');
-
-    parentDiv.appendChild(button0);
-    parentDiv.appendChild(button1);
-    addContainer.appendChild(parentDiv);
+    uid = userr.uid;
+    user = userr;
+    storagePersonalRef = firebase.storage().ref(userr.uid);
   }
 });
 
 var user;
 var uid;
+let storagePersonalRef;
 
 // +ボタンの処理
 // 監視ターゲットの取得
@@ -67,11 +25,9 @@ const input2 = document.getElementById('input2');
 var even;
 document.addEventListener('keydown', (event) => {
   even = event;
-  console.log(event.path[0].childNodes[0]);
-  console.log(document.activeElement.children[0]);
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
-  if(event.key == "Enter") {
+  if(event.keyCode == 13) {
     let child = target.lastElementChild;
     var clientRect = child.getBoundingClientRect();
     var A = document.documentElement;
@@ -180,6 +136,7 @@ function uploadData() {
         let figureParent = document.createElement('figure');
         figureParent.setAttribute('class', 'question-picture0');
         figureParent.setAttribute('id', randomStrings);
+        figureParent.setAttribute('value', url);
         let childImg = document.createElement('img');
         childImg.setAttribute('src', url);
         childImg.setAttribute('width', '100%');
@@ -204,26 +161,40 @@ function deletePicture(value) {
 }
 
 function focusDetect() {
+  document.getElementById('placeholder').classList.remove("before-click");
   document.getElementById('placeholder').classList.add("after-click");
   document.getElementById('placeholder').innerHTML = '<br>';
   document.getElementById('placeholder').removeAttribute('onclick');
 }
 
 // データベースに情報を入れる関数
-function questioninsert() {
+function questionInsert() {
+  const questionList = [];
+  let caption = document.getElementById('input1').value;
+  let subCaption = document.getElementById('input2').value;
+  console.log(subCaption);
+  let children = document.getElementById('question-container-inner1').children;
+  for(let i = 0; i < children.length; i++) {
+    if(children[i].tagName == 'P') {
+      questionList.push(children[i].innerHTML);
+    } else if (children[i].tagName == 'FIGURE') {
+      questionList.push(children[i].getAttribute('value'));
+    };
+  }
   var randomStrings1 = Math.random().toString(32).substring(2);
   var randomStrings2 = Math.random().toString(32).substring(2);
   var randomStrings0 = randomStrings1 + randomStrings2;
   var date = new Date();
-  var time = date.getTime(); 
   db.collection('questions').doc(randomStrings0).set({
+    caption: caption,
+    subCaption: subCaption,
     date: date,
-    time: time,
-    userId: uid,
+    asker: uid,
+    quesitionList: questionList,
   }).then(() => {
-    console.log('ログインに成功しました。');
+    console.log('成功');
     // ここに指定したページに移動させる。
-    location = '../home/home.html';
+    // location = '../home/home.html';
   }).catch(err => {
     console.log(err.message);
     console.log('失敗');
