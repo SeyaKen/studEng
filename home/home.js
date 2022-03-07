@@ -62,8 +62,9 @@ var uid;
 // 質問一覧をうつす関数
 function dataCollect() {
   db.collection('questions').get().then((val)=> {
+    console.log(val.docs[0].data());
     val.docs.map((doc) => {
-      console.log(doc.data());
+      // console.log(doc.data());
       doc.data();
     });
   });
