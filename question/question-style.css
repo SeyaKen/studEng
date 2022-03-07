@@ -15,6 +15,10 @@ body {
   height: 100vh;
 }
 
+input::placeholder {
+  color: #a9abb1 !important;
+}
+
 .most-container {
   padding: 60px 0px 50vh;
   position: relative;
@@ -148,7 +152,7 @@ button:hover {
 }
 
 .before-click {
-  color:grey;
+  color: #a9abb1;
 }
 
 .after-click {

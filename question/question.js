@@ -119,6 +119,7 @@ function uploadData() {
   var randomStrings2 = Math.random().toString(32).substring(2);
   var randomStrings = randomStrings1 + randomStrings2;
   let file = document.getElementById('files').files[0];
+  console.log(file);
   let thisRef = storagePersonalRef.child(randomStrings);
   thisRef.put(file).then(res=> {
     thisRef.getDownloadURL().then(url => {
@@ -153,6 +154,11 @@ function uploadData() {
     console.log('エラー' + e);
   });
 }
+
+// ページを離れる時の関数
+window.addEventListener('beforeunload', function(e) {
+  e.returnValue = '変更内容が保存されないかもしれませんがよろしいですか？';
+}, false);
 
 function deletePicture(value) {
   console.log(value);
@@ -194,7 +200,7 @@ function questionInsert() {
   }).then(() => {
     console.log('成功');
     // ここに指定したページに移動させる。
-    // location = '../home/home.html';
+    location = '../home/home.html';
   }).catch(err => {
     console.log(err.message);
     console.log('失敗');
