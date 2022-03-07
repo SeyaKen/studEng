@@ -59,6 +59,18 @@ auth.onAuthStateChanged(userr => {
 var user;
 var uid;
 
+// 質問一覧をうつす関数
+function dataCollect() {
+  db.collection('questions').get().then((val)=> {
+    val.docs.map((doc) => {
+      console.log(doc.data());
+      doc.data();
+    });
+  });
+};
+
+
+
 function moveToQuestion() {
   location = '../question/question.html';
 };
