@@ -6,12 +6,23 @@ auth.onAuthStateChanged(userr => {
     uid = userr.uid;
     user = userr;
     storagePersonalRef = firebase.storage().ref(userr.uid);
+    db.collection('users').doc(userr.uid).get().then(snapshot=> {
+      if(snapshot.data().ProfilePicture == '') {
+        imageSrc = "https://firebasestorage.googleapis.com/v0/b/studeng.appspot.com/o/44884218_345707102882519_2446069589734326272_n.jpeg?alt=media&token=9c968cd9-872c-4250-8419-eb888f236b43";
+        userName = snapshot.data().name;
+      } else {
+        imageSrc = snapshot.data().ProfilePicture;
+        userName = snapshot.data().name;
+      }
+    });
   }
 });
 
 var user;
 var uid;
 let storagePersonalRef;
+let imageSrc;
+let userName;
 
 // +ボタンの処理
 // 監視ターゲットの取得
@@ -156,9 +167,9 @@ function uploadData() {
 }
 
 // ページを離れる時の関数
-window.addEventListener('beforeunload', function(e) {
-  e.returnValue = '変更内容が保存されないかもしれませんがよろしいですか？';
-}, false);
+window.onbeforeunload = function(e) {
+  return '変更内容が保存されないかもしれませんがよろしいですか？';
+};
 
 function deletePicture(value) {
   console.log(value);
@@ -175,6 +186,7 @@ function focusDetect() {
 
 // データベースに情報を入れる関数
 function questionInsert() {
+  window.onbeforeunload = null;
   const questionList = [];
   let caption = document.getElementById('input1').value;
   let subCaption = document.getElementById('input2').value;
@@ -197,6 +209,8 @@ function questionInsert() {
     date: date,
     asker: uid,
     quesitionList: questionList,
+    askerImg: imageSrc,
+    askerName: userName,
   }).then(() => {
     console.log('成功');
     // ここに指定したページに移動させる。

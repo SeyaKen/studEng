@@ -177,7 +177,7 @@ body {
   border-bottom: 1px solid #efefef;
 }
 
-.quesition-items-content {
+.question-items-content {
   margin-left: 30px;
   display: flex;
   justify-content: space-around;
@@ -185,7 +185,7 @@ body {
   height: 120px;
 }
 
-.quesition-items-content h2 {
+.question-items-content h2 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 0 !important;
@@ -206,18 +206,18 @@ body {
   margin-bottom: 0 !important;
 }
 
-.quesition-items-bottom {
+.question-items-bottom {
   display: flex;
   align-items: center;
 }
 
-.quesition-items-bottom img {
+.question-items-bottom img {
   width: 20px;
   height: 20px;
   margin-right: 10px;
 }
 
-.quesition-items-bottom p {
+.question-items-bottom p {
   font-size: 13px;
   margin-bottom: 0;
 }

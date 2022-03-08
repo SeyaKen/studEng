@@ -1,6 +1,7 @@
 const addContainer = document.getElementById('header-inner');
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(userr => {
+  dataCollect();
   if(userr && auth.currentUser.emailVerified) {
     console.log('ログインしています。');
     let parentDiv = document.createElement('div');
@@ -71,19 +72,38 @@ function dataCollect() {
 };
 
 function renderData(individualDoc) {
-  let parentDiv = document.createElement('div');
-  parentDiv.className = 'question-items';
-  // data-idという属性をここで付加している。
-  parentDiv.setAttribute('data-id', individualDoc.id);
+  let questionItemsDiv = document.createElement('div');
+  questionItemsDiv.className = 'question-items';
 
-  // todo div
-  let questionsDiv = document.createElement('div');
-  questionsDiv.className = 'question-items';
-  questionsDiv.textContent = individualDoc.data().caption;
+  let questionItemsContent = document.createElement('div');
+  questionItemsContent.className = 'question-items-content';
+
+  let questionTagsDiv = document.createElement('div');
+  questionTagsDiv.className = 'question-tags';
+
+  let questionContentH2 = document.createElement('h2');
+  questionContentH2.innerHTML = individualDoc.data().caption;
+
+  let questionTagsP1 = document.createElement('p');
+  let questionTagsP2 = document.createElement('p');
+  questionTagsP1.innerHTML = individualDoc.data().subCaption;
+  let questionItemsBottomDiv = document.createElement('div');
+  questionItemsBottomDiv.className = 'question-items-bottom';
+  let questionItemsBottomImg = document.createElement('img');
+  questionItemsBottomImg.setAttribute('src', individualDoc.data().askerImg);
+  
+  let questionItemsBottomP = document.createElement('p');
+  questionItemsBottomP.innerHTML = individualDoc.data().askerName;
+
+  questionTagsDiv.appendChild(questionTagsP1);
+  questionItemsBottomDiv.appendChild(questionItemsBottomImg);
+  questionItemsBottomDiv.appendChild(questionItemsBottomP);
+  questionItemsContent.appendChild(questionContentH2);
+  questionItemsContent.appendChild(questionTagsDiv);
+  questionItemsContent.appendChild(questionItemsBottomDiv);
+  questionItemsDiv.appendChild(questionItemsContent);
   const divAdd = document.getElementById('questions');
-  // foo.appendChild()はfooの一番最後に()内の要素を追加する。
-  parentDiv.appendChild(questionsDiv);
-  divAdd.appendChild(parentDiv);
+  divAdd.appendChild(questionItemsDiv);
 };
 
 
