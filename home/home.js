@@ -64,10 +64,26 @@ function dataCollect() {
   db.collection('questions').get().then((val)=> {
     console.log(val.docs[0].data());
     val.docs.map((doc) => {
-      // console.log(doc.data());
-      doc.data();
+      console.log(doc.id);
+      renderData(doc);
     });
   });
+};
+
+function renderData(individualDoc) {
+  let parentDiv = document.createElement('div');
+  parentDiv.className = 'question-items';
+  // data-idという属性をここで付加している。
+  parentDiv.setAttribute('data-id', individualDoc.id);
+
+  // todo div
+  let questionsDiv = document.createElement('div');
+  questionsDiv.className = 'question-items';
+  questionsDiv.textContent = individualDoc.data().caption;
+  const divAdd = document.getElementById('questions');
+  // foo.appendChild()はfooの一番最後に()内の要素を追加する。
+  parentDiv.appendChild(questionsDiv);
+  divAdd.appendChild(parentDiv);
 };
 
 
