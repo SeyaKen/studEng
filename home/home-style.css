@@ -182,10 +182,11 @@ body {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  height: 120px;
+  height: 100px;
 }
 
 .question-items-content h2 {
+  cursor: pointer;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 0 !important;

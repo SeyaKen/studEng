@@ -63,9 +63,7 @@ var uid;
 // 質問一覧をうつす関数
 function dataCollect() {
   db.collection('questions').get().then((val)=> {
-    console.log(val.docs[0].data());
     val.docs.map((doc) => {
-      console.log(doc.id);
       renderData(doc);
     });
   });
@@ -82,6 +80,8 @@ function renderData(individualDoc) {
   questionTagsDiv.className = 'question-tags';
 
   let questionContentH2 = document.createElement('h2');
+  questionContentH2.setAttribute('id', individualDoc.id);
+  questionContentH2.setAttribute("onclick", "moveToArticle(this.id)");
   questionContentH2.innerHTML = individualDoc.data().caption;
 
   let questionTagsP1 = document.createElement('p');
@@ -117,6 +117,11 @@ function logout() {
     location = '../index/index.html';
   });
 };
+
+function moveToArticle(articleId) {
+  localStorage.setItem('articleId', articleId)
+  location = '../article/article.html';
+}
 
 function moveToProfile() {
   location = '../profile/profile.html';
