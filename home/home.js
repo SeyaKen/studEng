@@ -62,7 +62,7 @@ var uid;
 
 // 質問一覧をうつす関数
 function dataCollect() {
-  db.collection('questions').get().then((val)=> {
+  db.collection('questions').orderBy('date', 'desc').limit(10).get().then((val)=> {
     val.docs.map((doc) => {
       renderData(doc);
     });
@@ -73,19 +73,91 @@ function renderData(individualDoc) {
   let questionItemsDiv = document.createElement('div');
   questionItemsDiv.className = 'question-items';
 
+
+  // questionLeft
+  let questionItemsLeft = document.createElement('div');
+  questionItemsLeft.className = 'question-items-left';
+
+  let questionItemsLeftButton = document.createElement('button');
+
+  let questionItemsLeftI = document.createElement('i');
+  questionItemsLeftI.className = 'far fa-heart fa-lg fa-fw';
+  questionItemsLeftButton.appendChild(questionItemsLeftI);
+
+  let questionItemsLeftP = document.createElement('p');
+  // 後で変更
+  questionItemsLeftP.innerHTML = '0';
+
+  questionItemsLeft.appendChild(questionItemsLeftButton);
+  questionItemsLeftButton.appendChild(questionItemsLeftP);
+  // questionLeft
+
+  // questionRight
+  // questionitemsTop
   let questionItemsContent = document.createElement('div');
   questionItemsContent.className = 'question-items-content';
 
-  let questionTagsDiv = document.createElement('div');
-  questionTagsDiv.className = 'question-tags';
+  let questionItemsTop = document.createElement('div');
+  questionItemsTop.className = 'question-items-top';
 
   let questionContentH2 = document.createElement('h2');
   questionContentH2.setAttribute('id', individualDoc.id);
   questionContentH2.setAttribute("onclick", "moveToArticle(this.id)");
   questionContentH2.innerHTML = individualDoc.data().caption;
 
+  questionItemsTop.appendChild(questionContentH2);
+
+  let questionItemsTopRight = document.createElement('div');
+  questionItemsTopRight.className = 'question-items-top-right';
+
+  let questionItemsTopRightI = document.createElement('i');
+  questionItemsTopRightI.className = 'far fa-clock fa-lg fa-fw';
+
+  let questionItemsTopRightP = document.createElement('p');
+  let tuki;
+  switch (individualDoc.data().date.toDate().toString().slice(4, 7)) {
+    case 'Jan':
+      tuki = '1';
+    case 'Feb':
+        tuki = '2';
+    case 'Mar':
+        tuki = '3';
+    case 'Apr':
+        tuki = '4';
+    case 'May':
+        tuki = '5';
+    case 'Jun':
+        tuki = '6';
+    case 'Jul':
+        tuki = '7';
+    case 'Aug':
+      tuki = '8';
+    case 'Sep':
+      tuki = '9';
+    case 'Oct':
+      tuki = '10';
+    case 'Nov':
+      tuki = '11';
+    case 'Dec':
+      tuki = '12';
+}
+  console.log(individualDoc.data().date.toDate().toString().slice(4, 7));
+  console.log(individualDoc.data().date.toDate().toString().slice(7, 10));;
+  console.log(individualDoc.data().date.toDate().toString().slice(10, 15) + '年' + tuki + '/' + individualDoc.data().date.toDate().toString().slice(8, 10) + individualDoc.data().date.toDate().toString().slice(15, 21));
+  let hiduke = individualDoc.data().date.toDate().toString().slice(10, 15) + '年' + tuki + '/' + individualDoc.data().date.toDate().toString().slice(8, 10) + individualDoc.data().date.toDate().toString().slice(15, 21);
+  questionItemsTopRightP.innerHTML = hiduke;
+
+  questionItemsTopRight.appendChild(questionItemsTopRightI);
+  questionItemsTopRight.appendChild(questionItemsTopRightP);
+  questionItemsTop.appendChild(questionItemsTopRight);
+  // questionitemsTop
+
+  // questionTags
+  let questionTagsDiv = document.createElement('div');
+  questionTagsDiv.className = 'question-tags';
+
   let questionTagsP1 = document.createElement('p');
-  let questionTagsP2 = document.createElement('p');
+  // let questionTagsP2 = document.createElement('p');
   questionTagsP1.innerHTML = individualDoc.data().subCaption;
   let questionItemsBottomDiv = document.createElement('div');
   questionItemsBottomDiv.className = 'question-items-bottom';
@@ -98,9 +170,10 @@ function renderData(individualDoc) {
   questionTagsDiv.appendChild(questionTagsP1);
   questionItemsBottomDiv.appendChild(questionItemsBottomImg);
   questionItemsBottomDiv.appendChild(questionItemsBottomP);
-  questionItemsContent.appendChild(questionContentH2);
+  questionItemsContent.appendChild(questionItemsTop);
   questionItemsContent.appendChild(questionTagsDiv);
   questionItemsContent.appendChild(questionItemsBottomDiv);
+  questionItemsDiv.appendChild(questionItemsLeft);
   questionItemsDiv.appendChild(questionItemsContent);
   const divAdd = document.getElementById('questions');
   divAdd.appendChild(questionItemsDiv);

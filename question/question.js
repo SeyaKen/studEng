@@ -225,6 +225,10 @@ function moveToProfile() {
   location = '../profile/profile.html';
 };
 
+function moveToHome() {
+  location = '../home/home.html';
+};
+
 function moveToLogin() {
   location = '../login/login.html';
 };
