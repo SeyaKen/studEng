@@ -48,21 +48,26 @@
       </div>
     </div>
 
-
-    <div class="answer-space">
-      <div class="images-add-button-container">
-        <button onclick="inputClick()">
-          <img src="../images/image.png" alt="">
-        </button>
-      </div>
-      <div class="question-container">
-        <div class="question-container-inner" id="question-container-inner">
-          <div contenteditable="true" role="textbox" class="question-container-inner1" id="question-container-inner1">
-            <p id="placeholder" class="before-click" onclick="focusDetect(this.id);">ここに解答をお書きください<br></p>
+    <div class="anser-space-container">
+      <div class="answer-space">
+        <div class="images-add-button-container">
+          <button onclick="inputClick()">
+            <img src="../images/image.png" alt="">
+          </button>
+        </div>
+        <div class="question-container">
+          <div class="question-container-inner" id="answer-container-inner">
+            <div contenteditable="true" role="textbox" class="question-container-inner1" id="answer-container-inner1">
+              <p id="placeholder" class="before-click" onclick="focusDetect(this.id);">ここに回答をお書きください<br></p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="answer-button">
+        <button>回答する</button>
+      </div>
     </div>
+    
     
 
   </div>

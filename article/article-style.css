@@ -220,9 +220,13 @@ button:hover {
   padding: 15px 0;
 }
 
+/* .anser-space-container{
+
+} */
+
 .answer-space {
   border: 5px solid #efefef;
-  padding: 30px;
+  padding: 20px 30px 20px 30px;
   border-radius: 5px;
 }
 
@@ -301,3 +305,24 @@ button:hover {
   line-height: inherit !important;
 }
 
+.answer-button {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.answer-button button {
+  width: 50%;
+  height: 40px;
+  background-color: #0071e3;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.answer-button button:focus {
+  outline: none;
+  border: none;
+}
