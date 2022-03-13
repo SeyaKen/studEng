@@ -76,11 +76,18 @@ const input2 = document.getElementById('input2');
 // 質問をうつす関数
 function dataCollect() {
   db.collection('questions').doc(articleId).get().then((val)=> {
-    renderData(val);
+    articleData(val);
+  });
+  db.collection('questions').doc(articleId).collection('answers').orderBy('date', 'desc').get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      kaitouData(doc);
+      // console.log(doc.data()['answerList']);
+    })
   });
 };
 
-function renderData(individualDoc) {
+// 記事の内容をHTMLとして映す関数
+function articleData(individualDoc) {
   input1.innerHTML = individualDoc.data().caption;
   input2.innerHTML = individualDoc.data().subCaption;
   for(let i = 0; i < individualDoc.data()['quesitionList'].length; i++) {
@@ -95,6 +102,25 @@ function renderData(individualDoc) {
       articleBodyImg.setAttribute('width', '100%');
       articleBodyFigure.appendChild(articleBodyImg);
       articleBody.appendChild(articleBodyFigure);
+    };
+  }
+};
+
+// 回答があれば、その内容をHTMLとして映す関数
+const kaitouBody = document.getElementById('kaitou-lists-area');
+function kaitouData(individualDoc) {
+  for(let i = 0; i < individualDoc.data()['answerList'].length; i++) {
+    if(individualDoc.data()['answerList'][i].slice(0, 38) != 'https://firebasestorage.googleapis.com') {
+      let kaitouBodyP = document.createElement('p');
+      kaitouBodyP.innerHTML = individualDoc.data()['answerList'][i];
+      kaitouBody.appendChild(kaitouBodyP);
+    } else {
+      let kaitouBodyFigure = document.createElement('figure');
+      let kaitouBodyImg = document.createElement('img');
+      kaitouBodyImg.setAttribute('src', individualDoc.data()['answerList'][i]);
+      kaitouBodyImg.setAttribute('width', '100%');
+      kaitouBodyFigure.appendChild(kaitouBodyImg);
+      kaitouBody.appendChild(kaitouBodyFigure);
     };
   }
 };
@@ -210,32 +236,29 @@ function focusDetect() {
 }
 
 // データベースに情報を入れる関数
-function questionInsert() {
-  const questionList = [];
-  let children = document.getElementById('question-container-inner1').children;
+function answerInsert() {
+  const answerList = [];
+  let children = document.getElementById('answer-container-inner1').children;
   for(let i = 0; i < children.length; i++) {
     if(children[i].tagName == 'P') {
-      questionList.push(children[i].innerHTML);
+      answerList.push(children[i].innerHTML);
     } else if (children[i].tagName == 'FIGURE') {
-      questionList.push(children[i].getAttribute('value'));
+      answerList.push(children[i].getAttribute('value'));
     };
   }
   var randomStrings1 = Math.random().toString(32).substring(2);
   var randomStrings2 = Math.random().toString(32).substring(2);
   var randomStrings0 = randomStrings1 + randomStrings2;
   var date = new Date();
-  db.collection('questions').doc(randomStrings0).set({
-    caption: caption,
-    subCaption: subCaption,
+  db.collection('questions').doc(articleId).collection('answers').doc(randomStrings0).set({
     date: date,
-    asker: uid,
-    quesitionList: questionList,
-    askerImg: imageSrc,
-    askerName: userName,
+    answer: uid,
+    answerList: answerList,
+    answerImg: imageSrc,
+    answerName: userName,
   }).then(() => {
     console.log('成功');
-    // ここに指定したページに移動させる。
-    location = '../home/home.html';
+    document.location.reload();
   }).catch(err => {
     console.log(err.message);
     console.log('失敗');
