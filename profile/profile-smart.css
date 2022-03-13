@@ -51,7 +51,7 @@ body {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 20px;
-  color: #0071e3;
+  color: #04cfe7;
   text-align: center;
 }
 
@@ -105,7 +105,7 @@ body {
 }
 
 .question-button:hover {
-  background-color: #5aaaf9;
+  background-color: #78f0fd;
 }
 
 .question-button {
@@ -116,7 +116,7 @@ body {
   padding-right: 8px;
   padding-left: 8px;
   font-size: 13px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff !important;
   text-decoration: none;
   border: none;
@@ -251,7 +251,7 @@ body {
 
 .border0 {
   height: 7px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   width: 100%;
 }
 

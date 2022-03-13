@@ -88,7 +88,7 @@ body {
 
 .for-password-focus {
   outline: none !important;
-  border-color: #80bdff;
+  border-color: #78f0fd;
   box-shadow: 0 0 0px 3px #c8deff;
   
 }
@@ -107,7 +107,7 @@ body {
 
 .main-right-top button {
   width: 90%;
-  background-color: #5aaaf9;
+  background-color: #78f0fd;
   border-color: transparent;
   color: white;
   border-radius: 2px;
@@ -116,7 +116,7 @@ body {
 
 .main-right-top button:hover {
   width: 90%;
-  background-color: #5aaaf9 !important;
+  background-color: #78f0fd !important;
   border-color: transparent;
   cursor: pointer;
 }
@@ -146,12 +146,12 @@ body {
 }
 
 .main-right-middle a {
-  color: #0071e3 !important;
+  color: #04cfe7 !important;
   cursor: pointer;
 }
 
 .main-right-middle a:hover {
-  color: #5aaaf9;
+  color: #78f0fd;
 }
 
 .get-the-app {

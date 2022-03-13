@@ -80,7 +80,7 @@ function dataCollect() {
   });
   db.collection('questions').doc(articleId).collection('answers').orderBy('date', 'desc').get().then((snapshot) => {
     snapshot.forEach(doc => {
-      kaitouData(doc);
+      // kaitouData(doc);
       // console.log(doc.data()['answerList']);
     })
   });
@@ -109,20 +109,29 @@ function articleData(individualDoc) {
 // 回答があれば、その内容をHTMLとして映す関数
 const kaitouBody = document.getElementById('kaitou-lists-area');
 function kaitouData(individualDoc) {
+  let kaitouBodyItem = document.createElement('div');
+  kaitouBodyItem.className = 'kaitou-lists-item';
+
+  let kaitouBodyItemTop = document.createElement('div');
+  kaitouBodyItemTop.className = 'kaitou-lists-item-top';
+
+  let kaitouBodyItemContent = document.createElement('div');
+  kaitouBodyItemContent.className = 'kaitou-lists-item-content';
   for(let i = 0; i < individualDoc.data()['answerList'].length; i++) {
     if(individualDoc.data()['answerList'][i].slice(0, 38) != 'https://firebasestorage.googleapis.com') {
       let kaitouBodyP = document.createElement('p');
       kaitouBodyP.innerHTML = individualDoc.data()['answerList'][i];
-      kaitouBody.appendChild(kaitouBodyP);
+      kaitouBodyItemContent.appendChild(kaitouBodyP);
     } else {
       let kaitouBodyFigure = document.createElement('figure');
       let kaitouBodyImg = document.createElement('img');
       kaitouBodyImg.setAttribute('src', individualDoc.data()['answerList'][i]);
       kaitouBodyImg.setAttribute('width', '100%');
       kaitouBodyFigure.appendChild(kaitouBodyImg);
-      kaitouBody.appendChild(kaitouBodyFigure);
+      kaitouBodyItemContent.appendChild(kaitouBodyFigure);
     };
   }
+  kaitouBody.appendChild(kaitouBodyItemContent);
 };
 
 // +ボタンの処理

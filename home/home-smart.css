@@ -47,7 +47,7 @@ body {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 20px;
-  color: #0071e3;
+  color: #04cfe7;
   text-align: center;
 }
 
@@ -103,7 +103,7 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -139,7 +139,7 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   margin-right: 7px;
@@ -153,7 +153,7 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   cursor: pointer;
@@ -174,7 +174,7 @@ main {
 }
 
 .buttons button {
-  background-color: #0071e3;
+  background-color: #04cfe7;
   border-color: transparent;
   color: white;
   border-radius: 5px;

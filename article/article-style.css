@@ -70,7 +70,7 @@ button:hover {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 28px;
-  color: #0071e3;
+  color: #04cfe7;
   text-align: center;
   cursor: pointer;
 }
@@ -137,7 +137,7 @@ button:hover {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -173,7 +173,7 @@ button:hover {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -219,6 +219,83 @@ button:hover {
 .question-container {
   padding: 15px 0;
 }
+
+/* kaitou-lists-area */
+.kaitou-lists-area {
+  margin: 70px 0;
+}
+
+.kaitou-lists-item-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.kaitou-lists-item-top p {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.kaitou-lists-item-top-left {
+  display: flex;
+}
+
+.kaitou-lists-item-top-left p {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.kaitou-lists-item-top-left img {
+  width: 68.8px;
+  height: 68.8px;
+}
+
+.kaitou-lists-item-top-right {
+
+}
+
+.kaitou-lists-item-content {
+  margin-top: 15px;
+  position: relative;
+  padding: 1em;
+  border: 3px solid #04cfe7;
+  border-radius: 5px;
+}
+
+.kaitou-lists-item-content:before,
+.kaitou-lists-item-content:after{
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  margin: auto;
+}
+.kaitou-lists-item-content:before{
+  top: -15px;
+  left: -548px;
+  border-style: solid;
+  border-color: transparent transparent #04cfe7 transparent;
+  border-width: 0px 9px 15px 9px;
+}
+.kaitou-lists-item-content:after{
+  top: -10px;
+  left: -548px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  border-width: 0px 6px 11px 6px;
+  z-index: 10;
+}
+
+.kaitou-lists-item-content p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 40px;
+  font-size: 18px;
+  padding-left: 10px;
+  border-left: 4px solid #efefef;
+}
+
 
 /* .anser-space-container{
 
@@ -315,7 +392,7 @@ button:hover {
 .answer-button button {
   width: 50%;
   height: 40px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   outline: none;
   border: none;
   border-radius: 5px;

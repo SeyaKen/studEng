@@ -50,7 +50,7 @@ body {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 28px;
-  color: #0071e3;
+  color: #04cfe7;
   text-align: center;
 }
 
@@ -116,7 +116,7 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -152,7 +152,7 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -259,7 +259,7 @@ body {
 .question-tags p {
   margin-right: 10px;
   font-size: 13px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff;
   border-radius: 5px;
   padding: 2px 5px;

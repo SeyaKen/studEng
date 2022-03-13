@@ -49,7 +49,7 @@ body {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 20px;
-  color: #0071e3;
+  color: #04cfe7;
   text-align: center;
 }
 
@@ -103,7 +103,7 @@ body {
 }
 
 .question-button:hover {
-  background-color: #5aaaf9;
+  background-color: #78f0fd;
 }
 
 .question-button {
@@ -114,7 +114,7 @@ body {
   padding-right: 8px;
   padding-left: 8px;
   font-size: 13px;
-  background-color: #0071e3;
+  background-color: #04cfe7;
   color: #fff !important;
   text-decoration: none;
   border: none;
@@ -221,14 +221,14 @@ body {
 
 .for-password-focus {
   outline: none !important;
-  border-color: #80bdff;
+  border-color: #78f0fd;
   box-shadow: 0 0 0px 3px #c8deff;
   
 }
 
 .main-right-top button {
   width: 90%;
-  background-color: #5aaaf9;
+  background-color: #78f0fd;
   border-color: transparent;
   color: white;
   border-radius: 2px;
@@ -261,12 +261,12 @@ body {
 }
 
 .main-right-middle a {
-  color: #0071e3 !important;
+  color: #04cfe7 !important;
   cursor: pointer;
 }
 
 .main-right-middle a:hover {
-  color: #5aaaf9;
+  color: #78f0fd;
 }
 
 .get-the-app {

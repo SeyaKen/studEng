@@ -9,14 +9,14 @@ var element = document.getElementById('login-button');
 function passwordLength(str) {
   loginPassword = str.length;
   (loginEmail > 0 && loginPassword > 7)
-  ? element.style.backgroundColor = "#0071e3"
-  : element.style.backgroundColor = "#5aaaf9"
+  ? element.style.backgroundColor = "#04cfe7"
+  : element.style.backgroundColor = "#78f0fd"
 }
 function emailLength(str) {
   loginEmail = str.length;
   (loginEmail > 0 && loginPassword > 7)
-  ? element.style.backgroundColor = "#0071e3"
-  : element.style.backgroundColor = "#5aaaf9"
+  ? element.style.backgroundColor = "#04cfe7"
+  : element.style.backgroundColor = "#78f0fd"
 }
 
 
