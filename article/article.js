@@ -80,7 +80,7 @@ function dataCollect() {
   });
   db.collection('questions').doc(articleId).collection('answers').orderBy('date', 'desc').get().then((snapshot) => {
     snapshot.forEach(doc => {
-      // kaitouData(doc);
+      kaitouData(doc);
       // console.log(doc.data()['answerList']);
     })
   });
@@ -109,14 +109,65 @@ function articleData(individualDoc) {
 // 回答があれば、その内容をHTMLとして映す関数
 const kaitouBody = document.getElementById('kaitou-lists-area');
 function kaitouData(individualDoc) {
-  let kaitouBodyItem = document.createElement('div');
-  kaitouBodyItem.className = 'kaitou-lists-item';
-
   let kaitouBodyItemTop = document.createElement('div');
   kaitouBodyItemTop.className = 'kaitou-lists-item-top';
 
+  // kaitou-lists-item-top-left
+  let kaitouBodyItemTopLeft = document.createElement('div');
+  kaitouBodyItemTopLeft.className = 'kaitou-lists-item-top-left';
+  kaitouBodyItemTopLeft.setAttribute('id', 'kaitou-lists-item-top-left');
+
+  let kaitouBodyItemTopLeftImg = document.createElement('img');
+  kaitouBodyItemTopLeftImg.setAttribute('src', individualDoc.data().answerImg);
+
+  let kaitouBodyItemTopLeftP = document.createElement('p');
+  kaitouBodyItemTopLeftP.innerHTML = individualDoc.data().answerName;
+  kaitouBodyItemTopLeft.appendChild(kaitouBodyItemTopLeftImg);
+  kaitouBodyItemTopLeft.appendChild(kaitouBodyItemTopLeftP);
+  // kaitou-lists-item-top-left
+
+  // kaitou-lists-item-top-right
+  let kaitouBodyItemTopRight = document.createElement('div');
+  kaitouBodyItemTopRight.className = 'kaitou-lists-item-top-right';
+
+  let kaitouBodyItemTopRightP = document.createElement('p');
+  switch (individualDoc.data().date.toDate().toString().slice(4, 7)) {
+    case 'Jan':
+      tuki = '1';
+    case 'Feb':
+        tuki = '2';
+    case 'Mar':
+        tuki = '3';
+    case 'Apr':
+        tuki = '4';
+    case 'May':
+        tuki = '5';
+    case 'Jun':
+        tuki = '6';
+    case 'Jul':
+        tuki = '7';
+    case 'Aug':
+      tuki = '8';
+    case 'Sep':
+      tuki = '9';
+    case 'Oct':
+      tuki = '10';
+    case 'Nov':
+      tuki = '11';
+    case 'Dec':
+      tuki = '12';
+}
+  console.log(individualDoc.data().date.toDate().toString().slice(4, 7));
+  console.log(individualDoc.data().date.toDate().toString().slice(7, 10));;
+  console.log(individualDoc.data().date.toDate().toString().slice(10, 15) + '年' + tuki + '/' + individualDoc.data().date.toDate().toString().slice(8, 10) + individualDoc.data().date.toDate().toString().slice(15, 21));
+  let hiduke = individualDoc.data().date.toDate().toString().slice(10, 15) + '年' + tuki + '/' + individualDoc.data().date.toDate().toString().slice(8, 10) + individualDoc.data().date.toDate().toString().slice(15, 21);
+  kaitouBodyItemTopRightP.innerHTML = hiduke;
+  kaitouBodyItemTopRight.appendChild(kaitouBodyItemTopRightP);
+  // kaitou-lists-item-top-right
+
   let kaitouBodyItemContent = document.createElement('div');
   kaitouBodyItemContent.className = 'kaitou-lists-item-content';
+
   for(let i = 0; i < individualDoc.data()['answerList'].length; i++) {
     if(individualDoc.data()['answerList'][i].slice(0, 38) != 'https://firebasestorage.googleapis.com') {
       let kaitouBodyP = document.createElement('p');
@@ -131,6 +182,9 @@ function kaitouData(individualDoc) {
       kaitouBodyItemContent.appendChild(kaitouBodyFigure);
     };
   }
+  kaitouBodyItemTop.appendChild(kaitouBodyItemTopLeft);
+  kaitouBodyItemTop.appendChild(kaitouBodyItemTopRight);
+  kaitouBody.appendChild(kaitouBodyItemTop);
   kaitouBody.appendChild(kaitouBodyItemContent);
 };
 
