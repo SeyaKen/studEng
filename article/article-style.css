@@ -70,7 +70,7 @@ button:hover {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 28px;
-  color: #04cfe7;
+  color: #00E4FF;
   text-align: center;
   cursor: pointer;
 }
@@ -137,7 +137,7 @@ button:hover {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -160,6 +160,28 @@ button:hover {
   width: 36px;
 }
 
+.profile-options {
+  width: 200px;
+  box-shadow: 0 0 5px 1px rgba(var(--jb7,0,0,0),.0975);
+  position: absolute;
+  z-index: 101;
+  bottom: -36px;
+  opacity: 1.0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-options div {
+  width: 100%;
+}
+
+.profile-options a {
+  width: inherit;
+}
+
 /* ログインしていない時 */
 .header-right-logouted {
   display: flex;
@@ -173,7 +195,7 @@ button:hover {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   color: #fff;
   font-size: 14px;
   margin-right: 22px;
@@ -186,6 +208,7 @@ button:hover {
   width: 100%;
   margin: 0px auto;
   padding-top: 20px;
+  position: relative;
 }
 
 .main-question {
@@ -202,7 +225,7 @@ button:hover {
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   border-radius: 5px;
   align-items: center;
 }
@@ -225,11 +248,12 @@ button:hover {
   border: none !important;
   text-decoration: none !important;
   height: 45px;
-  font-size: 23px !important;
+  font-size: 32px !important;
   display: flex;
   width: 100%;
   box-shadow: none;
   outline: none !important;
+  margin-top: 72px;
 }
 
 .input2 {
@@ -286,7 +310,7 @@ button:hover {
   margin-top: 15px;
   position: relative;
   padding: 1em;
-  border: 3px solid #04cfe7;
+  border: 3px solid #00E4FF;
   border-radius: 5px;
 }
 
@@ -304,7 +328,7 @@ button:hover {
   top: -15px;
   left: -548px;
   border-style: solid;
-  border-color: transparent transparent #04cfe7 transparent;
+  border-color: transparent transparent #00E4FF transparent;
   border-width: 0px 9px 15px 9px;
 }
 .kaitou-lists-item-content:after{
@@ -421,7 +445,7 @@ button:hover {
 .answer-button button {
   width: 50%;
   height: 40px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -431,4 +455,8 @@ button:hover {
 .answer-button button:focus {
   outline: none;
   border: none;
+}
+
+.answer-button button:hover {
+  background-color: #78f0fd;
 }

@@ -22,17 +22,35 @@ auth.onAuthStateChanged(userr => {
     imageProfile.setAttribute('id', 'unregistered-picture');
     button1.appendChild(imageProfile);
 
+    // ProfileOptions
+    let profileOptions = document.createElement('div');
+    profileOptions.className = 'profile-options'
+
+    let profileOptionsProfile = document.createElement('a');
+    let profileOptionsProfileDiv1 = document.createElement('div');
+    profileOptionsProfileDiv1.innerHTML = 'プロフィール';
+    profileOptionsProfile.appendChild(profileOptionsProfileDiv1);
+
+    let profileOptionsProfileDiv2 = document.createElement('div');
+    let profileOptionsLogout = document.createElement('a');
+    profileOptionsProfileDiv2.innerHTML = 'ログアウト';
+    profileOptionsLogout.appendChild(profileOptionsProfileDiv2);
+    profileOptions.appendChild(profileOptionsProfile);
+    profileOptions.appendChild(profileOptionsLogout);
+
     parentDiv.appendChild(button0);
     parentDiv.appendChild(button1);
+    parentDiv.appendChild(profileOptions);
     addContainer.appendChild(parentDiv);
     uid = userr.uid;
     user = userr;
     storagePersonalRef = firebase.storage().ref(userr.uid);
     db.collection('users').doc(userr.uid).get().then(snapshot=> {
       if(snapshot.data().ProfilePicture == '') {
+        let imageTarget = document.getElementById('unregistered-picture');
         imageSrc = "https://firebasestorage.googleapis.com/v0/b/studeng.appspot.com/o/44884218_345707102882519_2446069589734326272_n.jpeg?alt=media&token=9c968cd9-872c-4250-8419-eb888f236b43";
         userName = snapshot.data().name;
-        imageSrc.setAttribute('src', 'imageSrc');
+        imageTarget.setAttribute('src', imageSrc);
       } else {
         imageSrc = snapshot.data().ProfilePicture;
         userName = snapshot.data().name;
@@ -71,7 +89,7 @@ let articleId;
 // 監視ターゲットの取得
 const articleBody = document.getElementById('question-container-inner1');
 const input1 = document.getElementById('input1');
-const input2 = document.getElementById('input2');
+const mainQuestion = document.getElementById('main-question');
 
 // 質問をうつす関数
 function dataCollect() {
@@ -88,8 +106,19 @@ function dataCollect() {
 
 // 記事の内容をHTMLとして映す関数
 function articleData(individualDoc) {
+  // もし質問者とarticleのaskerが同じだったら
+  let articleEditButton = document.createElement('button');
+  let articleEditButtonP = document.createElement('p');
+  let articleEditButtonI = document.createElement('i');
+  if(uid == individualDoc.data().asker) {
+    articleEditButtonI.className = 'fas fa-pen fa-lg fa-fw';
+    articleEditButtonP.innerHTML = '編集';
+    articleEditButton.appendChild(articleEditButtonP);
+    articleEditButton.appendChild(articleEditButtonI);
+    mainQuestion.appendChild(articleEditButton);
+  }
+  
   input1.innerHTML = individualDoc.data().caption;
-  input2.innerHTML = individualDoc.data().subCaption;
   for(let i = 0; i < individualDoc.data()['quesitionList'].length; i++) {
     if(individualDoc.data()['quesitionList'][i].slice(0, 38) != 'https://firebasestorage.googleapis.com') {
       let articleBodyP = document.createElement('p');
@@ -331,6 +360,10 @@ function answerInsert() {
 function moveToHome() {
   location = '../home/home.html';
 };
+
+function moveToProfile() {
+  location = '../profile/profile.html';
+}
 
 
 

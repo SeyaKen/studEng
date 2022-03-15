@@ -51,7 +51,7 @@ body {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 20px;
-  color: #04cfe7;
+  color: #00E4FF;
   text-align: center;
 }
 
@@ -116,7 +116,7 @@ body {
   padding-right: 8px;
   padding-left: 8px;
   font-size: 13px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   color: #fff !important;
   text-decoration: none;
   border: none;
@@ -251,7 +251,7 @@ body {
 
 .border0 {
   height: 7px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   width: 100%;
 }
 

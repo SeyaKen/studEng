@@ -58,7 +58,7 @@ body {
   /* font-family: 'Parisienne', cursive; */
   font-weight: bold;
   font-size: 28px;
-  color: #04cfe7;
+  color: #00E4FF;
   text-align: center;
 }
 
@@ -239,7 +239,7 @@ body {
 
 .border0 {
   height: 7px;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   width: 100%;
 }
 

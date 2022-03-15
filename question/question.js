@@ -189,8 +189,6 @@ function questionInsert() {
   window.onbeforeunload = null;
   const questionList = [];
   let caption = document.getElementById('input1').value;
-  let subCaption = document.getElementById('input2').value;
-  console.log(subCaption);
   let children = document.getElementById('question-container-inner1').children;
   for(let i = 0; i < children.length; i++) {
     if(children[i].tagName == 'P') {
@@ -205,7 +203,6 @@ function questionInsert() {
   var date = new Date();
   db.collection('questions').doc(randomStrings0).set({
     caption: caption,
-    subCaption: subCaption,
     date: date,
     asker: uid,
     quesitionList: questionList,

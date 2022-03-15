@@ -50,13 +50,13 @@ var element = document.getElementById('register-button');
 function passwordLength(str) {
   registerPassword = str.length;
   (pattern.test(document.getElementById('register-email').value) && registerPassword > 7)
-  ? element.style.backgroundColor = "#04cfe7"
+  ? element.style.backgroundColor = "#00E4FF"
   : element.style.backgroundColor = "#78f0fd"
 }
 function emailLength(str) {
   registerEmail = str.length;
   (pattern.test(document.getElementById('register-email').value) && registerPassword > 7)
-  ? element.style.backgroundColor = "#04cfe7"
+  ? element.style.backgroundColor = "#00E4FF"
   : element.style.backgroundColor = "#78f0fd"
 }
 

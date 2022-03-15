@@ -38,7 +38,7 @@ body {
 
 .my-container button {
   width: 90%;
-  background-color: #04cfe7;
+  background-color: #00E4FF;
   border-color: transparent;
   color: white;
   border-radius: 2px;
@@ -47,7 +47,7 @@ body {
 
 .my-container button:hover {
   width: 90%;
-  background-color: #04cfe7 !important;
+  background-color: #00E4FF !important;
   border-color: transparent;
   cursor: pointer;
 }

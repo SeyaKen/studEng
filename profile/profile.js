@@ -73,6 +73,6 @@ function uploadData() {
 }
 
 function toggle(me, theOther) {
-  document.getElementById(me).style.backgroundColor = "#04cfe7";
+  document.getElementById(me).style.backgroundColor = "#00E4FF";
   document.getElementById(theOther).style.backgroundColor = "transparent";
 }

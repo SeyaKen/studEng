@@ -152,13 +152,6 @@ function renderData(individualDoc) {
   questionItemsTop.appendChild(questionItemsTopRight);
   // questionitemsTop
 
-  // questionTags
-  let questionTagsDiv = document.createElement('div');
-  questionTagsDiv.className = 'question-tags';
-
-  let questionTagsP1 = document.createElement('p');
-  // let questionTagsP2 = document.createElement('p');
-  questionTagsP1.innerHTML = individualDoc.data().subCaption;
   let questionItemsBottomDiv = document.createElement('div');
   questionItemsBottomDiv.className = 'question-items-bottom';
   let questionItemsBottomImg = document.createElement('img');
@@ -167,11 +160,9 @@ function renderData(individualDoc) {
   let questionItemsBottomP = document.createElement('p');
   questionItemsBottomP.innerHTML = individualDoc.data().askerName;
 
-  questionTagsDiv.appendChild(questionTagsP1);
   questionItemsBottomDiv.appendChild(questionItemsBottomImg);
   questionItemsBottomDiv.appendChild(questionItemsBottomP);
   questionItemsContent.appendChild(questionItemsTop);
-  questionItemsContent.appendChild(questionTagsDiv);
   questionItemsContent.appendChild(questionItemsBottomDiv);
   questionItemsDiv.appendChild(questionItemsLeft);
   questionItemsDiv.appendChild(questionItemsContent);
