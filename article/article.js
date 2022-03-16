@@ -2,7 +2,6 @@ const addContainer = document.getElementById('header-inner');
 // ユーザーがログインしているか確認
 auth.onAuthStateChanged(userr => {
   articleId = localStorage.getItem('articleId');
-  console.log(articleId);
   dataCollect();
   if(userr && auth.currentUser.emailVerified) {
     console.log('ログインしています。');
@@ -128,6 +127,7 @@ function articleData(individualDoc) {
     articleEditButtonP.innerHTML = '編集';
     articleEditButton.appendChild(articleEditButtonP);
     articleEditButton.appendChild(articleEditButtonI);
+    articleEditButton.setAttribute('onclick', 'moveToEdit()')
     mainQuestion.appendChild(articleEditButton);
   }
   
@@ -378,11 +378,20 @@ function moveToProfile() {
   location = '../profile/profile.html';
 }
 
+function moveToEdit() {
+  location = '../edit/edit.html';
+}
+
 function logout() {
   auth.signOut().then(() => {
     location = '../index/index.html';
   });
 };
+
+function moveToArticle(articleId) {
+  localStorage.setItem('articleId', articleId)
+  location = '../edit/edit.html';
+}
 
 function toggleOptions() {
   let toggleOptionsTarget = document.getElementById('profile-options');

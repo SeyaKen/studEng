@@ -295,18 +295,6 @@ button:hover {
   margin-top: 72px;
 }
 
-.input2 {
-  border: none !important;
-  text-decoration: none !important;
-  margin-top: 10px;
-  height: 30px !important;
-  font-size: 18px !important;
-  display: flex;
-  width: 100%;
-  box-shadow: none;
-  outline: none !important;
-}
-
 .question-container {
   padding: 15px 0;
 }

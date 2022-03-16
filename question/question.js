@@ -171,6 +171,7 @@ window.onbeforeunload = function(e) {
   return '変更内容が保存されないかもしれませんがよろしいですか？';
 };
 
+// 画像を消す関数
 function deletePicture(value) {
   console.log(value);
   document.getElementById(value).remove();
