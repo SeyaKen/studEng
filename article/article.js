@@ -17,25 +17,38 @@ auth.onAuthStateChanged(userr => {
     let button1 = document.createElement('button');
     let imageProfile = document.createElement('img');
     button1.className = 'to-profile-button';
-    button1.setAttribute('onclick', 'moveToProfile()');
+    button1.setAttribute('onclick', 'toggleOptions()');
     imageProfile.className = 'fas fa-user unregistered-picture';
     imageProfile.setAttribute('id', 'unregistered-picture');
     button1.appendChild(imageProfile);
 
     // ProfileOptions
     let profileOptions = document.createElement('div');
-    profileOptions.className = 'profile-options'
+    profileOptions.className = 'toggle-options-vanish';
+    profileOptions.setAttribute('id', 'profile-options');
 
     let profileOptionsProfile = document.createElement('a');
+    profileOptionsProfile.setAttribute('onclick', 'moveToProfile()');
+    let profileOptionsProfileIcon = document.createElement('i');
+    profileOptionsProfileIcon.className = 'fa fa-user-circle';
     let profileOptionsProfileDiv1 = document.createElement('div');
-    profileOptionsProfileDiv1.innerHTML = 'プロフィール';
+    let profileOptionsProfileDiv1P = document.createElement('p');
+    profileOptionsProfileDiv1P.innerHTML = 'プロフィール';
+    profileOptionsProfileDiv1.className = 'profile-options-profile-div1'
+    profileOptionsProfileDiv1.appendChild(profileOptionsProfileIcon);
+    profileOptionsProfileDiv1.appendChild(profileOptionsProfileDiv1P);
     profileOptionsProfile.appendChild(profileOptionsProfileDiv1);
+
+    let profileOptinsBottomBorder = document.createElement('hr');
 
     let profileOptionsProfileDiv2 = document.createElement('div');
     let profileOptionsLogout = document.createElement('a');
+    profileOptionsLogout.setAttribute('onclick', 'logout()');
     profileOptionsProfileDiv2.innerHTML = 'ログアウト';
+    profileOptionsProfileDiv2.className = 'profile-options-profile-div2'
     profileOptionsLogout.appendChild(profileOptionsProfileDiv2);
     profileOptions.appendChild(profileOptionsProfile);
+    profileOptions.appendChild(profileOptinsBottomBorder);
     profileOptions.appendChild(profileOptionsLogout);
 
     parentDiv.appendChild(button0);
@@ -365,6 +378,22 @@ function moveToProfile() {
   location = '../profile/profile.html';
 }
 
+function logout() {
+  auth.signOut().then(() => {
+    location = '../index/index.html';
+  });
+};
+
+function toggleOptions() {
+  let toggleOptionsTarget = document.getElementById('profile-options');
+  if(toggleOptionsTarget.className == 'profile-options') {
+    toggleOptionsTarget.classList.remove('profile-options');
+    toggleOptionsTarget.className = 'toggle-options-vanish';
+  } else {
+    toggleOptionsTarget.classList.remove('profile-options-vanish');
+    toggleOptionsTarget.className = 'profile-options';
+  };
+}
 
 
 

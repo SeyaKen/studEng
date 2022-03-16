@@ -160,12 +160,16 @@ button:hover {
   width: 36px;
 }
 
+.toggle-options-vanish {
+  display: none
+}
+
 .profile-options {
   width: 200px;
   box-shadow: 0 0 5px 1px rgba(var(--jb7,0,0,0),.0975);
   position: absolute;
   z-index: 101;
-  bottom: -36px;
+  bottom: -72px;
   opacity: 1.0;
   background-color: white;
   display: flex;
@@ -174,12 +178,47 @@ button:hover {
   align-items: center;
 }
 
+.profile-options a {
+  cursor: pointer;
+}
+
 .profile-options div {
   width: 100%;
 }
 
 .profile-options a {
   width: inherit;
+}
+
+.profile-options hr {
+    background-color: rgba(var(--b38,219,219,219),1);
+    border: 0;
+    height: 1px;
+    margin: 0;
+    width: 100%;
+}
+
+.profile-options-profile-div1 {
+  padding: 8px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-options-profile-div1 i {
+  font-size: 18px;
+  color: black;
+  padding-right: 10px;
+}
+
+.profile-options-profile-div1 p {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.profile-options-profile-div2 {
+  padding: 8px 16px 8px 16px;
+  align-items: center;
+  font-size: 15px;
 }
 
 /* ログインしていない時 */
