@@ -135,6 +135,7 @@ button:hover {
   box-shadow: none;
   outline: none !important;
   margin-top: 72px;
+  color: black;
 }
 
 .question-container {

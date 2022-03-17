@@ -100,11 +100,13 @@ button:hover {
   border: none !important;
   text-decoration: none !important;
   height: 45px;
-  font-size: 23px !important;
+  font-size: 32px !important;
   display: flex;
   width: 100%;
   box-shadow: none;
   outline: none !important;
+  margin-top: 72px;
+  color: black;
 }
 
 .input2 {

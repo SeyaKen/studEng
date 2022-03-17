@@ -24,18 +24,13 @@ let storagePersonalRef;
 let imageSrc;
 let userName;
 
-// +ボタンの処理
 // 監視ターゲットの取得
 const target = document.getElementById('question-container-inner1');
-const target1 = document.getElementById('plus-buttton-container');
 const input1 = document.getElementById('input1');
-const input2 = document.getElementById('input2');
 
 // keyが押し込まれた時に発火する関数
 // 一番上の行の時だけbackspace押すと、サブタイトルになる関数
-var even;
 document.addEventListener('keydown', (event) => {
-  even = event;
   // 一番下の方に来た時自動で少し
   // 要素の位置座標を取得
   if(event.keyCode == 13) {
@@ -47,58 +42,17 @@ document.addEventListener('keydown', (event) => {
       window.scroll({top: Y - 200, left: 0, behavior: 'smooth'});
     }
   }
-
-  var current = document.activeElement.children[0];
-  if(target.children[0].innerHTML == '<br>'
-  && target.children[0] == current
-  && event.code == 'Backspace') {
-    // input2.focus();
-  } else if(event.path[0].id == 'input2'
-  && event.path[0].value == ''
-  && event.code == 'Backspace') {
-    input1.focus();
-  } else if(event.path[0].id == 'input1'
-  && event.path[0].value == ''
-  && event.code == 'Backspace') {
-    input2.focus();
-  } else if(event.path[0].id == 'input2'
-  && event.keyCode == 13) {
-    focusDetect();
-    target.focus();
-  } else if(event.path[0].id == 'input1'
-  && event.keyCode == 13) {
-    input2.focus();
-  }
 });
 
-var pChecker;
-var undifined;
 document.addEventListener('keyup', (event) => {
-  if(even.path[0].id == 'question-container-inner1'
-    && event.path[0].childNodes[0] == undifined
-    && event.code == 'Backspace') {
+  if(target.innerHTML == ''
+  && event.code == 'Backspace') {
     let pTag = document.createElement('p');
     pTag.setAttribute('id', 'placeholder');
     pTag.setAttribute('onclick', '');
     let brTag = document.createElement('br');
     pTag.appendChild(brTag);
     target.appendChild(pTag);
-    input2.focus();
-  }
-  if(even.keyCode == 13) {
-    if(even.path[0].id == 'input2'
-    && even.code == 'Enter') {
-      target.children[0].remove();
-    }
-    var kesitai = document.getElementById('kesitai');
-    if(kesitai != null) {
-      kesitai.remove();
-      kesitai = null;
-      let pTag = document.createElement('p');
-      let brTag = document.createElement('br');
-      pTag.appendChild(brTag);
-      target.appendChild(pTag);
-    }
   }
 });
 
