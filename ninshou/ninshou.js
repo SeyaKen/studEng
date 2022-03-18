@@ -3,7 +3,7 @@ auth.onAuthStateChanged(user => {
   if(user && auth.currentUser.emailVerified) {
     return db.collection('users').doc(user.uid).set({
       name: '',
-      email: '',
+      email: user.email,
       selfIntroduction: '',
       ProfilePicture: '',
     }).then(() => {

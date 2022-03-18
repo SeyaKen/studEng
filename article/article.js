@@ -370,6 +370,32 @@ function answerInsert() {
   });
 }
 
+// ここからがclickDetectの関数
+function toggleOptions() {
+  let toggleOptionsTarget = document.getElementById('profile-options');
+  if(toggleOptionsTarget.className == 'profile-options') {
+    toggleOptionsTarget.classList.remove('profile-options');
+    toggleOptionsTarget.className = 'toggle-options-vanish';
+  } else {
+    toggleOptionsTarget.classList.remove('profile-options-vanish');
+    toggleOptionsTarget.className = 'profile-options';
+  };
+}
+// クリックされた時、プロフィールのフォーカス？を外す関数
+document.addEventListener('click', (event) => {
+  if(event.srcElement.id != 'unregistered-picture') {
+    onKansi();
+  };
+});
+function onKansi() {
+  let toggleOptionsTarget = document.getElementById('profile-options');
+  if(toggleOptionsTarget.className == 'profile-options') {
+    toggleOptionsTarget.classList.remove('profile-options');
+    toggleOptionsTarget.className = 'toggle-options-vanish';
+  }
+};
+// ここまでがclickDetectの関数
+
 function moveToHome() {
   location = '../home/home.html';
 };
@@ -391,17 +417,6 @@ function logout() {
 function moveToArticle(articleId) {
   localStorage.setItem('articleId', articleId)
   location = '../edit/edit.html';
-}
-
-function toggleOptions() {
-  let toggleOptionsTarget = document.getElementById('profile-options');
-  if(toggleOptionsTarget.className == 'profile-options') {
-    toggleOptionsTarget.classList.remove('profile-options');
-    toggleOptionsTarget.className = 'toggle-options-vanish';
-  } else {
-    toggleOptionsTarget.classList.remove('profile-options-vanish');
-    toggleOptionsTarget.className = 'profile-options';
-  };
 }
 
 

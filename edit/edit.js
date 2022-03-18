@@ -92,6 +92,8 @@ function articleData(individualDoc) {
       let articleBodyFigure = document.createElement('figure');
       let articleBodyImg = document.createElement('img');
       articleBodyImg.setAttribute('src', individualDoc.data()['quesitionList'][i]);
+      articleBodyFigure.setAttribute.className = 'question-picture0';
+      articleBodyFigure.setAttribute('id', individualDoc.data()['quesitionList'][i]);
       articleBodyImg.setAttribute('width', '100%');
       articleBodyFigure.appendChild(buttonTag);
       articleBodyFigure.appendChild(articleBodyImg);
@@ -111,7 +113,6 @@ function uploadData() {
   var randomStrings2 = Math.random().toString(32).substring(2);
   var randomStrings = randomStrings1 + randomStrings2;
   let file = document.getElementById('files').files[0];
-  console.log(file);
   let thisRef = storagePersonalRef.child(randomStrings);
   thisRef.put(file).then(res=> {
     thisRef.getDownloadURL().then(url => {
@@ -165,10 +166,12 @@ const observer = new MutationObserver(records => {
   });
 
 // 写真を消す関数
+var deleteImagesList = [];
 function deletePicture(value) {
   document.getElementById(value).remove();
+  deleteImagesList.push(value);
   // これを使って、Referenceなしで削除できる。
-  firebase.storage().refFromURL(value).delete();
+  // firebase.storage().refFromURL(value).delete();
 }
 
 // ページを離れる時の関数
@@ -178,6 +181,9 @@ window.onbeforeunload = function(e) {
 
 // データベースに情報を入れる関数
 function questionInsert() {
+  for(let i = 0; i < deleteImagesList.length; i++) {
+    firebase.storage().refFromURL(deleteImagesList[i]).delete();
+  }
   window.onbeforeunload = null;
   const questionList = [];
   let caption = document.getElementById('input1').value;
