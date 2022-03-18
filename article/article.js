@@ -381,6 +381,7 @@ function toggleOptions() {
     toggleOptionsTarget.className = 'profile-options';
   };
 }
+
 // クリックされた時、プロフィールのフォーカス？を外す関数
 document.addEventListener('click', (event) => {
   if(event.srcElement.id != 'unregistered-picture') {

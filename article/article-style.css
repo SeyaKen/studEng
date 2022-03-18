@@ -308,6 +308,7 @@ button:hover {
   margin-top: 60px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .kaitou-lists-item-top p {
@@ -327,6 +328,7 @@ button:hover {
 .kaitou-lists-item-top-left img {
   width: 68.8px;
   height: 68.8px;
+  border-radius: 100%;
 }
 
 .kaitou-lists-item-top-right {
