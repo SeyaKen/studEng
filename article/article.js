@@ -356,10 +356,10 @@ function answerInsert() {
   var kaitousha = [];
   db.collection('questions').doc(articleId).collection('answers').orderBy('date', 'desc').get().then((snapshot) => {
     snapshot.forEach(doc => {
-      kaitousha.push(doc.answer);
+      kaitousha.push(doc.data().answer);
     })
   }).then(() => {
-    if(!kaitousha.indexOf(uid)) {
+    if(!kaitousha.includes(uid)) {
       const answerList = [];
       let children = document.getElementById('answer-container-inner1').children;
       for(let i = 0; i < children.length; i++) {
@@ -387,7 +387,9 @@ function answerInsert() {
         console.log('失敗');
       });
     } else {
-      console.log('解答を一回までしかできません。');
+      const errorOn = document.getElementById('error');
+      errorOn.classList.add('error-on');
+      errorOn.innerText = '1回までしか回答できません。'
     }
   });
   // 解答を一回しかできない処理

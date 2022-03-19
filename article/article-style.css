@@ -493,6 +493,20 @@ button:hover {
   line-height: inherit !important;
 }
 
+.error {
+  margin-top: 25px;
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-on {
+  height: 30px;
+}
+
 .answer-button {
   margin-top: 25px;
   display: flex;
