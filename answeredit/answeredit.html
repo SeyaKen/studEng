@@ -7,8 +7,8 @@
   <title>StudEng</title>
   <link rel="icon" href="../images/favicon.png">
   <!-- css -->
-  <link href="article-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
-  <link href="article-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
+  <link href="answeredit-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
+  <link href="answeredit-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
   <!-- bootstrap links -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,54 +24,33 @@
   <div class="most-container" id="most-container">
     <header class="header">
       <div class="header-inner" id="header-inner">
-        <h1 class="logo" onclick="moveToHome()">StudEng</h1>
         <div class="header-left">
-          <div class="search-area">
-            <button onclick="test()" type="submit" class="search-button">
-              <i class="fas fa-search"></i>
-            </button>
-            <input type="text" value="" class="search-input" placeholder="検索">
-          </div>
+          <h1 class="logo">StudEng</h1>
+        </div>
+        <div class="header-right">
+          <button onclick="questionInsert()" type="submit" class="promulgate-button">
+            公開する
+          </button>
         </div>
       </div>
     </header>
 
     <div class="main">
       <div class="main-question" id="main-question">
-        <h1 id="input1" class="input1"></h1>
+        <input id="input1" class="input1" value="">
+      </div>
+      <div class="images-add-button-container">
+        <button onclick="inputClick()">
+          <img src="../images/image.png" alt="">
+        </button>
       </div>
       <div class="question-container">
         <div class="question-container-inner" id="question-container-inner">
-          <div class="question-container-inner1" id="question-container-inner1">
+          <div contenteditable="true" class="question-container-inner1" id="question-container-inner1">
           </div>
-        </div>
-      </div>
-
-      <div class="kaitou-lists-area" id="kaitou-lists-area">
-       
-      </div>
-
-      <div class="anser-space-container">
-        <div class="answer-space">
-          <div class="images-add-button-container">
-            <button onclick="inputClick()">
-              <img src="../images/image.png" alt="">
-            </button>
-          </div>
-          <div class="question-container">
-            <div class="question-container-inner" id="answer-container-inner">
-              <div contenteditable="true" role="textbox" class="question-container-inner1" id="answer-container-inner1">
-                <p id="placeholder" class="before-click" onclick="focusDetect(this.id);">ここに回答をお書きください<br></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="answer-button">
-          <button onclick="answerInsert()">回答する</button>
         </div>
       </div>
     </div>
-  </div>
 </body>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -99,5 +78,5 @@
   const auth = firebase.auth();
   const db = firebase.firestore();
 </script>
-<script src="article.js"></script>
+<script src="answeredit.js"></script>
 </html>

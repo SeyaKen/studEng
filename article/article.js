@@ -4,7 +4,7 @@ auth.onAuthStateChanged(userr => {
   articleId = localStorage.getItem('articleId');
   dataCollect();
   if(userr && auth.currentUser.emailVerified) {
-    console.log('ログインしています。');
+
     let parentDiv = document.createElement('div');
     parentDiv.className = 'header-right-logined';
 
@@ -111,7 +111,6 @@ function dataCollect() {
   db.collection('questions').doc(articleId).collection('answers').orderBy('date', 'desc').get().then((snapshot) => {
     snapshot.forEach(doc => {
       kaitouData(doc);
-      // console.log(doc.data()['answerList']);
     })
   });
 };
@@ -152,6 +151,7 @@ function articleData(individualDoc) {
 const kaitouBody = document.getElementById('kaitou-lists-area');
 function kaitouData(individualDoc) {
   let kaitouBodyItemTop = document.createElement('div');
+  kaitouBodyItemTop.setAttribute('id', individualDoc.data().answer);
   kaitouBodyItemTop.className = 'kaitou-lists-item-top';
 
   // kaitou-lists-item-top-left
@@ -199,9 +199,6 @@ function kaitouData(individualDoc) {
     case 'Dec':
       tuki = '12';
 }
-  console.log(individualDoc.data().date.toDate().toString().slice(4, 7));
-  console.log(individualDoc.data().date.toDate().toString().slice(7, 10));;
-  console.log(individualDoc.data().date.toDate().toString().slice(10, 15) + '年' + tuki + '/' + individualDoc.data().date.toDate().toString().slice(8, 10) + individualDoc.data().date.toDate().toString().slice(15, 21));
   let hiduke = individualDoc.data().date.toDate().toString().slice(10, 15) + '年' + tuki + '/' + individualDoc.data().date.toDate().toString().slice(8, 10) + individualDoc.data().date.toDate().toString().slice(15, 21);
   kaitouBodyItemTopRightP.innerHTML = hiduke;
   kaitouBodyItemTopRight.appendChild(kaitouBodyItemTopRightP);
@@ -228,6 +225,21 @@ function kaitouData(individualDoc) {
   kaitouBodyItemTop.appendChild(kaitouBodyItemTopRight);
   kaitouBody.appendChild(kaitouBodyItemTop);
   kaitouBody.appendChild(kaitouBodyItemContent);
+  // AnswerEditButton
+  // もし回答者と、そのIDが同じだったら、
+  if(individualDoc.data().answer == uid) {
+    let AnswerEditButton = document.createElement('button');
+    AnswerEditButton.setAttribute('onclick', 'moveToAnswerEdit()');
+    let AnswerEditButtonP = document.createElement('p');
+    AnswerEditButtonP.innerHTML = '編集';
+    let AnswerEditButtonI = document.createElement('i');
+    AnswerEditButtonI.className = 'fas fa-pen fa-lg fa-fw';
+    AnswerEditButton.appendChild(AnswerEditButtonP);
+    AnswerEditButton.appendChild(AnswerEditButtonI);
+    const UidTarget = document.getElementById(uid);
+    UidTarget.appendChild(AnswerEditButton);
+  }
+  // AnswerEditButton
 };
 
 // +ボタンの処理
@@ -291,7 +303,6 @@ function uploadData() {
   var randomStrings2 = Math.random().toString(32).substring(2);
   var randomStrings = randomStrings1 + randomStrings2;
   let file = document.getElementById('files').files[0];
-  console.log(file);
   let thisRef = storagePersonalRef.child(randomStrings);
   thisRef.put(file).then(res=> {
     thisRef.getDownloadURL().then(url => {
@@ -328,7 +339,6 @@ function uploadData() {
 }
 
 function deletePicture(value) {
-  console.log(value);
   document.getElementById(value).remove();
   storagePersonalRef.child(value).delete();
 }
@@ -342,32 +352,45 @@ function focusDetect() {
 
 // データベースに情報を入れる関数
 function answerInsert() {
-  const answerList = [];
-  let children = document.getElementById('answer-container-inner1').children;
-  for(let i = 0; i < children.length; i++) {
-    if(children[i].tagName == 'P') {
-      answerList.push(children[i].innerHTML);
-    } else if (children[i].tagName == 'FIGURE') {
-      answerList.push(children[i].getAttribute('value'));
-    };
-  }
-  var randomStrings1 = Math.random().toString(32).substring(2);
-  var randomStrings2 = Math.random().toString(32).substring(2);
-  var randomStrings0 = randomStrings1 + randomStrings2;
-  var date = new Date();
-  db.collection('questions').doc(articleId).collection('answers').doc(randomStrings0).set({
-    date: date,
-    answer: uid,
-    answerList: answerList,
-    answerImg: imageSrc,
-    answerName: userName,
+  // 解答を一回しかできない処理
+  var kaitousha = [];
+  db.collection('questions').doc(articleId).collection('answers').orderBy('date', 'desc').get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      kaitousha.push(doc.answer);
+    })
   }).then(() => {
-    console.log('成功');
-    document.location.reload();
-  }).catch(err => {
-    console.log(err.message);
-    console.log('失敗');
+    if(!kaitousha.indexOf(uid)) {
+      const answerList = [];
+      let children = document.getElementById('answer-container-inner1').children;
+      for(let i = 0; i < children.length; i++) {
+        if(children[i].tagName == 'P') {
+          answerList.push(children[i].innerHTML);
+        } else if (children[i].tagName == 'FIGURE') {
+          answerList.push(children[i].getAttribute('value'));
+        };
+      }
+      var randomStrings1 = Math.random().toString(32).substring(2);
+      var randomStrings2 = Math.random().toString(32).substring(2);
+      var randomStrings0 = randomStrings1 + randomStrings2;
+      var date = new Date();
+      db.collection('questions').doc(articleId).collection('answers').doc(randomStrings0).set({
+        date: date,
+        answer: uid,
+        answerList: answerList,
+        answerImg: imageSrc,
+        answerName: userName,
+      }).then(() => {
+        console.log('成功');
+        document.location.reload();
+      }).catch(err => {
+        console.log(err.message);
+        console.log('失敗');
+      });
+    } else {
+      console.log('解答を一回までしかできません。');
+    }
   });
+  // 解答を一回しかできない処理
 }
 
 // ここからがclickDetectの関数
@@ -420,6 +443,10 @@ function moveToArticle(articleId) {
   location = '../edit/edit.html';
 }
 
+function moveToAnswerEdit() {
+  localStorage.setItem('articleId', articleId)
+  location = '../answeredit/answeredit.html';
+}
 
 
 
