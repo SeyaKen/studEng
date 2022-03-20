@@ -130,7 +130,7 @@ body {
   cursor: pointer;
   outline: none !important;
   border-radius: 100%;
-  object-fit: contain;
+  object-fit: cover;
   overflow: hidden;
 }
 

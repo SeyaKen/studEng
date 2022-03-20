@@ -230,12 +230,7 @@ function kaitouData(individualDoc) {
   if(individualDoc.data().answer == uid) {
     let AnswerEditButton = document.createElement('button');
     AnswerEditButton.setAttribute('onclick', 'moveToAnswerEdit()');
-    let AnswerEditButtonP = document.createElement('p');
-    AnswerEditButtonP.innerHTML = '編集';
-    let AnswerEditButtonI = document.createElement('i');
-    AnswerEditButtonI.className = 'fas fa-pen fa-lg fa-fw';
-    AnswerEditButton.appendChild(AnswerEditButtonP);
-    AnswerEditButton.appendChild(AnswerEditButtonI);
+    AnswerEditButton.innerHTML = '•••';
     const UidTarget = document.getElementById(uid);
     UidTarget.appendChild(AnswerEditButton);
   }
