@@ -192,7 +192,11 @@ function questionInsert() {
     if(children[i].tagName == 'P') {
       questionList.push(children[i].innerHTML);
     } else if (children[i].tagName == 'FIGURE') {
-      questionList.push(children[i].getAttribute('value'));
+      if(children[i].getAttribute('value') != null) {
+        questionList.push(children[i].getAttribute('value'));
+      } else {
+        questionList.push(children[i].getAttribute('id'));
+      }
     };
   }
   var date = new Date();
@@ -206,7 +210,7 @@ function questionInsert() {
   }).then(() => {
     console.log('成功');
     // ここに指定したページに移動させる。
-    location = '../home/home.html';
+    history.back();
   }).catch(err => {
     console.log(err.message);
     console.log('失敗');

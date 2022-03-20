@@ -369,11 +369,8 @@ function answerInsert() {
           answerList.push(children[i].getAttribute('value'));
         };
       }
-      var randomStrings1 = Math.random().toString(32).substring(2);
-      var randomStrings2 = Math.random().toString(32).substring(2);
-      var randomStrings0 = randomStrings1 + randomStrings2;
       var date = new Date();
-      db.collection('questions').doc(articleId).collection('answers').doc(randomStrings0).set({
+      db.collection('questions').doc(articleId).collection('answers').doc(uid).set({
         date: date,
         answer: uid,
         answerList: answerList,
