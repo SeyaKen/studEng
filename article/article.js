@@ -54,6 +54,8 @@ auth.onAuthStateChanged(userr => {
     parentDiv.appendChild(button1);
     parentDiv.appendChild(profileOptions);
     addContainer.appendChild(parentDiv);
+    // ProfileOptions
+
     uid = userr.uid;
     user = userr;
     storagePersonalRef = firebase.storage().ref(userr.uid);
@@ -170,6 +172,35 @@ function kaitouData(individualDoc) {
 
   // kaitou-lists-item-top-right
   let kaitouBodyItemTopRight = document.createElement('div');
+
+  // Ellipsis
+  let ellipsisOptions = document.createElement('div');
+  ellipsisOptions.className = 'toggle-options-vanish';
+  ellipsisOptions.setAttribute('id', 'ellipsis-options');
+  let ellipsisOptionsellipsis = document.createElement('a');
+  ellipsisOptionsellipsis.setAttribute('onclick', '          ');
+  let ellipsisOptionsellipsisIcon = document.createElement('i');
+  ellipsisOptionsellipsisIcon.className = 'fa fa-user-circle';
+  let ellipsisOptionsellipsisDiv1 = document.createElement('div');
+  let ellipsisOptionsellipsisDiv1P = document.createElement('p');
+  ellipsisOptionsellipsisDiv1P.innerHTML = 'プロフィール';
+  ellipsisOptionsellipsisDiv1.className = 'ellipsis-options-ellipsis-div1'
+  ellipsisOptionsellipsisDiv1.appendChild(ellipsisOptionsellipsisIcon);
+  ellipsisOptionsellipsisDiv1.appendChild(ellipsisOptionsellipsisDiv1P);
+  ellipsisOptionsellipsis.appendChild(ellipsisOptionsellipsisDiv1);
+  let ellipsisOptionsBottomBorder = document.createElement('hr');
+  let ellipsisOptionsellipsisDiv2 = document.createElement('div');
+  let ellipsisOptionsLogout = document.createElement('a');
+  ellipsisOptionsLogout.setAttribute('onclick', 'logout()');
+  ellipsisOptionsellipsisDiv2.innerHTML = 'ログアウト';
+  ellipsisOptionsellipsisDiv2.className = 'ellipsis-options-ellipsis-div2'
+  ellipsisOptionsLogout.appendChild(ellipsisOptionsellipsisDiv2);
+  ellipsisOptions.appendChild(ellipsisOptionsellipsis);
+  ellipsisOptions.appendChild(ellipsisOptionsBottomBorder);
+  ellipsisOptions.appendChild(ellipsisOptionsLogout);
+  kaitouBodyItemTop.appendChild(ellipsisOptions);
+  // Ellipsis
+  
   kaitouBodyItemTopRight.className = 'kaitou-lists-item-top-right';
 
   let kaitouBodyItemTopRightP = document.createElement('p');
