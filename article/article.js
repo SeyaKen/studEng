@@ -175,24 +175,21 @@ function kaitouData(individualDoc) {
 
   // Ellipsis
   let ellipsisOptions = document.createElement('div');
-  ellipsisOptions.className = 'toggle-options-vanish';
-  ellipsisOptions.setAttribute('id', 'ellipsis-options');
+  ellipsisOptions.className = 'toggle-options-vanish-ellipsis-vanish';
+  ellipsisOptions.setAttribute('id', 'toggle-options-vanish-ellipsis-vanish');
   let ellipsisOptionsellipsis = document.createElement('a');
-  ellipsisOptionsellipsis.setAttribute('onclick', '          ');
-  let ellipsisOptionsellipsisIcon = document.createElement('i');
-  ellipsisOptionsellipsisIcon.className = 'fa fa-user-circle';
+  ellipsisOptionsellipsis.setAttribute('onclick', 'moveToAnswerEdit()');
   let ellipsisOptionsellipsisDiv1 = document.createElement('div');
   let ellipsisOptionsellipsisDiv1P = document.createElement('p');
-  ellipsisOptionsellipsisDiv1P.innerHTML = 'プロフィール';
+  ellipsisOptionsellipsisDiv1P.innerHTML = '編集';
   ellipsisOptionsellipsisDiv1.className = 'ellipsis-options-ellipsis-div1'
-  ellipsisOptionsellipsisDiv1.appendChild(ellipsisOptionsellipsisIcon);
   ellipsisOptionsellipsisDiv1.appendChild(ellipsisOptionsellipsisDiv1P);
   ellipsisOptionsellipsis.appendChild(ellipsisOptionsellipsisDiv1);
   let ellipsisOptionsBottomBorder = document.createElement('hr');
   let ellipsisOptionsellipsisDiv2 = document.createElement('div');
   let ellipsisOptionsLogout = document.createElement('a');
-  ellipsisOptionsLogout.setAttribute('onclick', 'logout()');
-  ellipsisOptionsellipsisDiv2.innerHTML = 'ログアウト';
+  ellipsisOptionsLogout.setAttribute('onclick', 'alertAnswer()');
+  ellipsisOptionsellipsisDiv2.innerHTML = '削除';
   ellipsisOptionsellipsisDiv2.className = 'ellipsis-options-ellipsis-div2'
   ellipsisOptionsLogout.appendChild(ellipsisOptionsellipsisDiv2);
   ellipsisOptions.appendChild(ellipsisOptionsellipsis);
@@ -260,8 +257,9 @@ function kaitouData(individualDoc) {
   // もし回答者と、そのIDが同じだったら、
   if(individualDoc.data().answer == uid) {
     let AnswerEditButton = document.createElement('button');
-    AnswerEditButton.setAttribute('onclick', 'moveToAnswerEdit()');
+    AnswerEditButton.setAttribute('onclick', 'toggleEllipsis()');
     AnswerEditButton.innerHTML = '•••';
+    AnswerEditButton.setAttribute('id', 'toggle-options-vanish-ellipsis-button');
     const UidTarget = document.getElementById(uid);
     UidTarget.appendChild(AnswerEditButton);
   }
@@ -430,10 +428,24 @@ function toggleOptions() {
   };
 }
 
+function toggleEllipsis() {
+  let toggleellipsisTarget = document.getElementById('toggle-options-vanish-ellipsis-vanish');
+  if(toggleellipsisTarget.className == 'toggle-options-vanish-ellipsis-vanish') {
+    toggleellipsisTarget.classList.remove('toggle-options-vanish-ellipsis-vanish');
+    toggleellipsisTarget.className = 'toggle-options-vanish-ellipsis';
+  } else {
+    toggleellipsisTarget.classList.remove('toggle-options-vanish-ellipsis');
+    toggleellipsisTarget.className = 'toggle-options-vanish-ellipsis-vanish';
+  };
+}
+
 // クリックされた時、プロフィールのフォーカス？を外す関数
 document.addEventListener('click', (event) => {
   if(event.srcElement.id != 'unregistered-picture') {
     onKansi();
+  };
+  if(event.srcElement.id != 'toggle-options-vanish-ellipsis-button') {
+    onKansiEllipsis();
   };
 });
 function onKansi() {
@@ -443,7 +455,23 @@ function onKansi() {
     toggleOptionsTarget.className = 'toggle-options-vanish';
   }
 };
+function onKansiEllipsis() {
+  let toggleOptionsTarget = document.getElementById('toggle-options-vanish-ellipsis-vanish');
+  if(toggleOptionsTarget.className == 'toggle-options-vanish-ellipsis') {
+    toggleOptionsTarget.classList.remove('toggle-options-vanish-ellipsis');
+    toggleOptionsTarget.className = 'toggle-options-vanish-ellipsis-vanish';
+  }
+};
 // ここまでがclickDetectの関数
+
+function alertAnswer() {
+  var result = confirm('削除します。よろしいですか？');
+  if( result ) {
+    // ここで実際にAnswerをデータベースから消す処理を書く。
+  } else {
+
+  }
+}
 
 function moveToHome() {
   location = '../home/home.html';

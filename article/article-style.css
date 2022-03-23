@@ -334,6 +334,51 @@ button:hover {
   margin-left: 10px;
 }
 
+/* Ellipsis */
+.toggle-options-vanish-ellipsis-vanish {
+  display: none;
+}
+
+.toggle-options-vanish-ellipsis {
+  min-width: 160px;
+  background-color: #fff;
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgb(34 34 34 / 25%), 0 0 1px rgb(34 34 34 / 35%);
+}
+
+.ellipsis-options-ellipsis-div1 {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-options-vanish-ellipsis a {
+  width: 160px;
+  cursor: pointer;
+}
+
+.ellipsis-options-ellipsis-div1 p {
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-left: 0;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.toggle-options-vanish-ellipsis hr {
+  margin: 0;
+}
+
+.ellipsis-options-ellipsis-div2 {
+  padding: 8px 16px;
+  color: red;
+}
+/* Ellipsis */
+
 .kaitou-lists-item-top-left {
   display: flex;
 }
