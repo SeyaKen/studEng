@@ -307,7 +307,6 @@ const observer = new MutationObserver(records => {
       kesitai = records[0].addedNodes[0].setAttribute('id', 'kesitai');
     }
   } catch(e) {
-    console.log(e);
   }
 });
   
@@ -456,10 +455,14 @@ function onKansi() {
   }
 };
 function onKansiEllipsis() {
-  let toggleOptionsTarget = document.getElementById('toggle-options-vanish-ellipsis-vanish');
-  if(toggleOptionsTarget.className == 'toggle-options-vanish-ellipsis') {
-    toggleOptionsTarget.classList.remove('toggle-options-vanish-ellipsis');
-    toggleOptionsTarget.className = 'toggle-options-vanish-ellipsis-vanish';
+  try{
+    let toggleOptionsTarget = document.getElementById('toggle-options-vanish-ellipsis-vanish');
+    if(toggleOptionsTarget.className == 'toggle-options-vanish-ellipsis') {
+      toggleOptionsTarget.classList.remove('toggle-options-vanish-ellipsis');
+      toggleOptionsTarget.className = 'toggle-options-vanish-ellipsis-vanish';
+    }
+  } catch(e) {
+    console.log(e);
   }
 };
 // ここまでがclickDetectの関数
@@ -468,6 +471,14 @@ function alertAnswer() {
   var result = confirm('削除します。よろしいですか？');
   if( result ) {
     // ここで実際にAnswerをデータベースから消す処理を書く。
+    db.collection('questions').doc(articleId).collection('answers').doc(uid)
+    .delete().then(() => {
+      console.log('成功');
+      location.reload();
+    }).catch(err => {
+      console.log(err.message);
+      console.log('失敗');
+    });
   } else {
 
   }
