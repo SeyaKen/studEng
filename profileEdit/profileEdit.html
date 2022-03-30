@@ -7,8 +7,8 @@
   <title>StudEng</title>
   <link rel="icon" href="../images/favicon.png">
   <!-- css -->
-  <link href="profile-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
-  <link href="profile-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
+  <link href="profileEdit-smart.css" rel="stylesheet" type="text/css" media="(max-width: 900px)" >
+  <link href="profileEdit-style.css" rel="stylesheet" type="text/css" media="(min-width: 901px)" >
   <!-- bootstrap links -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -34,7 +34,7 @@
     </div>
   </header>
   
-  <main class="container">
+  <div class="container">
     <input style="display: none" type="file" onchange="uploadData()" id='files' name="Files[]" multiple>
     <div class="top-container">
       <div class="top-left">
@@ -43,29 +43,19 @@
             <img src="../images/user.jpg" id="unregistered-picture" class="fas fa-user unregistered-picture"/>
           </button>
         </div>
+        <a onclick="inputClick()">写真を変更する</a>
       </div>
       <div class="top-right">
         <div class="top-right-top">
-          <p>瀬谷　剣</p>
-          <a onclick="movetoProfileEdit()">プロフィール編集</a>
+          <input placeholder="名前を入力してください。"></input>
         </div>
         <div class="top-right-bottom">
-          <p class="laptop-texts">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+          <textarea placeholder="自己紹介文を入力してください。" class="laptop-texts"></textarea>
         </div>
       </div>
     </div>
-    <p class="smart-texts">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
-    <div class="bottom-container">
-      <div onclick="toggle('border0', 'border1')" id="questions" class="bottom-container-questions">
-        <div id="border0" class="border0"></div>
-        <p>質問</p>
-      </div>
-      <div onclick="toggle('border1', 'border0')" id="teaching" class="bottom-container-teaching">
-        <div id="border1" class="border1"></div>
-        <p>回答</p>
-      </div>
-    </div>
-  </main>
+    <button type="submit" class="edit-button" id="edit-button">更新する</button>
+  </div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
@@ -93,6 +83,6 @@
   const db = firebase.firestore();
 </script>
 
-<script src="profile.js"></script>
+<script src="profileEdit.js"></script>
 </body>
 </html>

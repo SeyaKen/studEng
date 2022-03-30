@@ -76,3 +76,7 @@ function toggle(me, theOther) {
   document.getElementById(me).style.backgroundColor = "#00E4FF";
   document.getElementById(theOther).style.backgroundColor = "transparent";
 }
+
+function movetoProfileEdit() {
+  location = '../profileEdit/profileEdit.html';
+}

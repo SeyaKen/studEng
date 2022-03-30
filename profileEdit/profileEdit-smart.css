@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100% !important;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fafafa !important;
+}
+
+* a {
+  text-decoration: none !important;
+}
+
+* p {
+  margin-bottom: 0 !important;
+}
+
+/* HEADER */
+
+
+.header-inner{
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
+}
+
+.header-left{
+  display: flex;
+}
+
+/* 「::」擬似要素とは、要素の一部に
+対してスタイルを適用できる指定方法です。 */
+
+/* .logo::before {
+  content: 'StudEng';
+} */
+
+.logo {
+  margin: 0;
+  /* font-family: 'Parisienne', cursive; */
+  font-weight: bold;
+  font-size: 20px;
+  color: #00E4FF;
+  text-align: center;
+}
+
+.search-area {
+  display: flex;
+  position: relative;
+  height: 30px;
+  width: 200px;
+  margin-left: 20px;
+}
+
+/* 「:」は擬似クラス=>指定の要素が特定の状態で */
+/* ある場合にスタイルを適用させるセレクタです。 */ 
+.search-button:focus {
+	outline:0;
+}
+
+.search-button {
+  margin-left: 5px;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-button i {
+  color: black;
+}
+
+.search-input:focus {
+  outline:0;
+}
+
+.search-input {
+  padding: 0 8px 0 30px;
+  height: inherit;
+  width: inherit;
+  border-color: #dbdbdb;
+  border-width: 0.5px;
+  border-radius: 3px;
+  background-color: #efefef;
+}
+
+.header-right{
+  display: none;
+}
+
+.question-button:hover {
+  background-color: #78f0fd;
+}
+
+.question-button {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 13px;
+  background-color: #00E4FF;
+  color: #fff !important;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+}
+
+/* main */
+.container {
+  display: flex;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 82px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* top-left */
+.top-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 77px;
+  height: 77px;
+}
+
+.image-container {
+  width: 77px;
+  height: 77px;
+  display: flex;
+  justify-content: center;
+  border-radius: 100%;
+  align-items: flex-end;
+  background-color: #dbdbdb;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-container button {
+  border: none;
+  cursor: pointer;
+  height: 77px;
+  width: 77px;
+  outline: none !important;
+}
+
+.unregistered-picture {
+  width: 77px;
+  height: 77px;
+  color: #fff;
+}
+
+/* top-right */
+.top-right {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+}
+
+/* top-right-top */
+.top-right-top {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top-right-top p:first-child{
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.top-right-top a {
+  border: 1px solid #dbdbdb;
+  padding: 4px 9px;
+  border-radius: 3px;
+  color: #000;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+    text-align: center;
+}
+
+.top-right-top a:hover {
+  border: 1px solid #dbdbdb;
+  padding: 5px 9px;
+  border-radius: 3px;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* top-right-bottom */
+/* .top-right-bottom {
+
+} */
+
+/* bottom-container */
+.bottom-container {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #dbdbdb;
+  margin-top: 5%;
+  justify-content: space-around;
+}
+
+.bottom-container-questions {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 50%;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.border0 {
+  height: 7px;
+  background-color: #00E4FF;
+  width: 100%;
+}
+
+.bottom-container-questions p {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+.bottom-container-teaching {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 50%;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.border1 {
+  height: 7px;
+  width: 100%;
+}
+
+.bottom-container-teaching p {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+/* pの処理 */
+
+.laptop-texts {
+  display: none !important;
+}
+
+.smart-texts {
+  font-size: 13px;
+  margin-bottom: 0 !important;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  width: 100%;
+}
+
+
+
+
