@@ -60,6 +60,7 @@ body {
   font-size: 28px;
   color: #00E4FF;
   text-align: center;
+  cursor: pointer;
 }
 
 .search-area {

@@ -80,3 +80,7 @@ function toggle(me, theOther) {
 function movetoProfileEdit() {
   location = '../profileEdit/profileEdit.html';
 }
+
+function moveToHome() {
+  location = '../home/home.html';
+};

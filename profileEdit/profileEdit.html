@@ -22,7 +22,7 @@
 <body>
   <header class="header">
     <div class="header-inner">
-      <h1 class="logo">StudEng</h1>
+      <h1 class="logo" onclick="moveToHome()">StudEng</h1>
       <div class="header-left">
         <div class="search-area">
           <button type="submit" class="search-button">
@@ -47,10 +47,10 @@
       </div>
       <div class="top-right">
         <div class="top-right-top">
-          <input placeholder="名前を入力してください。"></input>
+          <input id="userName" onkeydown="NameLength(value)" placeholder="名前を入力してください。"></input>
         </div>
         <div class="top-right-bottom">
-          <textarea placeholder="自己紹介文を入力してください。" class="laptop-texts"></textarea>
+          <textarea id="userText" onkeydown="SelfIntroductionLength(value)" placeholder="自己紹介文を入力してください。" class="laptop-texts"></textarea>
         </div>
       </div>
     </div>
