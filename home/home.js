@@ -115,11 +115,12 @@ function renderData(individualDoc) {
 
   let questionItemsLeftI = document.createElement('i');
   questionItemsLeftI.className = 'far fa-heart fa-lg fa-fw';
+  questionItemsLeftI.setAttribute('id', individualDoc.id + 'I');
   questionItemsLeftButton.appendChild(questionItemsLeftI);
 
   let questionItemsLeftP = document.createElement('p');
   // 後で変更
-  console.log(individualDoc.like);
+  questionItemsLeftP.setAttribute('id', individualDoc.id + 'P');
   questionItemsLeftP.innerHTML = individualDoc.data().like.toString();
 
   questionItemsLeft.appendChild(questionItemsLeftButton);
@@ -262,7 +263,13 @@ function answerInsert(articleId) {
           }).then(() => {
             console.log('成功');
             // ここでハートだけリロードしたい。
-
+            let HeartIcon = document.getElementById(articleId);
+            HeartIcon.classList.add('liked');
+            let HeartI = document.getElementById(articleId + 'I');
+            HeartI.classList.remove('far');
+            HeartI.classList.add('fas');
+            let HeartCount = document.getElementById(articleId + 'P');
+            HeartCount.innerHTML = Number(HeartCount.innerHTML + 1).toString();
           }).catch(err => {
             console.log(err.message);
             console.log('失敗');
@@ -284,7 +291,13 @@ function answerInsert(articleId) {
           }).then(() => {
             console.log('成功');
             // ここでハートだけリロードしたい。
-            
+            let HeartIcon = document.getElementById(articleId);
+            HeartIcon.classList.remove('liked');
+            let HeartI = document.getElementById(articleId + 'I');
+            HeartI.classList.remove('fas');
+            HeartI.classList.add('far');
+            let HeartCount = document.getElementById(articleId + 'P');
+            HeartCount.innerHTML = Number(HeartCount.innerHTML - 1).toString();
           }).catch(err => {
             console.log(err.message);
             console.log('失敗');

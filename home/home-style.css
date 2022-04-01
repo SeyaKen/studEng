@@ -250,6 +250,18 @@ body {
   height: inherit;
 }
 
+.liked i {
+  animation: anim 0.2s ease-in-out;
+  -webkit-animation: anim 0.2s ease-in-out;
+  color: #ed4956 !important;
+}
+
+@keyframes anim {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
 .question-items-left button {
   outline: none;
   border: none;
