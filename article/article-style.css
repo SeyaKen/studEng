@@ -299,6 +299,53 @@ button:hover {
   padding: 15px 0;
 }
 
+/* .heart-area {
+
+} */
+
+.heart-area button {
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.heart-area i {
+  font-size: 30px;
+  color: #262626;
+}
+
+.dis {
+  display: none;
+}
+
+.heart-area button p {
+  margin-bottom: 0;
+  margin-left: 5px;
+  font-style: 17px;
+  font-weight: bold;
+}
+
+.heart-area fa-heart:before {
+  content: "\f004";
+}
+
+.liked i {
+  animation: anim 0.2s ease-in-out;
+  -webkit-animation: anim 0.2s ease-in-out;
+  color: #ed4956 !important;
+}
+
+@keyframes anim {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
 /* kaitou-lists-area */
 .kaitou-lists-area {
   margin: 70px 0;
@@ -394,9 +441,9 @@ button:hover {
   border-radius: 100%;
 }
 
-.kaitou-lists-item-top-right {
+/* .kaitou-lists-item-top-right {
 
-}
+} */
 
 .kaitou-lists-item-content {
   margin-top: 15px;

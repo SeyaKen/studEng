@@ -110,12 +110,9 @@ function renderData(individualDoc) {
   questionItemsLeft.className = 'question-items-left';
 
   let questionItemsLeftButton = document.createElement('button');
-  questionItemsLeftButton.setAttribute('id', individualDoc.id);
-  questionItemsLeftButton.setAttribute('onclick', 'answerInsert(this.id)');
 
   let questionItemsLeftI = document.createElement('i');
   questionItemsLeftI.className = 'far fa-heart fa-lg fa-fw';
-  questionItemsLeftI.setAttribute('id', individualDoc.id + 'I');
   questionItemsLeftButton.appendChild(questionItemsLeftI);
 
   let questionItemsLeftP = document.createElement('p');
@@ -243,77 +240,6 @@ function onKansi() {
   }
 };
 // ここまでがclickDetectの関数
-
-// データベースにハートを入れる関数
-function answerInsert(articleId) {
-  var Heart = [];
-  db.collection('questions').doc(articleId).collection('like').get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      Heart.push(doc.data().answer);
-    })
-  }).then(() => {
-    console.log(Heart.includes(uid));
-    if(!Heart.includes(uid)) {
-      db.collection('questions').doc(articleId).collection('like').doc(uid).set({
-        answer: uid,
-      }).then(() => {
-        db.collection('questions').doc(articleId).get().then((val)=> {
-          db.collection('questions').doc(articleId).update({
-            like: val.data().like + 1,
-          }).then(() => {
-            console.log('成功');
-            // ここでハートだけリロードしたい。
-            let HeartIcon = document.getElementById(articleId);
-            HeartIcon.classList.add('liked');
-            let HeartI = document.getElementById(articleId + 'I');
-            HeartI.classList.remove('far');
-            HeartI.classList.add('fas');
-            let HeartCount = document.getElementById(articleId + 'P');
-            HeartCount.innerHTML = Number(HeartCount.innerHTML + 1).toString();
-          }).catch(err => {
-            console.log(err.message);
-            console.log('失敗');
-          });
-        }).catch(err => {
-          console.log(err.message);
-          console.log('失敗');
-        });
-      }).catch(err => {
-        console.log(err.message);
-        console.log('失敗');
-      });
-    } else {
-      // ハートの数を減らす関数。ハートだけリロードできる？
-      db.collection('questions').doc(articleId).collection('like').doc(uid).delete().then(() => {
-        db.collection('questions').doc(articleId).get().then((val)=> {
-          db.collection('questions').doc(articleId).update({
-            like: val.data().like - 1,
-          }).then(() => {
-            console.log('成功');
-            // ここでハートだけリロードしたい。
-            let HeartIcon = document.getElementById(articleId);
-            HeartIcon.classList.remove('liked');
-            let HeartI = document.getElementById(articleId + 'I');
-            HeartI.classList.remove('fas');
-            HeartI.classList.add('far');
-            let HeartCount = document.getElementById(articleId + 'P');
-            HeartCount.innerHTML = Number(HeartCount.innerHTML - 1).toString();
-          }).catch(err => {
-            console.log(err.message);
-            console.log('失敗');
-          });
-        }).catch(err => {
-          console.log(err.message);
-          console.log('失敗');
-        });
-      }).catch(err => {
-        console.log(err.message);
-        console.log('失敗');
-      });
-    }
-  });
-}
-// データベースにハートを入れる関数
 
 function moveToArticle(articleId) {
   localStorage.setItem('articleId', articleId)

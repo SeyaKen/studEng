@@ -120,6 +120,30 @@ function dataCollect() {
 // 記事の内容をHTMLとして映す関数
 function articleData(individualDoc) {
   // もし質問者とarticleのaskerが同じだったら
+
+  // ハートの処理
+  let HeartCount2 = [];
+  db.collection('questions').doc(articleId).collection('like').get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      HeartCount2.push(doc.data().answer);
+    })
+  }).then(() => {
+    if(!HeartCount2.includes(uid)) {
+      let HeartCountI = document.getElementById('HeartCountI');
+      HeartCountI.classList.remove('dis');
+      HeartCountI.classList.add('far');
+    } else {
+      let HeartCountI = document.getElementById('HeartCountI');
+      let HeartCountbut = document.getElementById('HeartCountButton');
+      HeartCountI.classList.remove('dis');
+      HeartCountI.classList.add('fas');
+      HeartCountbut.classList.add('liked');
+    }
+  })
+  let HeartCount = document.getElementById('HeartCount');
+  HeartCount.innerHTML = individualDoc.data().like.toString();
+  // ハートの処理
+
   let articleEditButton = document.createElement('button');
   let articleEditButtonP = document.createElement('p');
   let articleEditButtonI = document.createElement('i');
@@ -483,6 +507,75 @@ function alertAnswer() {
 
   }
 }
+
+// データベースにハートを入れる関数
+function answerInsert() {
+  var Heart = [];
+  db.collection('questions').doc(articleId).collection('like').get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      Heart.push(doc.data().answer);
+    })
+  }).then(() => {
+    console.log(Heart.includes(uid));
+    if(!Heart.includes(uid)) {
+      db.collection('questions').doc(articleId).collection('like').doc(uid).set({
+        answer: uid,
+      }).then(() => {
+        db.collection('questions').doc(articleId).get().then((val)=> {
+          db.collection('questions').doc(articleId).update({
+            like: val.data().like + 1,
+          }).then(() => {
+            // ここでハートだけリロードしたい。
+            let HeartIcon = document.getElementById('HeartCountButton');
+            HeartIcon.classList.add('liked');
+            let HeartI = document.getElementById('HeartCountI');
+            HeartI.classList.remove('far');
+            HeartI.classList.add('fas');
+            let HeartCount = document.getElementById('HeartCount');
+            HeartCount.innerHTML = Number(HeartCount.innerHTML + 1).toString();
+          }).catch(err => {
+            console.log(err.message);
+            console.log('失敗');
+          });
+        }).catch(err => {
+          console.log(err.message);
+          console.log('失敗');
+        });
+      }).catch(err => {
+        console.log(err.message);
+        console.log('失敗');
+      });
+    } else {
+      // ハートの数を減らす関数。ハートだけリロードできる？
+      db.collection('questions').doc(articleId).collection('like').doc(uid).delete().then(() => {
+        db.collection('questions').doc(articleId).get().then((val)=> {
+          db.collection('questions').doc(articleId).update({
+            like: val.data().like - 1,
+          }).then(() => {
+            // ここでハートだけリロードしたい。
+            let HeartIcon = document.getElementById('HeartCountButton');
+            HeartIcon.classList.remove('liked');
+            let HeartI = document.getElementById('HeartCountI');
+            HeartI.classList.remove('fas');
+            HeartI.classList.add('far');
+            let HeartCount = document.getElementById('HeartCount');
+            HeartCount.innerHTML = Number(HeartCount.innerHTML - 1).toString();
+          }).catch(err => {
+            console.log(err.message);
+            console.log('失敗');
+          });
+        }).catch(err => {
+          console.log(err.message);
+          console.log('失敗');
+        });
+      }).catch(err => {
+        console.log(err.message);
+        console.log('失敗');
+      });
+    }
+  });
+}
+// データベースにハートを入れる関数
 
 function moveToHome() {
   location = '../home/home.html';

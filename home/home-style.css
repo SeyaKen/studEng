@@ -250,30 +250,16 @@ body {
   height: inherit;
 }
 
-.liked i {
-  animation: anim 0.2s ease-in-out;
-  -webkit-animation: anim 0.2s ease-in-out;
-  color: #ed4956 !important;
-}
-
-@keyframes anim {
-  100% {
-    transform: scale(1.2);
-  }
-}
-
 .question-items-left button {
   outline: none;
   border: none;
   background: transparent;
-  cursor: pointer;
 }
 
 .question-items-left button:focus {
   outline: none;
   border: none;
   background: transparent;
-  cursor: pointer;
 }
 
 .question-items-left p {
@@ -284,10 +270,6 @@ body {
 .question-items-left i {
   font-size: 30px;
   color: #262626;
-}
-
-.question-items-left i:hover {
-  color: #8d8d8d;
 }
 
 .question-items-content {
@@ -328,6 +310,10 @@ body {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 0 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 350px;
 }
 
 .question-tags {
