@@ -288,11 +288,13 @@ button:hover {
   text-decoration: none !important;
   height: 45px;
   font-size: 32px !important;
-  display: flex;
-  width: 100%;
+  width: 90%;
   box-shadow: none;
   outline: none !important;
   margin-top: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .question-container {
