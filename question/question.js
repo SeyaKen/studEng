@@ -163,6 +163,7 @@ function questionInsert() {
     quesitionList: questionList,
     askerImg: imageSrc,
     askerName: userName,
+    like: 0,
   }).then(() => {
     console.log('成功');
     // ここに指定したページに移動させる。

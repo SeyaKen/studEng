@@ -3,7 +3,6 @@ const addContainer = document.getElementById('header-inner');
 auth.onAuthStateChanged(userr => {
   dataCollect();
   if(userr && auth.currentUser.emailVerified) {
-    console.log('ログインしています。');
     let parentDiv = document.createElement('div');
     parentDiv.className = 'header-right-logined';
 
@@ -15,14 +14,46 @@ auth.onAuthStateChanged(userr => {
     let button1 = document.createElement('button');
     let imageProfile = document.createElement('img');
     button1.className = 'to-profile-button';
-    button1.setAttribute('onclick', 'moveToProfile()');
+    button1.setAttribute('onclick', 'toggleOptions()');
     imageProfile.className = 'fas fa-user unregistered-picture';
     imageProfile.setAttribute('id', 'unregistered-picture');
     button1.appendChild(imageProfile);
 
+    // ProfileOptions
+    let profileOptions = document.createElement('div');
+    profileOptions.className = 'toggle-options-vanish';
+    profileOptions.setAttribute('id', 'profile-options');
+
+    let profileOptionsProfile = document.createElement('a');
+    profileOptionsProfile.setAttribute('onclick', 'moveToProfile()');
+    let profileOptionsProfileIcon = document.createElement('i');
+    profileOptionsProfileIcon.className = 'fa fa-user-circle';
+    let profileOptionsProfileDiv1 = document.createElement('div');
+    let profileOptionsProfileDiv1P = document.createElement('p');
+    profileOptionsProfileDiv1P.innerHTML = 'プロフィール';
+    profileOptionsProfileDiv1.className = 'profile-options-profile-div1'
+    profileOptionsProfileDiv1.appendChild(profileOptionsProfileIcon);
+    profileOptionsProfileDiv1.appendChild(profileOptionsProfileDiv1P);
+    profileOptionsProfile.appendChild(profileOptionsProfileDiv1);
+
+    let profileOptinsBottomBorder = document.createElement('hr');
+
+    let profileOptionsProfileDiv2 = document.createElement('div');
+    let profileOptionsLogout = document.createElement('a');
+    profileOptionsLogout.setAttribute('onclick', 'logout()');
+    profileOptionsProfileDiv2.innerHTML = 'ログアウト';
+    profileOptionsProfileDiv2.className = 'profile-options-profile-div2'
+    profileOptionsLogout.appendChild(profileOptionsProfileDiv2);
+    profileOptions.appendChild(profileOptionsProfile);
+    profileOptions.appendChild(profileOptinsBottomBorder);
+    profileOptions.appendChild(profileOptionsLogout);
+
     parentDiv.appendChild(button0);
     parentDiv.appendChild(button1);
+    parentDiv.appendChild(profileOptions);
     addContainer.appendChild(parentDiv);
+    // ProfileOptions
+
     db.collection('users').doc(userr.uid).get().then(snapshot=> {
       if(snapshot.data().ProfilePicture == '') {
         uid = userr.uid;
@@ -79,6 +110,8 @@ function renderData(individualDoc) {
   questionItemsLeft.className = 'question-items-left';
 
   let questionItemsLeftButton = document.createElement('button');
+  questionItemsLeftButton.setAttribute('id', individualDoc.id);
+  questionItemsLeftButton.setAttribute('onclick', 'answerInsert(this.id)');
 
   let questionItemsLeftI = document.createElement('i');
   questionItemsLeftI.className = 'far fa-heart fa-lg fa-fw';
@@ -86,7 +119,8 @@ function renderData(individualDoc) {
 
   let questionItemsLeftP = document.createElement('p');
   // 後で変更
-  questionItemsLeftP.innerHTML = '0';
+  console.log(individualDoc.like);
+  questionItemsLeftP.innerHTML = individualDoc.data().like.toString();
 
   questionItemsLeft.appendChild(questionItemsLeftButton);
   questionItemsLeftButton.appendChild(questionItemsLeftP);
@@ -181,6 +215,92 @@ function logout() {
     location = '../index/index.html';
   });
 };
+
+// ここからがclickDetectの関数
+function toggleOptions() {
+  let toggleOptionsTarget = document.getElementById('profile-options');
+  if(toggleOptionsTarget.className == 'profile-options') {
+    toggleOptionsTarget.classList.remove('profile-options');
+    toggleOptionsTarget.className = 'toggle-options-vanish';
+  } else {
+    toggleOptionsTarget.classList.remove('profile-options-vanish');
+    toggleOptionsTarget.className = 'profile-options';
+  };
+}
+
+// クリックされた時、プロフィールのフォーカス？を外す関数
+document.addEventListener('click', (event) => {
+  if(event.srcElement.id != 'unregistered-picture') {
+    onKansi();
+  };
+});
+function onKansi() {
+  let toggleOptionsTarget = document.getElementById('profile-options');
+  if(toggleOptionsTarget.className == 'profile-options') {
+    toggleOptionsTarget.classList.remove('profile-options');
+    toggleOptionsTarget.className = 'toggle-options-vanish';
+  }
+};
+// ここまでがclickDetectの関数
+
+// データベースにハートを入れる関数
+function answerInsert(articleId) {
+  var Heart = [];
+  db.collection('questions').doc(articleId).collection('like').get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      Heart.push(doc.data().answer);
+    })
+  }).then(() => {
+    console.log(Heart.includes(uid));
+    if(!Heart.includes(uid)) {
+      db.collection('questions').doc(articleId).collection('like').doc(uid).set({
+        answer: uid,
+      }).then(() => {
+        db.collection('questions').doc(articleId).get().then((val)=> {
+          db.collection('questions').doc(articleId).update({
+            like: val.data().like + 1,
+          }).then(() => {
+            console.log('成功');
+            // ここでハートだけリロードしたい。
+
+          }).catch(err => {
+            console.log(err.message);
+            console.log('失敗');
+          });
+        }).catch(err => {
+          console.log(err.message);
+          console.log('失敗');
+        });
+      }).catch(err => {
+        console.log(err.message);
+        console.log('失敗');
+      });
+    } else {
+      // ハートの数を減らす関数。ハートだけリロードできる？
+      db.collection('questions').doc(articleId).collection('like').doc(uid).delete().then(() => {
+        db.collection('questions').doc(articleId).get().then((val)=> {
+          db.collection('questions').doc(articleId).update({
+            like: val.data().like - 1,
+          }).then(() => {
+            console.log('成功');
+            // ここでハートだけリロードしたい。
+            
+          }).catch(err => {
+            console.log(err.message);
+            console.log('失敗');
+          });
+        }).catch(err => {
+          console.log(err.message);
+          console.log('失敗');
+        });
+      }).catch(err => {
+        console.log(err.message);
+        console.log('失敗');
+      });
+    }
+  });
+}
+// データベースにハートを入れる関数
 
 function moveToArticle(articleId) {
   localStorage.setItem('articleId', articleId)

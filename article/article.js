@@ -373,7 +373,7 @@ function focusDetect() {
   document.getElementById('placeholder').removeAttribute('onclick');
 }
 
-// データベースに情報を入れる関数
+// データベースに回答を入れる関数
 function answerInsert() {
   // 解答を一回しかできない処理
   var kaitousha = [];

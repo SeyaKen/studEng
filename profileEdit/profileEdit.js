@@ -66,6 +66,20 @@ function uploadData() {
   });
 }
 
+// FirebaseにUser情報をアップロードする関数
+function uploadUserData() {
+  db.collection('users').doc(user.uid).update({
+    selfIntroduction: document.getElementById('userText').value,
+    name: document.getElementById('userName').value,
+  }).then(() => {
+    console.log('アップデート成功！');
+  }).catch(err => {
+    console.log(err);
+    console.log('メール認証が終わっていません。');
+    console.log('ログインしていません。');
+  });
+}
+
 // ボタンの色、機能を管理する関数
 var Name = 0;
 var SelfIntroduction = 0;
@@ -74,13 +88,13 @@ function NameLength(str) {
   SelfIntroduction = str.length;
   (Name > 0 && SelfIntroduction > 0)
   ? element.style.backgroundColor = "#00E4FF"
-  : element.style.backgroundColor = "#78f0fd"
+  : element.style.backgroundColor = "rgba(var(--d69,0,149,246),1)"
 }
 function SelfIntroductionLength(str) {
   Name = str.length;
   (Name > 0 && SelfIntroduction > 0)
   ? element.style.backgroundColor = "#00E4FF"
-  : element.style.backgroundColor = "#78f0fd"
+  : element.style.backgroundColor = "rgba(var(--d69,0,149,246),1)"
 }
 
 function moveToHome() {

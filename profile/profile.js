@@ -4,6 +4,10 @@ auth.onAuthStateChanged(userr => {
     db.collection('users').doc(userr.uid).get().then(snapshot=> {
       console.log(snapshot.data().ProfilePicture == '');
       if(userr && auth.currentUser.emailVerified) {
+        let userName = document.getElementById('userName');
+        let userText = document.getElementById('userText');
+        userName.innerHTML = snapshot.data().name;
+        userText.innerHTML = snapshot.data().selfIntroduction;
         if(snapshot.data().ProfilePicture == '') {
           uid = userr.uid;
           user = userr;
